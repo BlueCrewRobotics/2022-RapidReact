@@ -91,6 +91,14 @@ void BC_FalconFX::SetStatorCurrentLimit(bool enable, double limit, double trigge
 
 void BC_FalconFX::SetSupplyCurrentLimit(bool enable, double limit, double trigger, double triggerTime) {
 	ptr_falconFX->ConfigSupplyCurrentLimit(SupplyCurrentLimitConfiguration(enable,limit,trigger,triggerTime));
-	
+
+}
+
+void BC_FalconFX::SetNominalPeakOutput(int profileSlot) {
+	ptr_falconFX->SelectProfileSlot(profileSlot,0);
+	ptr_falconFX->ConfigNominalOutputForward(0,0);
+	ptr_falconFX->ConfigNominalOutputReverse(0,0);
+	ptr_falconFX->ConfigPeakOutputForward(1.0,0);
+	ptr_falconFX->ConfigPeakOutputReverse(-1.0,0);
 }
 

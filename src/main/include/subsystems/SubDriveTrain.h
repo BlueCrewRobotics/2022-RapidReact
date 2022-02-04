@@ -21,6 +21,7 @@ class SubDriveTrain : public frc2::SubsystemBase {
 
   void Drive(double speed, double rotation);
   void DriveTrainConfigure();
+  void GetPidFromDashboard();
   void ClearStickFaults();
   void SetFollower(TalonFX* motor);
 

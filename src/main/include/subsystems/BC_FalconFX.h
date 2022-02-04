@@ -45,6 +45,8 @@ class BC_FalconFX : public virtual frc::SpeedController {
   // Configure the Supply current limit
   // enabled | Limit(amp) | Trigger Threshold(amp) | Trigger Threshold Time(s)
   void SetSupplyCurrentLimit(bool enable, double limit, double trigger, double triggerTime);
+  // Set nominal and peak outs on the motors
+  void SetNominalPeakOutput(int profileSlot);
   
 
 
