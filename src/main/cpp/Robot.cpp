@@ -8,11 +8,18 @@
 
 #include "Robot.h"
 
+#include "ctre/Phoenix.h"
+
+TalonSRX srx {0};
+
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc2/command/CommandScheduler.h>
 
 void Robot::RobotInit() {
   m_robotContainer.ConfigureDrive();
+  m_robotContainer.ConfigureCompressor();
+
+    srx.Set(ControlMode::PercentOutput, 0);
 
 }
 

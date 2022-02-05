@@ -21,7 +21,7 @@
 // Subsystem includes
 #include "subsystems/ExampleSubsystem.h"
 #include "subsystems/SubDriveTrain.h"
-
+#include "subsystems/SubPneumatics.h"
 
 #include "Constants.h"
 
@@ -42,6 +42,7 @@ class RobotContainer {
 
   // Configure the drive train run this function in RobotInit()
   void ConfigureDrive();
+  void ConfigureCompressor();
 
  private:
   // The robot's subsystems and commands are defined here...
@@ -51,6 +52,7 @@ class RobotContainer {
   
   // The robot's subsystems
   SubDriveTrain m_subDriveTrain;
+  SubPneumatics m_subPneumatics;
   
   // Setup driver controller
   frc::Joystick *driverController = new frc::Joystick(DRIVER_CONTROLLER);
