@@ -1,3 +1,7 @@
+/*-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=*/
+/*                       Blue Crew Robotics #6153                             */
+/*                           Rapid React 2022                                 */
+/*-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=*/
 // Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
@@ -9,10 +13,19 @@
 #include <frc/Joystick.h>
 #include <frc2/command/button/JoystickButton.h>
 
+// Command includes
 #include "commands/ExampleCommand.h"
+#include "commands/CmdDriveWithController.h"
+#include "commands/CmdShiftGear.h"
+
+// Subsystem includes
 #include "subsystems/ExampleSubsystem.h"
+#include "subsystems/SubDriveTrain.h"
+
 
 #include "Constants.h"
+
+
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -27,12 +40,19 @@ class RobotContainer {
 
   frc2::Command* GetAutonomousCommand();
 
+  // Configure the drive train run this function in RobotInit()
+  void ConfigureDrive();
+
  private:
   // The robot's subsystems and commands are defined here...
   ExampleSubsystem m_subsystem;
   ExampleCommand m_autonomousCommand;
 
-    // Setup driver controller
+  
+  // The robot's subsystems
+  SubDriveTrain m_subDriveTrain;
+  
+  // Setup driver controller
   frc::Joystick *driverController = new frc::Joystick(DRIVER_CONTROLLER);
 
   // LEFT TRIGGER // Drive Backwards use driverController->GetRawAxis(AXIS_L_TRIG)

@@ -1,3 +1,7 @@
+/*-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=*/
+/*                       Blue Crew Robotics #6153                             */
+/*                           Rapid React 2022                                 */
+/*-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=*/
 // Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
@@ -113,4 +117,14 @@ void SubDriveTrain::GetPidFromDashboard() {
 void SubDriveTrain::Drive(double speed, double rotation) {
     driveTrain->SetDeadband(0.02);
     driveTrain->ArcadeDrive(speed, rotation, false);
+}
+
+void SubDriveTrain::SetDriveTrainGear() {
+    bool gear = m_gearSolenoid->Get();
+    gear = !gear;
+    m_gearSolenoid->Set(gear);
+}
+
+bool SubDriveTrain::GetDriveTrainGear() {
+    return m_gearSolenoid->Get();
 }
