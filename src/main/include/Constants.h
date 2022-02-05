@@ -94,7 +94,7 @@ constexpr int AXIS_RY = 5;
 constexpr int PCM_0 = 9;
 
 // Solenoid Mappings for Shifter PCM
-constexpr int PCM_GEARSHIFT = 0;  // Drive train gear shifter
+constexpr int PCM_0_GEARSHIFT = 0;  // Drive train gear shifter
 
 // Shooter Configuration
 constexpr int SHOOTER_TOP_ADDR = 13;
