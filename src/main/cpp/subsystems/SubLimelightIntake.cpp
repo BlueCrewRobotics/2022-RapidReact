@@ -2,19 +2,19 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-#include "subsystems/SubLimelightShooter.h"
+#include "subsystems/SubLimelightIntake.h"
 
-SubLimelightShooter::SubLimelightShooter() = default;
+SubLimelightIntake::SubLimelightIntake() = default;
 
 // This method will be called once per scheduler run
-void SubLimelightShooter::Periodic() {
+void SubLimelightIntake::Periodic() {
 
 }
 
 /**
  * Get whether or not limelight has a target
  */
-bool SubLimelightShooter::GetTarget() {
+bool SubLimelightIntake::GetTarget() {
   if(tblLimelightShooter->GetNumber("tv",0.0) < 1.0){
     return false;
   }
@@ -25,7 +25,7 @@ bool SubLimelightShooter::GetTarget() {
   /**
      Get horizontal Offset from Crosshair to target
    */
-  double SubLimelightShooter::GetHorizontalOffset(){
+  double SubLimelightIntake::GetHorizontalOffset(){
     return tblLimelightShooter->GetNumber("tx",0.0);
 
   }
@@ -42,7 +42,7 @@ bool SubLimelightShooter::GetTarget() {
      a2 = the angle of the target with respect to the camera ( limelight will give this angle "ty" from network tables)
 
     */
-  double SubLimelightShooter::GetDistanceToTarget(){
+  double SubLimelightIntake::GetDistanceToTarget(){
     double d = 0.0; // feet
     double h1 = (26.5/12); // feet
     double h2 = (98.25/12); // feet
@@ -58,7 +58,7 @@ bool SubLimelightShooter::GetTarget() {
    /**
       Get the skew of the target
     */
-  double SubLimelightShooter::GetSkew(){
+  double SubLimelightIntake::GetSkew(){
     return tblLimelightShooter->GetNumber("ts",0.0);
 
   }
@@ -66,7 +66,7 @@ bool SubLimelightShooter::GetTarget() {
   /**
      Get the camera mounting angle
      
-     a1 = (atan(h2 - h1 / d) - (a2 * 3.14 / 180)) * 180/3.14
+     d = (h2-h1) / tan(a1+a2)
 
      d = distance from camera to target on horizontal plane meaured with tape measure
      h1 = the height of the camera from the ground
@@ -75,7 +75,7 @@ bool SubLimelightShooter::GetTarget() {
      a2 = the angle of the target with respect to the camera ( limelight will give this angle "ty" from network tables)
 
    */
-  double SubLimelightShooter::GetCameraMountAngle(double distance){
+  double SubLimelightIntake::GetCameraMountAngle(double distance){
     double d = distance;
     double h1 = (26.5/12); // inches
     double h2 = (98.25/12); // inches
@@ -100,7 +100,7 @@ bool SubLimelightShooter::GetTarget() {
    
     @param mode the mode to set for the LEDs
    */
-  void SubLimelightShooter::SetLEDState(int mode){
+  void SubLimelightIntake::SetLEDState(int mode){
     tblLimelightShooter->PutNumber("ledMode",mode);
 
   }
@@ -112,7 +112,7 @@ bool SubLimelightShooter::GetTarget() {
    
     @param mode the mode to set for the Camera
   */
-  void SubLimelightShooter::SetCameraMode(int mode){
+  void SubLimelightIntake::SetCameraMode(int mode){
     tblLimelightShooter->PutNumber("camMode",mode);
 
   }
@@ -123,7 +123,7 @@ bool SubLimelightShooter::GetTarget() {
     
     @param pipeline the pipeline to select for the vision targeting
   */
-  void SubLimelightShooter::SelectPipeline(int pipeline){
+  void SubLimelightIntake::SelectPipeline(int pipeline){
     tblLimelightShooter->PutNumber("pipeline",pipeline);
 
   }
@@ -136,7 +136,7 @@ bool SubLimelightShooter::GetTarget() {
     
     @param mode the streaming mode selected
   */
-  void SubLimelightShooter::SelectStreamMode(int mode){
+  void SubLimelightIntake::SelectStreamMode(int mode){
     tblLimelightShooter->PutNumber("stream",mode);
 
   }
@@ -148,7 +148,7 @@ bool SubLimelightShooter::GetTarget() {
     
     @param mode the streaming mode selected
   */
-  void SubLimelightShooter::SelectSnapshotMode(int mode){
+  void SubLimelightIntake::SelectSnapshotMode(int mode){
     tblLimelightShooter->PutNumber("snapshot",mode);
 
   }
@@ -156,7 +156,7 @@ bool SubLimelightShooter::GetTarget() {
   /** Get the Limelight distance value
    * Returns the stored distance
    */
-  double SubLimelightShooter::GetLimelightDistance(){
+  double SubLimelightIntake::GetLimelightDistance(){
     return m_distance;
 
   }
@@ -165,7 +165,7 @@ bool SubLimelightShooter::GetTarget() {
    * 
    * @param distance the distance to the target
    */
-  void SubLimelightShooter::SetLimelightDistance(double distance){
+  void SubLimelightIntake::SetLimelightDistance(double distance){
     m_distance = distance;
 
   }

@@ -2,35 +2,34 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-#include "subsystems/SubLimelightShooter.h"
+#pragma once
 
-SubLimelightShooter::SubLimelightShooter() = default;
+#include <frc2/command/SubsystemBase.h>
+#include <frc/smartdashboard/SmartDashboard.h>
+#include <networktables/NetworkTable.h>
+#include <networktables/NetworkTableInstance.h>
 
-// This method will be called once per scheduler run
-void SubLimelightShooter::Periodic() {
 
-}
+class SubLimelightIntake : public frc2::SubsystemBase {
+ public:
+  SubLimelightIntake();
 
-/**
- * Get whether or not limelight has a target
- */
-bool SubLimelightShooter::GetTarget() {
-  if(tblLimelightShooter->GetNumber("tv",0.0) < 1.0){
-    return false;
-  }
-  return true;
-  
-}
+  /**
+   * Will be called periodically whenever the CommandScheduler runs.
+   */
+  void Periodic() override;
+
+    /**
+     Get whether or not limelight has a target
+    */
+  bool GetTarget();
 
   /**
      Get horizontal Offset from Crosshair to target
-   */
-  double SubLimelightShooter::GetHorizontalOffset(){
-    return tblLimelightShooter->GetNumber("tx",0.0);
+    */
+  double GetHorizontalOffset();
 
-  }
-  
-  /**
+  /** 
      Get the distance from the target
      
      d = (h2-h1) / tan(a1+a2)
@@ -42,53 +41,26 @@ bool SubLimelightShooter::GetTarget() {
      a2 = the angle of the target with respect to the camera ( limelight will give this angle "ty" from network tables)
 
     */
-  double SubLimelightShooter::GetDistanceToTarget(){
-    double d = 0.0; // feet
-    double h1 = (26.5/12); // feet
-    double h2 = (98.25/12); // feet
-    double a1 = 13.46; // degrees
-    double a2 = tblLimelightShooter->GetNumber("ty",0.0);    
-    
-    d = (h2-h1) / (tan((a1 + a2)*3.1416/180));
+  double GetDistanceToTarget();
 
-    return d;
-
-  }
- 
-   /**
+  /**
       Get the skew of the target
     */
-  double SubLimelightShooter::GetSkew(){
-    return tblLimelightShooter->GetNumber("ts",0.0);
+  double GetSkew();
 
-  }
-  
   /**
-     Get the camera mounting angle
+     Get the camera mounting angle THIS IS WRONG! NEEDS WORK ON EQUATION!
      
-     a1 = (atan(h2 - h1 / d) - (a2 * 3.14 / 180)) * 180/3.14
+     d = (h2-h1) / tan(a1+a2)
 
-     d = distance from camera to target on horizontal plane meaured with tape measure
+     d = distance from camera to target on horizontal plane
      h1 = the height of the camera from the ground
      h2 = the height of the center of the target
      a1 = the angle of the camera with respect to ground
      a2 = the angle of the target with respect to the camera ( limelight will give this angle "ty" from network tables)
 
    */
-  double SubLimelightShooter::GetCameraMountAngle(double distance){
-    double d = distance;
-    double h1 = (26.5/12); // inches
-    double h2 = (98.25/12); // inches
-    double a1 = 0.0; // degrees
-    double a2 = tblLimelightShooter->GetNumber("ty",0.0);
-    
-    a1 = (atan((h2-h1)/d)-(a2*3.1416/180))*180/3.1416;
-
-    
-    
-    return a1;
-
-  }
+  double GetCameraMountAngle(double distance);
 
   /**
      Set the Limelight LED state.
@@ -100,10 +72,7 @@ bool SubLimelightShooter::GetTarget() {
    
     @param mode the mode to set for the LEDs
    */
-  void SubLimelightShooter::SetLEDState(int mode){
-    tblLimelightShooter->PutNumber("ledMode",mode);
-
-  }
+  void SetLEDState(int mode);
 
   /** Set the Limelight camera mode.
     
@@ -112,22 +81,16 @@ bool SubLimelightShooter::GetTarget() {
    
     @param mode the mode to set for the Camera
   */
-  void SubLimelightShooter::SetCameraMode(int mode){
-    tblLimelightShooter->PutNumber("camMode",mode);
+  void SetCameraMode(int mode);
 
-  }
-  
   /** Select the vision pipline to use for targeting.
     
     0 - 9 Vision pipeline to use
     
     @param pipeline the pipeline to select for the vision targeting
   */
-  void SubLimelightShooter::SelectPipeline(int pipeline){
-    tblLimelightShooter->PutNumber("pipeline",pipeline);
-
-  }
-
+  void SelectPipeline(int pipeline);
+  
   /** Select limelight's streaming mode.
     
     0 - Standard Side-by-Side stream if a webcam is attached to limelight.
@@ -136,11 +99,8 @@ bool SubLimelightShooter::GetTarget() {
     
     @param mode the streaming mode selected
   */
-  void SubLimelightShooter::SelectStreamMode(int mode){
-    tblLimelightShooter->PutNumber("stream",mode);
-
-  }
-
+  void SelectStreamMode(int mode);
+  
   /** Select limelight's snapshot mode.
     
     0 - Stop taking snapshots.
@@ -148,24 +108,24 @@ bool SubLimelightShooter::GetTarget() {
     
     @param mode the streaming mode selected
   */
-  void SubLimelightShooter::SelectSnapshotMode(int mode){
-    tblLimelightShooter->PutNumber("snapshot",mode);
-
-  }
+  void SelectSnapshotMode(int mode);
 
   /** Get the Limelight distance value
    * Returns the stored distance
    */
-  double SubLimelightShooter::GetLimelightDistance(){
-    return m_distance;
-
-  }
+  double GetLimelightDistance();
 
   /** Set the Limelight distance value
    * 
    * @param distance the distance to the target
    */
-  void SubLimelightShooter::SetLimelightDistance(double distance){
-    m_distance = distance;
+  void SetLimelightDistance(double distance);
 
-  }
+ private:
+  // Components (e.g. motor controllers and sensors) should generally be
+  // declared private and exposed only through public methods.
+
+  std::shared_ptr<nt::NetworkTable> tblLimelightShooter = nt::NetworkTableInstance::GetDefault().GetTable("limelight/shooter");
+
+  double m_distance = 11.5;
+};

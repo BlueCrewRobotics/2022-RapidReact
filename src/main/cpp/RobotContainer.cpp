@@ -35,3 +35,7 @@ void RobotContainer::ConfigureDrive() {
   m_subDriveTrain.GetPidFromDashboard();
 
 }
+
+void RobotContainer::ConfigureCompressor() {
+  m_subPneumatics.ConfigureCompressor();
+}
