@@ -22,6 +22,7 @@
 #include "subsystems/ExampleSubsystem.h"
 #include "subsystems/SubDriveTrain.h"
 #include "subsystems/SubPneumatics.h"
+#include "subsystems/SubShooter.h"
 
 #include "Constants.h"
 
@@ -53,6 +54,7 @@ class RobotContainer {
   // The robot's subsystems
   SubDriveTrain m_subDriveTrain;
   SubPneumatics m_subPneumatics;
+  SubShooter m_subShooter;
   
   // Setup driver controller
   frc::Joystick *driverController = new frc::Joystick(DRIVER_CONTROLLER);
