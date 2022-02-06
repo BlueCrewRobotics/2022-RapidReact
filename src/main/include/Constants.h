@@ -99,3 +99,5 @@ constexpr int PCM_0_GEARSHIFT = 0;  // Drive train gear shifter
 // Shooter Configuration
 constexpr int SHOOTER_TOP_ADDR = 13;
 constexpr int SHOOTER_BTM_ADDR = 14;
+constexpr int SHOOTER_RIGHT_PWM_ADDR = 0;
+constexpr int SHOOTER_LEFT_PWN_ADDR = 1;

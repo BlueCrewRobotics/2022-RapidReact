@@ -66,7 +66,7 @@ bool SubLimelightShooter::GetTarget() {
   /**
      Get the camera mounting angle
      
-     d = (h2-h1) / tan(a1+a2)
+     a1 = (atan(h2 - h1 / d) - (a2 * 3.14 / 180)) * 180/3.14
 
      d = distance from camera to target on horizontal plane meaured with tape measure
      h1 = the height of the camera from the ground
