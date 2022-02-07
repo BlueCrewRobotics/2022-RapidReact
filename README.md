@@ -102,7 +102,3 @@ Sometime you need to know which Git branch is currently the default on your mach
 ```bash
 git checkout
 ```
-
-#### GitHub Desktop
-
-*Section coming soon...*
