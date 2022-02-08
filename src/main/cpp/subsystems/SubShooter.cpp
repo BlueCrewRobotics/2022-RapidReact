@@ -67,7 +67,8 @@ void SubShooter::SpinUpWheels(double topSpeed, double btmSpeed) {
 }
 
 void SubShooter::SetShooterAngle(double angle) {
- 
+    rightServo->SetPosition(angle);
+    leftServo->SetPosition(angle);
 }
 
 bool SubShooter::WheelsAtSpeed(double deadband) {
