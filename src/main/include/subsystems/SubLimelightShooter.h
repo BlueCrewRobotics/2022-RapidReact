@@ -25,9 +25,16 @@ class SubLimelightShooter : public frc2::SubsystemBase {
   bool GetTarget();
 
   /**
-     Get horizontal Offset from Crosshair to target
+     Get horizontal Offset in degrees from Crosshair to target
+     Horizontal field of view (FOV) for Limielight is (-29.8 to 29.8)
     */
   double GetHorizontalOffset();
+
+  /**
+     Get vertical Offset in degrees from Crosshair to target
+     Vertical field of view (FOV) for Limielight is (-24.85 to 24.85)
+    */
+  double GetVerticalOffset();
 
   /** 
      Get the distance from the target
@@ -63,12 +70,12 @@ class SubLimelightShooter : public frc2::SubsystemBase {
   double GetCameraMountAngle(double distance);
 
   /**
-     Set the Limelight LED state.
+    \Set the Limelight LED state.
         
-    0 - Use the LED Mode set in the current pipeline
-    1 - Force LEDS off
-    2 - Force LEDs to blink
-    3 - Force LEDs on
+    \0 - Use the LED Mode set in the current pipeline
+    \1 - Force LEDS off
+    \2 - Force LEDs to blink
+    \3 - Force LEDs on
    
     @param mode the mode to set for the LEDs
    */

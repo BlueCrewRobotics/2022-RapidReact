@@ -11,6 +11,7 @@
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
 #include "subsystems/SubLimelightShooter.h"
+#include "subsystems/SubDriveTrain.h"
 
 /**
  * An example command.
@@ -22,7 +23,7 @@
 class CmdAcquireShooterTarget
     : public frc2::CommandHelper<frc2::CommandBase, CmdAcquireShooterTarget> {
  public:
-  explicit CmdAcquireShooterTarget(SubLimelightShooter* subsystem);
+  explicit CmdAcquireShooterTarget(SubLimelightShooter* subLimelightShooter, SubDriveTrain* subDriveTrain);
 
   void Initialize() override;
 
@@ -35,4 +36,5 @@ class CmdAcquireShooterTarget
  private:
 
   SubLimelightShooter* m_subLimelightShooter;
+  SubDriveTrain* m_subDriveTrain;
 };
