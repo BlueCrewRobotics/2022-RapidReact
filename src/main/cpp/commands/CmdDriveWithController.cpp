@@ -20,7 +20,7 @@ void CmdDriveWithController::Initialize() {}
 // Called repeatedly when this Command is scheduled to run
 void CmdDriveWithController::Execute() {
 
- double speed;
+  double speed;
   if(m_driverController->GetRawAxis(AXIS_L_TRIG) > 0)
   {
     speed = -1*m_driverController->GetRawAxis(AXIS_L_TRIG);
@@ -31,7 +31,12 @@ void CmdDriveWithController::Execute() {
   }
 
   double rotation;
-  rotation = m_driverController->GetRawAxis(AXIS_LX);
+  if(m_driveTrain->GetDriveTrainGear()==false) {
+    rotation = m_driverController->GetRawAxis(AXIS_LX);
+  }
+  else {
+    rotation = m_driverController->GetRawAxis(AXIS_LX)*0.8;
+  }
 
   m_driveTrain->Drive(speed, rotation);
 
