@@ -26,7 +26,7 @@ void RobotContainer::ConfigureButtonBindings() {
   driverController_button_a->WhileHeld(new CmdSpinShooterWheels(&m_subShooter));
   driverController_button_a->WhenReleased(new CmdStopShooterWheels(&m_subShooter));
   driverController_button_y->WhenPressed(new CmdSetShooterAngle(&m_subShooter));
-  driverController_button_y->WhenReleased(new CmdResetShooterAngle(&m_subShooter));
+  driverController_button_x->WhenReleased(new CmdResetShooterAngle(&m_subShooter));
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {
