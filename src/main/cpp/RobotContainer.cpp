@@ -36,6 +36,10 @@ void RobotContainer::ConfigureDrive() {
 
 }
 
+void RobotContainer::ConfigureShooter() {
+  m_subShooter.ConfigureShooter();
+}
+
 void RobotContainer::ConfigureCompressor() {
   m_subPneumatics.ConfigureCompressor();
 }

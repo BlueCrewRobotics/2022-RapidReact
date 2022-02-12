@@ -46,6 +46,7 @@ class RobotContainer {
   // Configure the drive train run this function in RobotInit()
   void ConfigureDrive();
   void ConfigureCompressor();
+  void ConfigureShooter();
 
  private:
   // The robot's subsystems and commands are defined here...
