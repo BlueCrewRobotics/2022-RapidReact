@@ -23,6 +23,8 @@
 #include "subsystems/SubDriveTrain.h"
 #include "subsystems/SubPneumatics.h"
 #include "subsystems/SubShooter.h"
+#include "subsystems/SubLimelightShooter.h"
+#include "subsystems/SubLimelightIntake.h"
 
 #include "Constants.h"
 
@@ -55,6 +57,8 @@ class RobotContainer {
   SubDriveTrain m_subDriveTrain;
   SubPneumatics m_subPneumatics;
   SubShooter m_subShooter;
+  SubLimelightShooter m_subLimelightShooter;
+  SubLimelightIntake m_subLimelightIntake;
   
   // Setup driver controller
   frc::Joystick *driverController = new frc::Joystick(DRIVER_CONTROLLER);
