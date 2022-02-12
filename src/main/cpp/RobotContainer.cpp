@@ -23,6 +23,8 @@ void RobotContainer::ConfigureButtonBindings() {
 
   // Setup the command to shift gears when right bumper is pressed
   driverController_button_rbump->WhenPressed(new CmdShiftGear(&m_subDriveTrain));
+  driverController_button_a->WhileHeld(new CmdSpinShooterWheels(&m_subShooter));
+  driverController_button_a->WhenReleased(new CmdStopShooterWheels(&m_subShooter));
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {

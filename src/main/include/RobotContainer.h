@@ -17,6 +17,8 @@
 #include "commands/ExampleCommand.h"
 #include "commands/CmdDriveWithController.h"
 #include "commands/CmdShiftGear.h"
+#include "commands/CmdSpinShooterWheels.h"
+#include "commands/CmdStopShooterWheels.h"
 
 // Subsystem includes
 #include "subsystems/ExampleSubsystem.h"

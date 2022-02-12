@@ -16,7 +16,7 @@ void SubShooter::Periodic() {
 void SubShooter::ConfigureShooter() {
 
     // Configure the top shooter Falcon motor
-    topShooterMotor->SetInverted(ctre::phoenix::motorcontrol::TalonFXInvertType::Clockwise);
+    topShooterMotor->SetInverted(ctre::phoenix::motorcontrol::TalonFXInvertType::CounterClockwise);
     topShooterMotor->ConfigSelectedFeedbackSensor(FeedbackDevice::IntegratedSensor);
     topShooterMotor->ConfigClosedloopRamp(0.25,0);
 
