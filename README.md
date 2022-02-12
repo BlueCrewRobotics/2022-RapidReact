@@ -26,7 +26,11 @@ git clone https://github.com/BlueCrewRobotics/2022-RapidReact.git
 
 #### GitHub Desktop
 
-*Section coming soon...*
+Go to `File -> Clone Repository`, choose a repository to clone, and press `Clone`.
+
+![Clone Guide One](/images/github-desktop-clone-one.png)
+
+![Clone Guide Two](/images/github-desktop-clone-two.png)
 
 ### Setting Your Default Branch
 
@@ -40,7 +44,9 @@ git checkout development
 
 #### GitHub Desktop
 
-*Section coming soon...*
+Click on `Current Branch` and then click on `origin/development`.
+
+![Checkout Guide](/images/github-desktop-checkout.png)
 
 ### Making a Commit
 
@@ -55,7 +61,9 @@ git commit -m "Brief explanation of what you did"
 
 #### GitHub Desktop
 
-*Section coming soon...*
+First ensure that all changed files are checked in the left column. Add a commit message and optional description in the bottom of the left column. Press `Commit to development` to make the commit. Repeat this process every time you make an incremental change. After several of these commits you can push them as shown in the section below.
+
+![Commit Guide](/images/github-desktop-commit.png)
 
 ### Pushing Your Commits to GitHub
 
@@ -69,7 +77,9 @@ git push
 
 #### GitHub Desktop
 
-*Section coming soon...*
+Click on `Push Origin` to push your locally saved commits to GitHub.
+
+![Push Guide](/images/github-desktop-push.png)
 
 ### Pulling Changes
 
@@ -83,7 +93,9 @@ git pull
 
 #### GitHub Desktop
 
-*Section coming soon...*
+Go to `Repository -> Pull`. This will pull the most recent changes to your machine from GitHub.
+
+![Pull Guide](/images/github-desktop-pull.png)
 
 ### Submitting a Pull Request
 
@@ -91,7 +103,7 @@ The way our robot code repo is set up is that there are two branches: `main` and
 
 To submit a Pull Request go to the [2022-RapidReact repo](https://github.com/BlueCrewRobotics/2022-RapidReact/tree/development). Towards the top of the page there will be a "Contribute" button that drops down a button you'll need to press titled "Open pull request. This will open a page where you will need to provide a title and description of the changes that you have made. In the right column there you will want to add `matthewgallant`, `camhammond`, and `LucienHmd` as reviewers. You can then open the Pull Request.
 
-![Pull Request Guide One](/images/pull-request-one.png)
+![Pull Request Guide](/images/github-pull-request.png)
 
 ### Checking Your Git Branch
 
@@ -105,4 +117,4 @@ git checkout
 
 #### GitHub Desktop
 
-*Section coming soon...*
+To check which branch your machine is currently see the button at the top that says `Current Branch`.

@@ -102,3 +102,7 @@ void BC_FalconFX::SetNominalPeakOutput(int profileSlot) {
 	ptr_falconFX->ConfigPeakOutputReverse(-1.0,0);
 }
 
+void BC_FalconFX::SetMaxSpeed(double maxSpeed) {
+	m_dMaxSpeed = maxSpeed;
+}
+

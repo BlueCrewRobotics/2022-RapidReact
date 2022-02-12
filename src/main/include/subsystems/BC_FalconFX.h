@@ -47,6 +47,8 @@ class BC_FalconFX : public virtual frc::SpeedController {
   void SetSupplyCurrentLimit(bool enable, double limit, double trigger, double triggerTime);
   // Set nominal and peak outs on the motors
   void SetNominalPeakOutput(int profileSlot);
+  // Set max speed
+  void SetMaxSpeed(double maxSpeed);
   
 
 

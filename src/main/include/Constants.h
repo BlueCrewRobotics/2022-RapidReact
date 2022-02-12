@@ -101,3 +101,8 @@ constexpr int SHOOTER_TOP_ADDR = 13;
 constexpr int SHOOTER_BTM_ADDR = 14;
 constexpr int SHOOTER_RIGHT_PWM_ADDR = 0;
 constexpr int SHOOTER_LEFT_PWN_ADDR = 1;
+
+// Intake Configuration
+constexpr int INTAKE_SPINNER_ADDR = 15;
+constexpr int INTAKE_INDEXER_ADDR = 16;
+constexpr int INTAKE_POSITIONER_ADDR = 17;

@@ -128,3 +128,8 @@ void SubDriveTrain::SetDriveTrainGear() {
 bool SubDriveTrain::GetDriveTrainGear() {
     return m_gearSolenoid->Get();
 }
+
+void SubDriveTrain::SetMaxSpeed(double maxSpeed) {
+    leftDriveMotor->SetMaxSpeed(maxSpeed);
+    rightDriveMotor->SetMaxSpeed(maxSpeed);
+}
