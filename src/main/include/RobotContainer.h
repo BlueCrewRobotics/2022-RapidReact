@@ -19,6 +19,8 @@
 #include "commands/CmdShiftGear.h"
 #include "commands/CmdSpinShooterWheels.h"
 #include "commands/CmdStopShooterWheels.h"
+#include "commands/CmdSetShooterAngle.h"
+#include "commands/CmdResetShooterAngle.h"
 
 // Subsystem includes
 #include "subsystems/ExampleSubsystem.h"
