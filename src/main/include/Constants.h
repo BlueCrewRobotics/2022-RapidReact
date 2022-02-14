@@ -104,5 +104,5 @@ constexpr int SHOOTER_LEFT_PWN_ADDR = 1;
 
 // Intake Configuration
 constexpr int INTAKE_SPINNER_ADDR = 15;
-constexpr int INTAKE_INDEXER_ADDR = 16;
+constexpr int INTAKE_SHOOTER_FEEDER_ADDR = 16;
 constexpr int INTAKE_POSITIONER_ADDR = 17;

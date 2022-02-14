@@ -16,9 +16,23 @@ class SubIntake : public frc2::SubsystemBase {
    * Will be called periodically whenever the CommandScheduler runs.
    */
   void Periodic() override;
+  
+  // Configure all the motors of the intake
+  void ConfigureIntake();
+  // Spin the front wheels
+  void SpinFrontWheels(double speed);
+  // Spin the shooter feeder motor
+  void SpinShooterFeeder(double speed);
+  // Move intake to position
+  void MoveToPosition(double position);
+
 
  private:
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
-  BC_VictorSPX* frontSpinner = new BC_VictorSPX(INTAKE_SPINNER_ADDR);
+  VictorSPX* frontSpinner = new VictorSPX(INTAKE_SPINNER_ADDR);
+  TalonSRX* positionIntake = new TalonSRX(INTAKE_POSITIONER_ADDR);
+  VictorSPX* shooterFeeder = new VictorSPX(INTAKE_SHOOTER_FEEDER_ADDR);
+
+
 };
