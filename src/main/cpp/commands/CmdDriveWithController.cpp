@@ -8,7 +8,8 @@
 
 #include "commands/CmdDriveWithController.h"
 
-CmdDriveWithController::CmdDriveWithController(SubDriveTrain* driveTrain, frc::Joystick *driverController ) : m_driveTrain{driveTrain}, m_driverController{driverController} {
+CmdDriveWithController::CmdDriveWithController(SubDriveTrain* driveTrain, frc::Joystick *driverController ) 
+  : m_driveTrain{driveTrain}, m_driverController{driverController} {
   // Use addRequirements() here to declare subsystem dependencies.
   AddRequirements(driveTrain);
 

@@ -27,6 +27,9 @@ void RobotContainer::ConfigureButtonBindings() {
   driverController_button_a->WhenReleased(new CmdStopShooterWheels(&m_subShooter));
   driverController_button_y->WhenPressed(new CmdSetShooterAngle(&m_subShooter));
   driverController_button_x->WhenReleased(new CmdResetShooterAngle(&m_subShooter));
+  // Way to add debouce on the buttons
+  //driverController_button_b->Debounce(60_ms,frc::Debouncer::kBoth).WhileActiveContinous(new CmdSetShooterAngle(&m_subShooter));
+  
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {
