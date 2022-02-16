@@ -15,6 +15,23 @@ void SubIntake::Periodic() {}
 
 void SubIntake::ConfigureIntake(){
     // Write code here to configure the the motors of the Intake
+    positionIntake->Config_kF(0,0,0);
+    positionIntake->Config_kF(0,0.25,0);
+    positionIntake->Config_kF(0,0,0);
+    positionIntake->Config_kF(0,0,0);
+
+    positionIntake->ConfigMotionCruiseVelocity(10000,0);
+    positionIntake->ConfigMotionAcceleration(5000,0);
+
+    positionIntake->ConfigForwardSoftLimitThreshold(8000,0);
+    positionIntake->ConfigReverseSoftLimitThreshold(0,0);
+    positionIntake->ConfigForwardSoftLimitEnable(true,0);
+    positionIntake->ConfigReverseSoftLimitEnable(true,0);
+
+    positionIntake->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder,0,0);
+    positionIntake->SetInverted(false);
+    
+
 
 }
 

@@ -21,6 +21,8 @@
 #include "commands/CmdStopShooterWheels.h"
 #include "commands/CmdSetShooterAngle.h"
 #include "commands/CmdResetShooterAngle.h"
+#include "commands/CmdIntakeToHomePosition.h"
+#include "commands/CmdExtendIntake.h"
 
 // Subsystem includes
 #include "subsystems/ExampleSubsystem.h"
@@ -29,6 +31,7 @@
 #include "subsystems/SubShooter.h"
 #include "subsystems/SubLimelightShooter.h"
 #include "subsystems/SubLimelightIntake.h"
+#include "subsystems/SubIntake.h"
 
 #include "Constants.h"
 
@@ -64,6 +67,7 @@ class RobotContainer {
   SubShooter m_subShooter;
   SubLimelightShooter m_subLimelightShooter;
   SubLimelightIntake m_subLimelightIntake;
+  SubIntake m_subIntake;
   
   // Setup driver controller
   frc::Joystick *driverController = new frc::Joystick(DRIVER_CONTROLLER);
