@@ -20,15 +20,18 @@ void SubIntake::ConfigureIntake(){
 
 void SubIntake::SpinFrontWheels(double speed) {
     // Write code here to spin the front wheels
+    frontSpinner->Set(ControlMode::PercentOutput, speed);
 
 }
 
 void SubIntake::SpinShooterFeeder(double speed) {
     // Write code here to spin the shooter ball feeder
+    shooterFeeder->Set(ControlMode::PercentOutput, speed);
 
 }
 
 void SubIntake::MoveToPosition(double position) {
     // Write code here to move the intake to position to intake balls etc.
+    positionIntake->Set(ControlMode::Position, position);
 
 }
