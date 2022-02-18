@@ -12,6 +12,8 @@
 #include <frc/smartdashboard/SendableChooser.h>
 #include <frc/Joystick.h>
 #include <frc2/command/button/JoystickButton.h>
+#include <frc2/command/SequentialCommandGroup.h>
+#include <frc2/command/ParallelCommandGroup.h>
 
 // Command includes
 #include "commands/ExampleCommand.h"
@@ -23,6 +25,10 @@
 #include "commands/CmdResetShooterAngle.h"
 #include "commands/CmdIntakeToHomePosition.h"
 #include "commands/CmdExtendIntake.h"
+#include "commands/CmdTurnOnShooterLimelight.h"
+#include "commands/CmdTurnOffShooterLimelight.h"
+#include "commands/CmdAcquireShooterTarget.h" //This might have to be seperated into 2 commands AcquireTarget and AimToTarget
+
 
 // Subsystem includes
 #include "subsystems/ExampleSubsystem.h"
