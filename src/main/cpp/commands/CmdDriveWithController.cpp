@@ -40,6 +40,7 @@ void CmdDriveWithController::Execute() {
   }
 
   m_driveTrain->Drive(speed, rotation);
+  m_driveTrain->SetMotorCooling(true);
 
 }
 

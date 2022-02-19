@@ -133,3 +133,12 @@ void SubDriveTrain::SetMaxSpeed(double maxSpeed) {
     leftDriveMotor->SetMaxSpeed(maxSpeed);
     rightDriveMotor->SetMaxSpeed(maxSpeed);
 }
+
+void SubDriveTrain::SetMotorCooling(bool cool) {
+    if(cool == true){
+      m_motorCooling->Set(true);
+    }
+    else{
+      m_motorCooling->Set(false);
+    }
+}
