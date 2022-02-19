@@ -63,3 +63,7 @@ void RobotContainer::ConfigureShooter() {
 void RobotContainer::ConfigureCompressor() {
   m_subPneumatics.ConfigureCompressor();
 }
+
+void RobotContainer::BlueCrewAutonomous() {
+  
+}

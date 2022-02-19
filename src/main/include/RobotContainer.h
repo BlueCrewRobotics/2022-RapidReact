@@ -58,8 +58,14 @@ class RobotContainer {
 
   // Configure the drive train run this function in RobotInit()
   void ConfigureDrive();
+  // Configure the compressor run this function in RobotInit()
   void ConfigureCompressor();
+  // Configure the shooter run this function in RobotInit()
   void ConfigureShooter();
+
+  // Run the autonomous code this should run in AutonomousPeriodic()
+  void BlueCrewAutonomous();
+
 
  private:
   // The robot's subsystems and commands are defined here...
@@ -107,6 +113,10 @@ class RobotContainer {
   frc2::JoystickButton *auxController_button_start = new frc2::JoystickButton(auxController, BUTTON_START); 
   frc2::JoystickButton *auxController_button_l3 = new frc2::JoystickButton(auxController, BUTTON_L3); 
   frc2::JoystickButton *auxController_button_r3 = new frc2::JoystickButton(auxController, BUTTON_R3);   
+
+  // Autonomous buttons
+  frc2::Trigger* autoDrive = new frc2::Trigger();
+  frc2::Trigger* autoShoot = new frc2::Trigger();
 
 
   void ConfigureButtonBindings();
