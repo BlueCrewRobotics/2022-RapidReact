@@ -142,3 +142,8 @@ void SubDriveTrain::SetMotorCooling(bool cool) {
       m_motorCooling->Set(false);
     }
 }
+
+void SubDriveTrain::AutonomousDriving(double leftrotations, double rightrotations) {
+  leftDriveMotor->DriveWithMotionMagic(leftrotations);
+  rightDriveMotor->DriveWithMotionMagic(rightrotations);
+}

@@ -42,6 +42,8 @@ class SubDriveTrain : public frc2::SubsystemBase {
   void SetMaxSpeed(double maxSpeed);
   // Set drive motor cooling solenoid
   void SetMotorCooling(bool cool);
+  // Autonomous driving
+  void AutonomousDriving(double leftrotations, double rightrotations);
 
 
  private:
