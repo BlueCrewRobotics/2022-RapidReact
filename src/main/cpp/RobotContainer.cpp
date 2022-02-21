@@ -22,7 +22,7 @@ void RobotContainer::ConfigureButtonBindings() {
   // Configure your button bindings here
 
   // Setup the command to shift gears when right bumper is pressed
-  driverController_button_rbump->WhenPressed(new CmdShiftGear(&m_subDriveTrain));
+  driverController_button_rbump->WhenPressed(CmdShiftGear(&m_subDriveTrain));
   
   driverController_button_a->WhileHeld(frc2::SequentialCommandGroup{
     //CmdTurnOnShooterLimelight(&m_subLimelightShooter), // Once limelight is functional use this to turn on LEDS
@@ -40,8 +40,47 @@ void RobotContainer::ConfigureButtonBindings() {
   // Way to add debouce on the buttons
   //driverController_button_b->Debounce(60_ms,frc::Debouncer::kBoth).WhileActiveContinous(new CmdSetShooterAngle(&m_subShooter));
 
-  driverController_button_y->WhileHeld(new CmdExtendIntake(&m_subIntake));
-  driverController_button_y->WhenReleased(new CmdIntakeToHomePosition(&m_subIntake));
+  driverController_button_y->WhileHeld(CmdExtendIntake(&m_subIntake));
+  driverController_button_y->WhenReleased(CmdIntakeToHomePosition(&m_subIntake));
+
+
+  // Autonomous command
+  autoRunAutonomous->WhileHeld(frc2::SequentialCommandGroup{
+    // Set the shooter angle
+    CmdSetShooterAngle(&m_subShooter),
+    // Spin up Shooter wheels
+    CmdSpinShooterWheels(&m_subShooter),
+    // Shoot the ball
+
+    // Stop the shoooter wheels
+    CmdStopShooterWheels(&m_subShooter),
+    
+    // Backup up the robot
+
+    // Turn to face another alliance ball
+
+    // Extend intake
+
+    // Turn on intake limelight
+
+    // Drive toward ball until ball is picked up
+
+    // Retract intake
+
+    // Turn the shooter to face the hub
+
+    // Turn on shooter limelight
+
+    // Acquire the target
+
+    // Shoot the ball
+
+    // Stop the shoooter wheels
+    CmdStopShooterWheels(&m_subShooter),
+
+
+    
+  });
 
 }
 
@@ -64,6 +103,12 @@ void RobotContainer::ConfigureCompressor() {
   m_subPneumatics.ConfigureCompressor();
 }
 
-void RobotContainer::BlueCrewAutonomous() {
-  
+void RobotContainer::RunBlueCrewAutonomous() {
+  autoRunAutonomous->Set(true);
+
+}
+
+void RobotContainer::StopBlueCrewAutonomous() {
+  autoRunAutonomous->Set(false);
+
 }

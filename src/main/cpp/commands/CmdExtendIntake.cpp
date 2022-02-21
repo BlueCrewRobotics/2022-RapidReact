@@ -8,7 +8,8 @@
 
 #include "commands/CmdExtendIntake.h"
 
-CmdExtendIntake::CmdExtendIntake(SubIntake* subIntake) : m_subIntake(subIntake) {
+CmdExtendIntake::CmdExtendIntake(SubIntake *subIntake) : m_subIntake(subIntake)
+{
   // Use addRequirements() here to declare subsystem dependencies.
   AddRequirements(subIntake);
 }
@@ -17,16 +18,17 @@ CmdExtendIntake::CmdExtendIntake(SubIntake* subIntake) : m_subIntake(subIntake) 
 void CmdExtendIntake::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
-void CmdExtendIntake::Execute() {
+void CmdExtendIntake::Execute()
+{
   // Move the intake to the home position
   m_subIntake->MoveToPosition(200);
-
 }
 
 // Called once the command ends or is interrupted.
 void CmdExtendIntake::End(bool interrupted) {}
 
 // Returns true when the command should end.
-bool CmdExtendIntake::IsFinished() {
+bool CmdExtendIntake::IsFinished()
+{
   return true;
 }

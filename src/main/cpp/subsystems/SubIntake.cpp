@@ -20,8 +20,8 @@ void SubIntake::ConfigureIntake(){
     positionIntake->Config_kF(0,0,0);
     positionIntake->Config_kF(0,0,0);
 
-    positionIntake->ConfigMotionCruiseVelocity(10000,0);
-    positionIntake->ConfigMotionAcceleration(5000,0);
+    positionIntake->ConfigMotionCruiseVelocity(5000,0);
+    positionIntake->ConfigMotionAcceleration(15000,0);
 
     positionIntake->ConfigForwardSoftLimitThreshold(8000,0);
     positionIntake->ConfigReverseSoftLimitThreshold(0,0);
@@ -29,6 +29,7 @@ void SubIntake::ConfigureIntake(){
     positionIntake->ConfigReverseSoftLimitEnable(true,0);
 
     positionIntake->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder,0,0);
+    positionIntake->SetSensorPhase(true);
     positionIntake->SetInverted(false);
     
 

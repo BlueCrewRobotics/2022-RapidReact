@@ -14,6 +14,8 @@
 #include <frc2/command/button/JoystickButton.h>
 #include <frc2/command/SequentialCommandGroup.h>
 #include <frc2/command/ParallelCommandGroup.h>
+#include <frc/Timer.h>
+#include "common/BC_InternalButton.h"
 
 // Command includes
 #include "commands/ExampleCommand.h"
@@ -63,8 +65,11 @@ class RobotContainer {
   // Configure the shooter run this function in RobotInit()
   void ConfigureShooter();
 
-  // Run the autonomous code this should run in AutonomousPeriodic()
-  void BlueCrewAutonomous();
+  // Run the autonomous code
+  void RunBlueCrewAutonomous();
+  // Stop the autonomous code
+  void StopBlueCrewAutonomous();
+
 
 
  private:
@@ -114,9 +119,12 @@ class RobotContainer {
   frc2::JoystickButton *auxController_button_l3 = new frc2::JoystickButton(auxController, BUTTON_L3); 
   frc2::JoystickButton *auxController_button_r3 = new frc2::JoystickButton(auxController, BUTTON_R3);   
 
-  // Autonomous buttons
-  frc2::Trigger* autoDrive = new frc2::Trigger();
-  frc2::Trigger* autoShoot = new frc2::Trigger();
+  
+  // Timers for automomous
+  frc::Timer* autoTimer = new frc::Timer();
+  // Autonomous buttons testing if this will work
+  BC_InternalButton* autoRunAutonomous = new BC_InternalButton();
+
 
 
   void ConfigureButtonBindings();
