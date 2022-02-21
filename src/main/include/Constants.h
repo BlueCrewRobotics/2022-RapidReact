@@ -34,9 +34,9 @@ constexpr int DURATION_CURRENT_LIMIT = 500;
 constexpr double DRIVE_RAMP_TIME = 0.05;
 
 // Maximum velocity in units/100ms
-constexpr int VELOCITY_MAX = 12000;
-constexpr int VELOCITY_SP_MAX_HG = 12000;  // Maximum velocity in actual high gear
-constexpr int VELOCITY_SP_MAX_LG = 12000;  // Maximum velocity in actual low gear
+constexpr int VELOCITY_MAX = 21000;
+constexpr int VELOCITY_SP_MAX_HG = 21000;  // Maximum velocity in actual high gear
+constexpr int VELOCITY_SP_MAX_LG = 21000;  // Maximum velocity in actual low gear
 constexpr int VELOCITY_SP_MAX_LL = 5000;   // Maximum velocity in low low virtual gear
 
 

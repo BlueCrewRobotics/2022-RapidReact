@@ -28,6 +28,8 @@
 #include "commands/CmdTurnOnShooterLimelight.h"
 #include "commands/CmdTurnOffShooterLimelight.h"
 #include "commands/CmdAcquireShooterTarget.h" //This might have to be seperated into 2 commands AcquireTarget and AimToTarget
+#include "commands/CmdSpinIntake.h"
+#include "commands/CmdStopIntake.h"
 
 
 // Subsystem includes
