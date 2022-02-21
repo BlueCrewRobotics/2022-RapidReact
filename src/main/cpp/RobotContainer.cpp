@@ -44,7 +44,7 @@ void RobotContainer::ConfigureButtonBindings() {
   driverController_button_y->WhenReleased(CmdIntakeToHomePosition(&m_subIntake));
 
 
-  // Autonomous command
+  // Autonomous commands may want to make one command class to clean up RobotContainer
   autoRunAutonomous->WhileHeld(frc2::SequentialCommandGroup{
     // Set the shooter angle
     CmdSetShooterAngle(&m_subShooter),

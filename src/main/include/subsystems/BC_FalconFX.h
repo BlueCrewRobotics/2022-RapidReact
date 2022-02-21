@@ -49,6 +49,8 @@ class BC_FalconFX : public virtual frc::SpeedController {
   void SetNominalPeakOutput(int profileSlot);
   // Set max speed
   void SetMaxSpeed(double maxSpeed);
+  // Drive with motion magic
+  void DriveWithMotionMagic(double position);
   
 
 

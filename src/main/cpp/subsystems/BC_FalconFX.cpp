@@ -106,3 +106,7 @@ void BC_FalconFX::SetMaxSpeed(double maxSpeed) {
 	m_dMaxSpeed = maxSpeed;
 }
 
+void BC_FalconFX::DriveWithMotionMagic(double position) {
+	ptr_falconFX->Set(ControlMode::MotionMagic, position);
+}
+
