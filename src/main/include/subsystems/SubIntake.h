@@ -28,7 +28,12 @@ class SubIntake : public frc2::SubsystemBase {
   // Spin the shooter feeder motor
   void SpinShooterFeeder(double speed);
   // Move intake to position
-  void MoveToPosition(double position);
+  void MoveIntakeToPosition(double position);
+  // Index the shooter feeder
+  void IndexShooterFeeder(double position);
+  // Get the position of the indexer
+  double GetIndexerPosition();
+
 
 
  private:
@@ -36,7 +41,9 @@ class SubIntake : public frc2::SubsystemBase {
   // declared private and exposed only through public methods.
   VictorSPX* frontSpinner = new VictorSPX(INTAKE_SPINNER_ADDR);
   TalonSRX* positionIntake = new TalonSRX(INTAKE_POSITIONER_ADDR);
-  VictorSPX* shooterFeeder = new VictorSPX(INTAKE_SHOOTER_FEEDER_ADDR);
+  TalonSRX* shooterFeeder = new TalonSRX(INTAKE_SHOOTER_FEEDER_ADDR);
+
+  double m_indexPosition;
 
 
 };

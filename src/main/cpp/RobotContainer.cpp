@@ -43,13 +43,13 @@ void RobotContainer::ConfigureButtonBindings() {
   // Autonomous commands may want to make one command class to clean up RobotContainer
   autoRunAutonomous->WhileHeld(frc2::SequentialCommandGroup{
     // Set the shooter angle
-    CmdSetShooterAngle(&m_subShooter),
+    //CmdSetShooterAngle(&m_subShooter),
     // Spin up Shooter wheels
-    CmdSpinShooterWheels(&m_subShooter),
+    //CmdSpinShooterWheels(&m_subShooter),
     // Shoot the ball
 
     // Stop the shoooter wheels
-    CmdStopShooterWheels(&m_subShooter),
+    //CmdStopShooterWheels(&m_subShooter),
     
     // Backup up the robot
 
@@ -76,8 +76,8 @@ void RobotContainer::ConfigureButtonBindings() {
     
   });
 
-  driverController_button_y->WhileHeld(frc2::ParallelCommandGroup( CmdSpinIntake(&m_subIntake), CmdExtendIntake(&m_subIntake)));
-  driverController_button_y->WhenReleased(frc2::ParallelCommandGroup( CmdStopIntake(&m_subIntake),CmdIntakeToHomePosition(&m_subIntake)));
+  driverController_button_y->WhileHeld(frc2::SequentialCommandGroup( CmdSpinIntake(&m_subIntake), CmdExtendIntake(&m_subIntake)));
+  driverController_button_y->WhenReleased(frc2::SequentialCommandGroup( CmdStopIntake(&m_subIntake),CmdIntakeToHomePosition(&m_subIntake)));
   
 
 }
@@ -109,4 +109,8 @@ void RobotContainer::RunBlueCrewAutonomous() {
 void RobotContainer::StopBlueCrewAutonomous() {
   autoRunAutonomous->Set(false);
 
+}
+
+void RobotContainer::ConfigureIntake() {
+  m_subIntake.ConfigureIntake();
 }

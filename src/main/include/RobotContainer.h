@@ -66,6 +66,8 @@ class RobotContainer {
   void ConfigureCompressor();
   // Configure the shooter run this function in RobotInit()
   void ConfigureShooter();
+  // Configure intake
+  void ConfigureIntake();
 
   // Run the autonomous code
   void RunBlueCrewAutonomous();

@@ -15,6 +15,7 @@ void Robot::RobotInit() {
   m_robotContainer.ConfigureDrive();
   m_robotContainer.ConfigureCompressor();
   m_robotContainer.ConfigureShooter();
+  m_robotContainer.ConfigureIntake();
 
 
 }

@@ -19,7 +19,7 @@ void CmdSpinIntake::Initialize() {}
 // Called repeatedly when this Command is scheduled to run
 void CmdSpinIntake::Execute() {
   // Move the intake to the home position
-  m_subIntake->SpinFrontWheels(0.5);
+  m_subIntake->SpinFrontWheels(0.75);
 
 }
 

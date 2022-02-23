@@ -21,6 +21,7 @@ void CmdAcquireShooterTarget::Initialize() {}
 void CmdAcquireShooterTarget::Execute() {
   double hTargetPosition;
   double vTargetPosition;
+
   double gain = 0.65;
   double offset = 0;
 
@@ -29,6 +30,7 @@ void CmdAcquireShooterTarget::Execute() {
     // Get the robots horizontal offset from the target center
     double hTargetAngle = m_subLimelightShooter->GetHorizontalOffset();
     double vTargetAngle = m_subLimelightShooter->GetVerticalOffset();
+    double hDistanceToTarget = m_subLimelightShooter->GetDistanceToTarget();
 
     // Normalize the horizontal position to the target
     hTargetPosition = (-1*(hTargetAngle/29.8))*gain;
@@ -36,8 +38,11 @@ void CmdAcquireShooterTarget::Execute() {
     vTargetPosition = (-1*(hTargetAngle/24.85))*gain;
 
     // Rotate the drive train to point at the target
-
+    // Might need to add a deadband to overcome the drain train friction when rotatingh use next line
+    // TargetPosition = hTargetPosition + 0.1;
+    m_subDriveTrain->RotateDriveTrain(hTargetPosition);
     // Change the shooter servos to point at the target
+
 
 
   }
@@ -49,5 +54,11 @@ void CmdAcquireShooterTarget::End(bool interrupted) {}
 
 // Returns true when the command should end.
 bool CmdAcquireShooterTarget::IsFinished() {
-  return false;
+  if( m_subLimelightShooter->GetHorizontalOffset() < 0.1 && m_subLimelightShooter->GetVerticalOffset() < 0.1)
+  {
+    return true;
+  }
+  else{
+    return false;
+  }
 }

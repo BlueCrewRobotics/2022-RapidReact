@@ -21,7 +21,7 @@ void CmdExtendIntake::Initialize() {}
 void CmdExtendIntake::Execute()
 {
   // Move the intake to the home position
-  m_subIntake->MoveToPosition(200);
+  m_subIntake->MoveIntakeToPosition(200);
 }
 
 // Called once the command ends or is interrupted.

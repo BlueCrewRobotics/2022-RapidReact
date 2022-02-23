@@ -22,8 +22,9 @@ void SubDriveTrain::DriveTrainConfigure() {
   leftFollowMotor->ClearStickyFault();
   rightFollowMotor->ClearStickyFault();
 
-  // Set the right Drive motor inverted
+  // Set the Drive motor inverted
   rightDriveMotor->SetInverted(true);
+  leftDriveMotor->SetInverted(false);
 
   // Set the right and left followers
   leftFollowMotor->SetFollower(leftDriveMotor->GetMotorController());
@@ -34,7 +35,9 @@ void SubDriveTrain::DriveTrainConfigure() {
   rightDriveMotor->SetSelectedFeedbackSensor(FeedbackDevice::IntegratedSensor);
 
   // Set the current limts on the motor
-  leftDriveMotor->SetStatorCurrentLimit(true,25,30,0.5);
+  leftDriveMotor->SetStatorCurrentLimit(true,50,50,0.5);
+  rightDriveMotor->SetStatorCurrentLimit(true,50,50,0.5);
+  leftDriveMotor->SetSupplyCurrentLimit(true,CONTINUOUS_CURRENT_LIMIT,PEAK_CURRENT_LIMIT,DURATION_CURRENT_LIMIT);
   rightDriveMotor->SetSupplyCurrentLimit(true,CONTINUOUS_CURRENT_LIMIT,PEAK_CURRENT_LIMIT,DURATION_CURRENT_LIMIT);
 
   // Set nominal and peak outputs for the motor for the different profile slots
@@ -146,4 +149,8 @@ void SubDriveTrain::SetMotorCooling(bool cool) {
 void SubDriveTrain::AutonomousDriving(double leftrotations, double rightrotations) {
   leftDriveMotor->DriveWithMotionMagic(leftrotations);
   rightDriveMotor->DriveWithMotionMagic(rightrotations);
+}
+
+void SubDriveTrain::RotateDriveTrain(double rotation) {
+  driveTrain->ArcadeDrive(0,rotation);
 }

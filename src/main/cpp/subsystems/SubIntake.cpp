@@ -16,7 +16,7 @@ void SubIntake::Periodic() {}
 void SubIntake::ConfigureIntake(){
     // Write code here to configure the the motors of the Intake
     positionIntake->Config_kF(0,0,0);
-    positionIntake->Config_kF(0,0.25,0);
+    positionIntake->Config_kF(0,0.01,0);
     positionIntake->Config_kF(0,0,0);
     positionIntake->Config_kF(0,0,0);
 
@@ -30,7 +30,10 @@ void SubIntake::ConfigureIntake(){
 
     positionIntake->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder,0,0);
     positionIntake->SetSensorPhase(true);
-    positionIntake->SetInverted(false);
+    positionIntake->SetInverted(true);
+
+    frontSpinner->SetInverted(true);
+
 
 }
 
@@ -46,8 +49,17 @@ void SubIntake::SpinShooterFeeder(double speed) {
 
 }
 
-void SubIntake::MoveToPosition(double position) {
+void SubIntake::MoveIntakeToPosition(double position) {
     // Write code here to move the intake to position to intake balls etc.
     positionIntake->Set(ControlMode::Position, position);
 
+}
+
+void SubIntake::IndexShooterFeeder(double position) {
+    shooterFeeder->Set(ControlMode::Position, position);
+    m_indexPosition = position;
+
+}
+double SubIntake::GetIndexerPosition() {
+    return m_indexPosition;
 }

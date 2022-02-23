@@ -44,6 +44,8 @@ class SubDriveTrain : public frc2::SubsystemBase {
   void SetMotorCooling(bool cool);
   // Autonomous driving
   void AutonomousDriving(double leftrotations, double rightrotations);
+  // Rotate the robot
+  void RotateDriveTrain(double rotation);
 
 
  private:

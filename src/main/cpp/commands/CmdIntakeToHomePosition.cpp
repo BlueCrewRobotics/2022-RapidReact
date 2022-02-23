@@ -19,7 +19,7 @@ void CmdIntakeToHomePosition::Initialize() {}
 // Called repeatedly when this Command is scheduled to run
 void CmdIntakeToHomePosition::Execute() {
   // Move the intake to the home position
-  m_subIntake->MoveToPosition(0);
+  m_subIntake->MoveIntakeToPosition(0);
 
 }
 
