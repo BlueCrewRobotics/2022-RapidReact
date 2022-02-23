@@ -21,7 +21,7 @@ void BC_FalconFX::Disable() {
 }
 
 void BC_FalconFX::StopMotor() {
-  ptr_falconFX->SetNeutralMode(NeutralMode::Brake);
+  ptr_falconFX->SetNeutralMode(NeutralMode::Coast);
 }
 
 double BC_FalconFX::Get() const {
@@ -80,7 +80,7 @@ TalonFX* BC_FalconFX::GetMotorController() {
 }
 
 void BC_FalconFX::SetSelectedFeedbackSensor(FeedbackDevice device) {
-	ptr_falconFX->ConfigSelectedFeedbackSensor(device);
+	ptr_falconFX->ConfigSelectedFeedbackSensor(device,0,0);
 
 }
 

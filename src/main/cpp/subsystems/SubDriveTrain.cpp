@@ -35,8 +35,8 @@ void SubDriveTrain::DriveTrainConfigure() {
   rightDriveMotor->SetSelectedFeedbackSensor(FeedbackDevice::IntegratedSensor);
 
   // Set the current limts on the motor
-  leftDriveMotor->SetStatorCurrentLimit(true,50,50,0.5);
-  rightDriveMotor->SetStatorCurrentLimit(true,50,50,0.5);
+  leftDriveMotor->SetStatorCurrentLimit(false,50,50,0.5);
+  rightDriveMotor->SetStatorCurrentLimit(false,50,50,0.5);
   leftDriveMotor->SetSupplyCurrentLimit(true,CONTINUOUS_CURRENT_LIMIT,PEAK_CURRENT_LIMIT,DURATION_CURRENT_LIMIT);
   rightDriveMotor->SetSupplyCurrentLimit(true,CONTINUOUS_CURRENT_LIMIT,PEAK_CURRENT_LIMIT,DURATION_CURRENT_LIMIT);
 

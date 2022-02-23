@@ -23,7 +23,7 @@ void SubIntake::ConfigureIntake(){
     positionIntake->ConfigMotionCruiseVelocity(5000,0);
     positionIntake->ConfigMotionAcceleration(15000,0);
 
-    positionIntake->ConfigForwardSoftLimitThreshold(-1000,0);
+    positionIntake->ConfigForwardSoftLimitThreshold(1000,0);
     positionIntake->ConfigReverseSoftLimitThreshold(0,0);
     positionIntake->ConfigForwardSoftLimitEnable(true,0);
     positionIntake->ConfigReverseSoftLimitEnable(true,0);
