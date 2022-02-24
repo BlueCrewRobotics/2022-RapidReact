@@ -42,7 +42,7 @@ void RobotContainer::ConfigureButtonBindings() {
 
   // Autonomous commands may want to make one command class to clean up RobotContainer
   autoRunAutonomous->WhileHeld(frc2::SequentialCommandGroup{
-    // Set the shooter angle
+    // Set the shooter angle this will be upclose shooting to the upper hub
     //CmdSetShooterAngle(&m_subShooter),
     // Spin up Shooter wheels
     //CmdSpinShooterWheels(&m_subShooter),
@@ -59,7 +59,7 @@ void RobotContainer::ConfigureButtonBindings() {
     // CmdMoveIntake(&m_subIntake, 200.0);
     // Spin the intake
     // CmdSpinIntake(&m_subIntake);
-    // Turn on intake limelight
+    // Turn on intake limelight. Proably don't need to turn on the limelight for the ball color
 
     // Drive toward ball until ball is picked up
 

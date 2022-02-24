@@ -25,14 +25,23 @@ void CmdSpinShooterWheels::Execute() {
   double topShooterOffset = 100;
   double btmShooterOffset = 100;
 
-  // Get the distance to the target in ft
-  double hDistanceToTarget = m_subLimelightShooter->GetDistanceToTarget();
-  // Apply correlation equation of target distance to wheel speed
-  topShooterSpeed = 14.53*hDistanceToTarget*hDistanceToTarget-60.60*hDistanceToTarget+20780.38;
-  btmShooterSpeed = 14.53*hDistanceToTarget*hDistanceToTarget-60.60*hDistanceToTarget+20780.38;
-  // Just shoot the ball to bottom hub target
-  topShooterSpeed = topShooterSpeed + topShooterOffset;
-  btmShooterSpeed = btmShooterSpeed + btmShooterOffset;
+  if(m_subLimelightShooter->GetTarget()==true){
+    // Get the distance to the target in ft
+    double hDistanceToTarget = m_subLimelightShooter->GetDistanceToTarget();
+    // Apply correlation equation of target distance to wheel speed
+    topShooterSpeed = 14.53*hDistanceToTarget*hDistanceToTarget-60.60*hDistanceToTarget+20780.38;
+    btmShooterSpeed = 14.53*hDistanceToTarget*hDistanceToTarget-60.60*hDistanceToTarget+20780.38;
+    // Just shoot the ball to bottom hub target
+    topShooterSpeed = topShooterSpeed + topShooterOffset;
+    btmShooterSpeed = btmShooterSpeed + btmShooterOffset;
+
+  }
+  else {
+      // Just shoot the ball to bottom hub target
+    topShooterSpeed = topShooterSpeed + topShooterOffset;
+    btmShooterSpeed = btmShooterSpeed + btmShooterOffset;
+
+  }
 
   m_subShooter->SpinUpWheels(topShooterSpeed,btmShooterSpeed);
 
