@@ -15,23 +15,57 @@ void SubIntake::Periodic() {}
 
 void SubIntake::ConfigureIntake(){
     // Write code here to configure the the motors of the Intake
-    positionIntake->Config_kF(0,0,0);
-    positionIntake->Config_kF(0,0.01,0);
-    positionIntake->Config_kF(0,0,0);
-    positionIntake->Config_kF(0,0,0);
+    // Intake positioner configuration
+    positionIntake->Config_kF(0,0.0,0);
+    positionIntake->Config_kP(0,0.0937,0); // (75%)*1023/8192
+    positionIntake->Config_kI(0,0,0);
+    positionIntake->Config_kD(0,0,0);
 
-    positionIntake->ConfigMotionCruiseVelocity(5000,0);
-    positionIntake->ConfigMotionAcceleration(15000,0);
-
-    positionIntake->ConfigForwardSoftLimitThreshold(1000,0);
+    positionIntake->ConfigForwardSoftLimitThreshold(6500,0);
     positionIntake->ConfigReverseSoftLimitThreshold(0,0);
     positionIntake->ConfigForwardSoftLimitEnable(true,0);
     positionIntake->ConfigReverseSoftLimitEnable(true,0);
 
+    positionIntake->ConfigNominalOutputForward(0,0);
+    positionIntake->ConfigNominalOutputReverse(0,0);
+    positionIntake->ConfigPeakOutputForward(1,0);
+    positionIntake->ConfigPeakOutputReverse(1,0);
+
+    positionIntake->ConfigPeakCurrentDuration(1,0);
+    positionIntake->ConfigPeakCurrentLimit(10,0);
+    positionIntake->ConfigContinuousCurrentLimit(5,0);
+    positionIntake->EnableCurrentLimit(true);
+
     positionIntake->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder,0,0);
     positionIntake->SetSensorPhase(true);
-    positionIntake->SetInverted(true);
+    positionIntake->SetInverted(false);
 
+    // Shooter feeder configuration
+    shooterFeeder->Config_kF(0,0.0,0);
+    shooterFeeder->Config_kP(0,0.12,0); // (96%)*1023/8192
+    shooterFeeder->Config_kI(0,0,0);
+    shooterFeeder->Config_kD(0,0,0);
+
+    shooterFeeder->ConfigForwardSoftLimitThreshold(6500,0);
+    shooterFeeder->ConfigReverseSoftLimitThreshold(0,0);
+    shooterFeeder->ConfigForwardSoftLimitEnable(true,0);
+    shooterFeeder->ConfigReverseSoftLimitEnable(true,0);
+
+    shooterFeeder->ConfigNominalOutputForward(0,0);
+    shooterFeeder->ConfigNominalOutputReverse(0,0);
+    shooterFeeder->ConfigPeakOutputForward(1,0);
+    shooterFeeder->ConfigPeakOutputReverse(1,0);
+
+    shooterFeeder->ConfigPeakCurrentDuration(1,0);
+    shooterFeeder->ConfigPeakCurrentLimit(10,0);
+    shooterFeeder->ConfigContinuousCurrentLimit(5,0);
+    shooterFeeder->EnableCurrentLimit(true);
+
+    shooterFeeder->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder,0,0);
+    shooterFeeder->SetSensorPhase(true);
+    shooterFeeder->SetInverted(false);
+
+    // Intake wheels spinner configuration
     frontSpinner->SetInverted(true);
 
 

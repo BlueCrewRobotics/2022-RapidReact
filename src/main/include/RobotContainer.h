@@ -32,6 +32,7 @@
 #include "commands/CmdAcquireShooterTarget.h" //This might have to be seperated into 2 commands AcquireTarget and AimToTarget
 #include "commands/CmdSpinIntake.h"
 #include "commands/CmdStopIntake.h"
+#include "commands/CmdMoveIntake.h"
 
 
 // Subsystem includes

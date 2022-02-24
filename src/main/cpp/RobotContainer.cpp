@@ -22,7 +22,7 @@ void RobotContainer::ConfigureButtonBindings() {
   // Configure your button bindings here
 
   // Setup the command to shift gears when right bumper is pressed
-  driverController_button_rbump->WhenPressed(CmdShiftGear(&m_subDriveTrain));
+  driverController_button_lbump->WhenPressed(CmdShiftGear(&m_subDriveTrain));
   
   driverController_button_a->WhileHeld(frc2::SequentialCommandGroup{
     //CmdTurnOnShooterLimelight(&m_subLimelightShooter), // Once limelight is functional use this to turn on LEDS
@@ -56,13 +56,17 @@ void RobotContainer::ConfigureButtonBindings() {
     // Turn to face another alliance ball
 
     // Extend intake
-
+    // CmdMoveIntake(&m_subIntake, 200.0);
+    // Spin the intake
+    // CmdSpinIntake(&m_subIntake);
     // Turn on intake limelight
 
     // Drive toward ball until ball is picked up
 
     // Retract intake
-
+    //CmdMoveIntake(&m_subIntake, 0.0);
+    // Stop the intake
+    // CmdStopIntake(&m_subIntake);
     // Turn the shooter to face the hub
 
     // Turn on shooter limelight
@@ -76,8 +80,11 @@ void RobotContainer::ConfigureButtonBindings() {
     
   });
 
-  driverController_button_y->WhileHeld(frc2::SequentialCommandGroup( CmdSpinIntake(&m_subIntake), CmdExtendIntake(&m_subIntake)));
-  driverController_button_y->WhenReleased(frc2::SequentialCommandGroup( CmdStopIntake(&m_subIntake),CmdIntakeToHomePosition(&m_subIntake)));
+  //********************************************************************************
+  // Combine the CmdSpinIntake and CmdStopIntake into one command passing the speed!
+  //********************************************************************************
+  driverController_button_y->WhileHeld(frc2::SequentialCommandGroup( CmdSpinIntake(&m_subIntake), CmdMoveIntake(&m_subIntake, 5600.0)));
+  driverController_button_y->WhenInactive(frc2::SequentialCommandGroup( CmdStopIntake(&m_subIntake),CmdMoveIntake(&m_subIntake, 0.0)));
   
 
 }

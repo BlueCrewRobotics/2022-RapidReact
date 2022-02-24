@@ -10,9 +10,7 @@
 
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
-#include "subsystems/SubLimelightShooter.h"
-#include "subsystems/SubDriveTrain.h"
-#include "subsystems/SubShooter.h"
+#include "subsystems/SubIntake.h"
 
 /**
  * An example command.
@@ -21,10 +19,10 @@
  * directly; this is crucially important, or else the decorator functions in
  * Command will *not* work!
  */
-class CmdAcquireShooterTarget
-    : public frc2::CommandHelper<frc2::CommandBase, CmdAcquireShooterTarget> {
+class CmdMoveIntake
+    : public frc2::CommandHelper<frc2::CommandBase, CmdMoveIntake> {
  public:
-  explicit CmdAcquireShooterTarget(SubLimelightShooter* subLimelightShooter, SubDriveTrain* subDriveTrain, SubShooter* subShooter);
+  explicit CmdMoveIntake(SubIntake* subIntake, double position);
 
   void Initialize() override;
 
@@ -35,8 +33,6 @@ class CmdAcquireShooterTarget
   bool IsFinished() override;
 
  private:
-
-  SubLimelightShooter* m_subLimelightShooter;
-  SubDriveTrain* m_subDriveTrain;
-  SubShooter* m_subShooter;
+  SubIntake* m_subIntake;
+  double m_position = 0;
 };

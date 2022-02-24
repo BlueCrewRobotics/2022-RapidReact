@@ -33,10 +33,10 @@ void CmdDriveWithController::Execute() {
 
   double rotation;
   if(m_driveTrain->GetDriveTrainGear()==false) {
-    rotation = m_driverController->GetRawAxis(AXIS_LX);
+    rotation = m_driverController->GetRawAxis(AXIS_LX)*0.5;
   }
   else {
-    rotation = m_driverController->GetRawAxis(AXIS_LX)*0.8;
+    rotation = m_driverController->GetRawAxis(AXIS_LX)*0.3;
   }
 
   m_driveTrain->Drive(speed, rotation);

@@ -53,13 +53,13 @@ constexpr double LEFT_KI_0 = 0.0;
 constexpr double LEFT_KD_0 = 0;
 
 // PID constants PID[1] uesd for high speed left side
-constexpr double RIGHT_KF_1 = 0.0; 
+constexpr double RIGHT_KF_1 = 0.13; 
 constexpr double RIGHT_KP_1 = 0.0;
 constexpr double RIGHT_KI_1 = 0;
 constexpr double RIGHT_KD_1 = 0;
 
 // PID constants PID[1] uesd for high speed left side
-constexpr double LEFT_KF_1 = 0.0;
+constexpr double LEFT_KF_1 = 0.13;
 constexpr double LEFT_KP_1 = 0.0;
 constexpr double LEFT_KI_1 = 0;
 constexpr double LEFT_KD_1 = 0;

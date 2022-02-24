@@ -8,10 +8,10 @@
 
 #include "commands/CmdAcquireShooterTarget.h"
 
-CmdAcquireShooterTarget::CmdAcquireShooterTarget(SubLimelightShooter* subLimelightShooter, SubDriveTrain* subDriveTrain) 
-  : m_subLimelightShooter(subLimelightShooter), m_subDriveTrain(subDriveTrain) {
+CmdAcquireShooterTarget::CmdAcquireShooterTarget(SubLimelightShooter* subLimelightShooter, SubDriveTrain* subDriveTrain, SubShooter* subShooter) 
+  : m_subLimelightShooter(subLimelightShooter), m_subDriveTrain(subDriveTrain), m_subShooter(subShooter) {
   // Use addRequirements() here to declare subsystem dependencies.
-  AddRequirements({subLimelightShooter,subDriveTrain});
+  AddRequirements({subLimelightShooter,subDriveTrain,subShooter});
 }
 
 // Called when the command is initially scheduled.
@@ -29,22 +29,22 @@ void CmdAcquireShooterTarget::Execute() {
   {
     // Get the robots horizontal offset from the target center
     double hTargetAngle = m_subLimelightShooter->GetHorizontalOffset();
-    double vTargetAngle = m_subLimelightShooter->GetVerticalOffset();
     double hDistanceToTarget = m_subLimelightShooter->GetDistanceToTarget();
 
     // Normalize the horizontal position to the target
     hTargetPosition = (-1*(hTargetAngle/29.8))*gain;
-    // Normalize the vertical position to the target
-    vTargetPosition = (-1*(hTargetAngle/24.85))*gain;
 
     // Rotate the drive train to point at the target
-    // Might need to add a deadband to overcome the drain train friction when rotatingh use next line
+    // Might need to add a deadband to overcome the drain train friction when rotating use next line
     // TargetPosition = hTargetPosition + 0.1;
     m_subDriveTrain->RotateDriveTrain(hTargetPosition);
+    
     // Change the shooter servos to point at the target
-
-
-
+    double angle;
+    double angleNormalized;  // Normalized for servo control
+    angle = -1.74 * hDistanceToTarget + 89.73;
+    angleNormalized = angle / 20 - 3.5;
+    m_subShooter->SetShooterAngle(angleNormalized);
   }
   
 }
