@@ -28,7 +28,7 @@ void RobotContainer::ConfigureButtonBindings() {
     //CmdTurnOnShooterLimelight(&m_subLimelightShooter), // Once limelight is functional use this to turn on LEDS
     //CmdAcquireShooterTarget(&m_subLimelightShooter,&m_subDriveTrain), // Once limelight is functional work on the targeting command
     CmdSetShooterAngle(&m_subShooter), 
-    CmdSpinShooterWheels(&m_subShooter)});
+    CmdSpinShooterWheels(&m_subShooter,&m_subLimelightShooter)});
 
   driverController_button_a->WhenReleased(frc2::SequentialCommandGroup{
     //CmdTurnOffShooterLimelight(&m_subLimelightShooter), // Once limelight is functional use this to turn off LEDS

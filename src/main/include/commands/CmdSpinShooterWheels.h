@@ -11,6 +11,7 @@
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
 #include "subsystems/SubShooter.h"
+#include "subsystems/SubLimelightShooter.h"
 
 /**
  * An example command.
@@ -22,7 +23,7 @@
 class CmdSpinShooterWheels
     : public frc2::CommandHelper<frc2::CommandBase, CmdSpinShooterWheels> {
  public:
-  explicit CmdSpinShooterWheels(SubShooter* subShooter);
+  explicit CmdSpinShooterWheels(SubShooter* subShooter, SubLimelightShooter* subLimelightShooter);
 
   void Initialize() override;
 
@@ -34,4 +35,5 @@ class CmdSpinShooterWheels
 
  private:
   SubShooter* m_subShooter;
+  SubLimelightShooter* m_subLimelightShooter;
 };
