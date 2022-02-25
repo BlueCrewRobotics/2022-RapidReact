@@ -18,10 +18,11 @@ void CmdIndexShooterFeeder::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
 void CmdIndexShooterFeeder::Execute() {
-  // Move the intake to the home position
-  double position = m_subIntake->GetIndexerPosition();
-  position = position - m_position;
-  m_subIntake->IndexShooterFeeder(position);  
+  if(m_subIntake->GetBallSensor()==false){
+    double position = m_subIntake->GetIndexerPosition();
+    position = position + m_position;
+    m_subIntake->IndexShooterFeeder(position);  
+  }
 
 }
 

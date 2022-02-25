@@ -33,6 +33,7 @@
 #include "commands/CmdSpinIntake.h"
 #include "commands/CmdStopIntake.h"
 #include "commands/CmdMoveIntake.h"
+#include "commands/CmdIndexShooterFeeder.h"
 
 
 // Subsystem includes

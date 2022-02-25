@@ -28,8 +28,8 @@ void SubIntake::ConfigureIntake(){
 
     positionIntake->ConfigNominalOutputForward(0,0);
     positionIntake->ConfigNominalOutputReverse(0,0);
-    positionIntake->ConfigPeakOutputForward(1,0);
-    positionIntake->ConfigPeakOutputReverse(1,0);
+    positionIntake->ConfigPeakOutputForward(1.0,0);
+    positionIntake->ConfigPeakOutputReverse(-1.0, 0);
 
     positionIntake->ConfigPeakCurrentDuration(1,0);
     positionIntake->ConfigPeakCurrentLimit(10,0);
@@ -40,30 +40,30 @@ void SubIntake::ConfigureIntake(){
     positionIntake->SetSensorPhase(true);
     positionIntake->SetInverted(false);
 
+    positionIntake->ConfigNeutralDeadband(0.0,0);
+
     // Shooter feeder configuration
     shooterFeeder->Config_kF(0,0.0,0);
     shooterFeeder->Config_kP(0,0.12,0); // (96%)*1023/8192
     shooterFeeder->Config_kI(0,0,0);
     shooterFeeder->Config_kD(0,0,0);
 
-    shooterFeeder->ConfigForwardSoftLimitThreshold(6500,0);
-    shooterFeeder->ConfigReverseSoftLimitThreshold(0,0);
-    shooterFeeder->ConfigForwardSoftLimitEnable(true,0);
-    shooterFeeder->ConfigReverseSoftLimitEnable(true,0);
+    shooterFeeder->ConfigForwardSoftLimitEnable(false,0);
+    shooterFeeder->ConfigReverseSoftLimitEnable(false,0);
 
     shooterFeeder->ConfigNominalOutputForward(0,0);
     shooterFeeder->ConfigNominalOutputReverse(0,0);
-    shooterFeeder->ConfigPeakOutputForward(1,0);
-    shooterFeeder->ConfigPeakOutputReverse(1,0);
+    shooterFeeder->ConfigPeakOutputForward(1.0,0);
+    shooterFeeder->ConfigPeakOutputReverse(-1.0,0);
 
     shooterFeeder->ConfigPeakCurrentDuration(1,0);
-    shooterFeeder->ConfigPeakCurrentLimit(10,0);
-    shooterFeeder->ConfigContinuousCurrentLimit(5,0);
+    shooterFeeder->ConfigPeakCurrentLimit(20,0);
+    shooterFeeder->ConfigContinuousCurrentLimit(10,0);
     shooterFeeder->EnableCurrentLimit(true);
 
     shooterFeeder->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder,0,0);
-    shooterFeeder->SetSensorPhase(true);
-    shooterFeeder->SetInverted(false);
+    shooterFeeder->SetSensorPhase(false);
+    shooterFeeder->SetInverted(true);
 
     // Intake wheels spinner configuration
     frontSpinner->SetInverted(true);
@@ -95,5 +95,9 @@ void SubIntake::IndexShooterFeeder(double position) {
 
 }
 double SubIntake::GetIndexerPosition() {
-    return m_indexPosition;
+    return shooterFeeder->GetSelectedSensorPosition();
+}
+
+bool SubIntake::GetBallSensor() {
+    return m_ballDetector->Get();
 }

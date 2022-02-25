@@ -8,7 +8,8 @@
 
 #include "commands/CmdMoveIntake.h"
 
-CmdMoveIntake::CmdMoveIntake(SubIntake* subIntake, double position) : m_subIntake(subIntake){
+CmdMoveIntake::CmdMoveIntake(SubIntake *subIntake, double position) : m_subIntake(subIntake)
+{
   // Use addRequirements() here to declare subsystem dependencies.
   AddRequirements(subIntake);
   m_position = position;
@@ -18,17 +19,17 @@ CmdMoveIntake::CmdMoveIntake(SubIntake* subIntake, double position) : m_subIntak
 void CmdMoveIntake::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
-void CmdMoveIntake::Execute() {
+void CmdMoveIntake::Execute()
+{
   // Move the intake to the home position
   m_subIntake->MoveIntakeToPosition(m_position);
-
-
 }
 
 // Called once the command ends or is interrupted.
 void CmdMoveIntake::End(bool interrupted) {}
 
 // Returns true when the command should end.
-bool CmdMoveIntake::IsFinished() {
+bool CmdMoveIntake::IsFinished()
+{
   return true;
 }

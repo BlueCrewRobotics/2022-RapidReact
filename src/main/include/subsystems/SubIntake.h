@@ -11,6 +11,7 @@
 #include <frc2/command/SubsystemBase.h>
 #include "BC_VictorSPX.h"
 #include "Constants.h"
+#include <frc/DigitalInput.h>
 
 class SubIntake : public frc2::SubsystemBase {
  public:
@@ -33,6 +34,8 @@ class SubIntake : public frc2::SubsystemBase {
   void IndexShooterFeeder(double position);
   // Get the position of the indexer
   double GetIndexerPosition();
+  // Get break sensor
+  bool GetBallSensor();
 
 
 
@@ -44,6 +47,9 @@ class SubIntake : public frc2::SubsystemBase {
   TalonSRX* shooterFeeder = new TalonSRX(INTAKE_SHOOTER_FEEDER_ADDR);
 
   double m_indexPosition;
+  
+  // Sets up break sensors
+  frc::DigitalInput* m_ballDetector = new frc::DigitalInput(0);
 
 
 };

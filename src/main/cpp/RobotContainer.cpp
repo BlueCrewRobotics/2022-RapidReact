@@ -83,7 +83,8 @@ void RobotContainer::ConfigureButtonBindings() {
   //********************************************************************************
   // Combine the CmdSpinIntake and CmdStopIntake into one command passing the speed!
   //********************************************************************************
-  driverController_button_y->WhileHeld(frc2::SequentialCommandGroup( CmdSpinIntake(&m_subIntake), CmdMoveIntake(&m_subIntake, 5600.0)));
+  driverController_button_y->WhileHeld(frc2::SequentialCommandGroup( CmdSpinIntake(&m_subIntake), CmdMoveIntake(&m_subIntake, 5600.0), CmdIndexShooterFeeder(&m_subIntake,5000)));
+  
   driverController_button_y->WhenInactive(frc2::SequentialCommandGroup( CmdStopIntake(&m_subIntake),CmdMoveIntake(&m_subIntake, 0.0)));
   
 
