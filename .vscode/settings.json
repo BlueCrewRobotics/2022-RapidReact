@@ -19,6 +19,9 @@
     "functional": "cpp",
     "streambuf": "cpp",
     "core": "cpp",
-    "future": "cpp"
+    "future": "cpp",
+    "*.tcc": "cpp",
+    "fstream": "cpp",
+    "sstream": "cpp"
   }
 }

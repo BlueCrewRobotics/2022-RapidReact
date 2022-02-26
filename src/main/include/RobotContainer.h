@@ -34,6 +34,7 @@
 #include "commands/CmdStopIntake.h"
 #include "commands/CmdMoveIntake.h"
 #include "commands/CmdIndexShooterFeeder.h"
+#include "commands/CmdIndexToShooter.h"
 
 
 // Subsystem includes
@@ -75,6 +76,8 @@ class RobotContainer {
   void RunBlueCrewAutonomous();
   // Stop the autonomous code
   void StopBlueCrewAutonomous();
+  // Configure limelights
+  void ConfigureLimelights();
 
 
 

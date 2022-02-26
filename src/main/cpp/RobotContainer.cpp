@@ -83,10 +83,10 @@ void RobotContainer::ConfigureButtonBindings() {
   //********************************************************************************
   // Combine the CmdSpinIntake and CmdStopIntake into one command passing the speed!
   //********************************************************************************
-  driverController_button_y->WhileHeld(frc2::SequentialCommandGroup( CmdSpinIntake(&m_subIntake), CmdMoveIntake(&m_subIntake, 5600.0), CmdIndexShooterFeeder(&m_subIntake,5000)));
-  
+  driverController_button_y->WhileHeld(frc2::SequentialCommandGroup( CmdSpinIntake(&m_subIntake), CmdMoveIntake(&m_subIntake, 5600.0), CmdIndexShooterFeeder(&m_subIntake)));
   driverController_button_y->WhenInactive(frc2::SequentialCommandGroup( CmdStopIntake(&m_subIntake),CmdMoveIntake(&m_subIntake, 0.0)));
   
+  driverController_button_x->WhenPressed(CmdIndexToShooter(&m_subIntake));
 
 }
 
@@ -121,4 +121,10 @@ void RobotContainer::StopBlueCrewAutonomous() {
 
 void RobotContainer::ConfigureIntake() {
   m_subIntake.ConfigureIntake();
+}
+
+void RobotContainer::ConfigureLimelights() {
+  m_subLimelightShooter.SetLEDState(1.0);
+  m_subLimelightIntake.SetLEDState(1.0);
+  
 }

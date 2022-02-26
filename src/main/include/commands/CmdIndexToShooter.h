@@ -19,10 +19,10 @@
  * directly; this is crucially important, or else the decorator functions in
  * Command will *not* work!
  */
-class CmdIndexShooterFeeder
-    : public frc2::CommandHelper<frc2::CommandBase, CmdIndexShooterFeeder> {
+class CmdIndexToShooter
+    : public frc2::CommandHelper<frc2::CommandBase, CmdIndexToShooter> {
  public:
-  explicit CmdIndexShooterFeeder(SubIntake* subIntake);
+  explicit CmdIndexToShooter(SubIntake* subIntake);
 
   void Initialize() override;
 
@@ -34,6 +34,5 @@ class CmdIndexShooterFeeder
 
  private:
   SubIntake* m_subIntake;
-  bool oneShot = 0;
-
+  
 };

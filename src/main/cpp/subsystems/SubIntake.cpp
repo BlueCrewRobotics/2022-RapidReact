@@ -44,7 +44,7 @@ void SubIntake::ConfigureIntake(){
 
     // Shooter feeder configuration
     shooterFeeder->Config_kF(0,0.0,0);
-    shooterFeeder->Config_kP(0,0.12,0); // (96%)*1023/8192
+    shooterFeeder->Config_kP(0,0.16,0); // (96%)*1023/8192
     shooterFeeder->Config_kI(0,0,0);
     shooterFeeder->Config_kD(0,0,0);
 
@@ -100,4 +100,17 @@ double SubIntake::GetIndexerPosition() {
 
 bool SubIntake::GetBallSensor() {
     return m_ballDetector->Get();
+}
+
+int SubIntake::GetBallCount() {
+    return m_ballCount;
+}
+
+void SubIntake::SetBallCount(int ballCount) {
+    if (ballCount > 0 && ballCount < 3){
+        m_ballCount = ballCount;
+    }
+    else{
+        m_ballCount = 0;
+    }
 }

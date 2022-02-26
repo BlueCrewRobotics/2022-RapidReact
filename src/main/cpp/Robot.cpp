@@ -16,6 +16,7 @@ void Robot::RobotInit() {
   m_robotContainer.ConfigureCompressor();
   m_robotContainer.ConfigureShooter();
   m_robotContainer.ConfigureIntake();
+  m_robotContainer.ConfigureLimelights();
 
 
 }

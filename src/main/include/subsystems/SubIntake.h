@@ -36,8 +36,10 @@ class SubIntake : public frc2::SubsystemBase {
   double GetIndexerPosition();
   // Get break sensor
   bool GetBallSensor();
-
-
+  // Get the ball count
+  int GetBallCount();
+  // Set the ball count
+  void SetBallCount(int ballCount);
 
  private:
   // Components (e.g. motor controllers and sensors) should generally be
@@ -47,6 +49,7 @@ class SubIntake : public frc2::SubsystemBase {
   TalonSRX* shooterFeeder = new TalonSRX(INTAKE_SHOOTER_FEEDER_ADDR);
 
   double m_indexPosition;
+  int m_ballCount = 0;
   
   // Sets up break sensors
   frc::DigitalInput* m_ballDetector = new frc::DigitalInput(0);
