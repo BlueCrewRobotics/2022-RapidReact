@@ -22,9 +22,9 @@ void SubShooter::ConfigureShooter() {
     // Configure the top shooter Falcon motor
     topShooterMotor->SetInverted(ctre::phoenix::motorcontrol::TalonFXInvertType::CounterClockwise);
     topShooterMotor->ConfigSelectedFeedbackSensor(FeedbackDevice::IntegratedSensor);
-    topShooterMotor->ConfigClosedloopRamp(0.25,0);
+    topShooterMotor->ConfigClosedloopRamp(0.0,0);
 
-    topShooterMotor->Config_kF(0,0.01, 0);
+    topShooterMotor->Config_kF(0,0.02325, 0);
     topShooterMotor->Config_kP(0,0.01, 0);
     topShooterMotor->Config_kI(0,0.00, 0);
     topShooterMotor->Config_kD(0,0.00, 0);
@@ -41,9 +41,9 @@ void SubShooter::ConfigureShooter() {
     // Configure the bottom shooter Falcon motor
     btmShooterMotor->SetInverted(ctre::phoenix::motorcontrol::TalonFXInvertType::Clockwise);
     btmShooterMotor->ConfigSelectedFeedbackSensor(FeedbackDevice::IntegratedSensor);
-    btmShooterMotor->ConfigClosedloopRamp(0.25,0);
+    btmShooterMotor->ConfigClosedloopRamp(0.0,0);
 
-    btmShooterMotor->Config_kF(0,0.01, 0);
+    btmShooterMotor->Config_kF(0,0.325, 0);
     btmShooterMotor->Config_kP(0,0.01, 0);
     btmShooterMotor->Config_kI(0,0.00, 0);
     btmShooterMotor->Config_kD(0,0.00, 0); 

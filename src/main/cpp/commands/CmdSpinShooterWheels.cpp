@@ -19,8 +19,8 @@ void CmdSpinShooterWheels::Initialize() {}
 // Called repeatedly when this Command is scheduled to run
 void CmdSpinShooterWheels::Execute() {
   // Velocity of shooter wheels in counts/100ms
-  double topShooterSpeed = 20731;
-  double btmShooterSpeed = 20731;
+  double topShooterSpeed = 10731;  //20731
+  double btmShooterSpeed = 10731; 
   // Offset for slowing wheels when shooting
   double topShooterOffset = 100;
   double btmShooterOffset = 100;

@@ -20,16 +20,19 @@ void CmdAcquireShooterTarget::Initialize() {}
 // Called repeatedly when this Command is scheduled to run
 void CmdAcquireShooterTarget::Execute() {
   double hTargetPosition;
-  double vTargetPosition;
+  double hDistanceToTarget;
+  double hTargetAngle;
+  double angle;
+  double angleNormalized;  // Normalized for servo control
 
-  double gain = 0.65;
+  double gain = 0.2;
   double offset = 0;
 
   if(m_subLimelightShooter->GetTarget()==true)
   {
     // Get the robots horizontal offset from the target center
-    double hTargetAngle = m_subLimelightShooter->GetHorizontalOffset();
-    double hDistanceToTarget = m_subLimelightShooter->GetDistanceToTarget();
+    hTargetAngle = m_subLimelightShooter->GetHorizontalOffset();
+    hDistanceToTarget = m_subLimelightShooter->GetDistanceToTarget();
 
     // Normalize the horizontal position to the target
     hTargetPosition = (-1*(hTargetAngle/29.8))*gain;
@@ -37,14 +40,17 @@ void CmdAcquireShooterTarget::Execute() {
     // Rotate the drive train to point at the target
     // Might need to add a deadband to overcome the drain train friction when rotating use next line
     // TargetPosition = hTargetPosition + 0.1;
-    m_subDriveTrain->RotateDriveTrain(hTargetPosition);
+    m_subDriveTrain->RotateDriveTrain(-hTargetPosition);
     
     // Change the shooter servos to point at the target
-    double angle;
-    double angleNormalized;  // Normalized for servo control
     angle = -1.74 * hDistanceToTarget + 89.73;
     angleNormalized = angle / 20 - 3.5;
     m_subShooter->SetShooterAngle(angleNormalized);
+  }
+  else {
+    if(m_subLimelightShooter->GetTarget() == false){
+        m_subDriveTrain->RotateDriveTrain(0);
+    }
   }
   
 }
@@ -54,7 +60,7 @@ void CmdAcquireShooterTarget::End(bool interrupted) {}
 
 // Returns true when the command should end.
 bool CmdAcquireShooterTarget::IsFinished() {
-  if( m_subLimelightShooter->GetHorizontalOffset() < 0.1 && m_subLimelightShooter->GetVerticalOffset() < 0.1)
+  if( m_subLimelightShooter->GetHorizontalOffset() < 0.1)
   {
     return true;
   }
