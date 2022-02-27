@@ -19,7 +19,7 @@ void CmdResetShooterAngle::Initialize() {}
 // Called repeatedly when this Command is scheduled to run
 void CmdResetShooterAngle::Execute() {
   //Set the angle of the shooter
-  m_subShooter->SetShooterAngle(0.0);
+  m_subShooter->SetShooterAngle(0.8);
 
 }
 

@@ -41,6 +41,8 @@ void SubShooter::ConfigureShooter() {
     topShooterMotor->ConfigStatorCurrentLimit(StatorCurrentLimitConfiguration(true,10,15,100));
     topShooterMotor->ConfigSupplyCurrentLimit(SupplyCurrentLimitConfiguration(true,10,15,100));
 
+    topShooterMotor->SetNeutralMode(NeutralMode::Coast);
+
     // Configure the bottom shooter Falcon motor
     btmShooterMotor->SetInverted(ctre::phoenix::motorcontrol::TalonFXInvertType::Clockwise);
     btmShooterMotor->ConfigSelectedFeedbackSensor(FeedbackDevice::IntegratedSensor);
@@ -59,6 +61,8 @@ void SubShooter::ConfigureShooter() {
 
     btmShooterMotor->ConfigStatorCurrentLimit(StatorCurrentLimitConfiguration(true,10,15,100));
     btmShooterMotor->ConfigSupplyCurrentLimit(SupplyCurrentLimitConfiguration(true,10,15,100));
+
+    btmShooterMotor->SetNeutralMode(NeutralMode::Coast);
 
     // Configure the pulse width modulation (PWM) for the linear actuators
     rightServo->SetBounds(2.0,0.01,1.5,0.01,1.0);

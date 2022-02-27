@@ -22,7 +22,7 @@ void CmdAcquireShooterTarget::Execute() {
   double hTargetPosition;
   double hTargetAngle;
 
-  double gain = 0.3;
+  double gain = 0.5;
   double offset = 0;
 
   if(m_subLimelightShooter->GetTarget()==true)

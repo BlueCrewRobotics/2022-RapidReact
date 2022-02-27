@@ -119,7 +119,7 @@ void SubDriveTrain::GetPidFromDashboard() {
 // Drives the Drive Train with ArcadeDrive
 void SubDriveTrain::Drive(double speed, double rotation) {
     driveTrain->SetDeadband(0.02);
-    driveTrain->ArcadeDrive(speed, rotation, false);
+    driveTrain->ArcadeDrive(speed, rotation, true);
 }
 
 void SubDriveTrain::SetDriveTrainGear() {
