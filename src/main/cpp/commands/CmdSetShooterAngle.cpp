@@ -8,7 +8,7 @@
 
 #include "commands/CmdSetShooterAngle.h"
 
-CmdSetShooterAngle::CmdSetShooterAngle(SubShooter* subShooter) : m_subShooter(subShooter) {
+CmdSetShooterAngle::CmdSetShooterAngle(SubShooter* subShooter, SubLimelightShooter* subLimelightShooter) : m_subShooter(subShooter), m_subLimelightShooter(subLimelightShooter) {
   // Use addRequirements() here to declare subsystem dependencies.
   AddRequirements(subShooter);
 }
@@ -19,7 +19,19 @@ void CmdSetShooterAngle::Initialize() {}
 // Called repeatedly when this Command is scheduled to run
 void CmdSetShooterAngle::Execute() {
   //Set the angle of the shooter
-  m_subShooter->SetShooterAngle(0.5);
+
+  double hDistanceToTarget;
+  double angle;
+  double angleNormalized;  // Normalized for servo control
+
+
+  hDistanceToTarget = m_subLimelightShooter->GetDistanceToTarget();
+
+  
+  // Change the shooter servos to point at the target
+  angle = -1.74 * hDistanceToTarget + 89.73;
+  angleNormalized = angle / 20 - 3.5;
+  m_subShooter->SetShooterAngle(angleNormalized);
 
 }
 

@@ -11,6 +11,7 @@
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
 #include "subsystems/SubShooter.h"
+#include "subsystems/SubLimelightShooter.h"
 
 /**
  * An example command.
@@ -22,7 +23,7 @@
 class CmdSetShooterAngle
     : public frc2::CommandHelper<frc2::CommandBase, CmdSetShooterAngle> {
  public:
-  explicit CmdSetShooterAngle(SubShooter* subShooter);
+  explicit CmdSetShooterAngle(SubShooter* subShooter, SubLimelightShooter* subLimelightShooter);
 
   void Initialize() override;
 
@@ -34,4 +35,5 @@ class CmdSetShooterAngle
 
  private:
   SubShooter* m_subShooter;
+  SubLimelightShooter* m_subLimelightShooter;
 };

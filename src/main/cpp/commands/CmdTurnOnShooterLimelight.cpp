@@ -10,7 +10,7 @@
 
 CmdTurnOnShooterLimelight::CmdTurnOnShooterLimelight(SubLimelightShooter* subsystem) : m_subLimelightShooter(subsystem) {
   // Use addRequirements() here to declare subsystem dependencies.
-  AddRequirements(subsystem);
+  //AddRequirements(subsystem);
 }
 
 // Called when the command is initially scheduled.

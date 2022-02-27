@@ -10,7 +10,7 @@
 
 CmdSpinShooterWheels::CmdSpinShooterWheels(SubShooter* subShooter, SubLimelightShooter* subLimelightShooter) : m_subShooter(subShooter), m_subLimelightShooter(subLimelightShooter) {
   // Use addRequirements() here to declare subsystem dependencies.
-  AddRequirements({subShooter,subLimelightShooter});
+  AddRequirements({subShooter});
 }
 
 // Called when the command is initially scheduled.

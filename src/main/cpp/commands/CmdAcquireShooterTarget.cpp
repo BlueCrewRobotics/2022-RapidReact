@@ -8,10 +8,10 @@
 
 #include "commands/CmdAcquireShooterTarget.h"
 
-CmdAcquireShooterTarget::CmdAcquireShooterTarget(SubLimelightShooter* subLimelightShooter, SubDriveTrain* subDriveTrain, SubShooter* subShooter) 
-  : m_subLimelightShooter(subLimelightShooter), m_subDriveTrain(subDriveTrain), m_subShooter(subShooter) {
+CmdAcquireShooterTarget::CmdAcquireShooterTarget(SubLimelightShooter* subLimelightShooter, SubDriveTrain* subDriveTrain) 
+  : m_subLimelightShooter(subLimelightShooter), m_subDriveTrain(subDriveTrain) {
   // Use addRequirements() here to declare subsystem dependencies.
-  AddRequirements({subLimelightShooter,subDriveTrain,subShooter});
+  AddRequirements({subDriveTrain});
 }
 
 // Called when the command is initially scheduled.
@@ -20,19 +20,15 @@ void CmdAcquireShooterTarget::Initialize() {}
 // Called repeatedly when this Command is scheduled to run
 void CmdAcquireShooterTarget::Execute() {
   double hTargetPosition;
-  double hDistanceToTarget;
   double hTargetAngle;
-  double angle;
-  double angleNormalized;  // Normalized for servo control
 
-  double gain = 0.2;
+  double gain = 0.3;
   double offset = 0;
 
   if(m_subLimelightShooter->GetTarget()==true)
   {
     // Get the robots horizontal offset from the target center
     hTargetAngle = m_subLimelightShooter->GetHorizontalOffset();
-    hDistanceToTarget = m_subLimelightShooter->GetDistanceToTarget();
 
     // Normalize the horizontal position to the target
     hTargetPosition = (-1*(hTargetAngle/29.8))*gain;
@@ -42,10 +38,6 @@ void CmdAcquireShooterTarget::Execute() {
     // TargetPosition = hTargetPosition + 0.1;
     m_subDriveTrain->RotateDriveTrain(-hTargetPosition);
     
-    // Change the shooter servos to point at the target
-    angle = -1.74 * hDistanceToTarget + 89.73;
-    angleNormalized = angle / 20 - 3.5;
-    m_subShooter->SetShooterAngle(angleNormalized);
   }
   else {
     if(m_subLimelightShooter->GetTarget() == false){
@@ -60,7 +52,7 @@ void CmdAcquireShooterTarget::End(bool interrupted) {}
 
 // Returns true when the command should end.
 bool CmdAcquireShooterTarget::IsFinished() {
-  if( m_subLimelightShooter->GetHorizontalOffset() < 0.1)
+  if( m_subLimelightShooter->GetHorizontalOffset() < 0.1 && m_subLimelightShooter->GetHorizontalOffset() > -0.1)
   {
     return true;
   }
