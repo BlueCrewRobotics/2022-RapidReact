@@ -12,8 +12,8 @@ SubShooter::SubShooter() = default;
 
 // This method will be called once per scheduler run
 void SubShooter::Periodic() {
-    frc::SmartDashboard::PutNumber("Shooter/topSpeed",topShooterMotor->GetSelectedSensorVelocity());
-    frc::SmartDashboard::PutNumber("Shooter/btmSpeed",btmShooterMotor->GetSelectedSensorVelocity());
+    //frc::SmartDashboard::PutNumber("Shooter/topSpeed",topShooterMotor->GetSelectedSensorVelocity());
+    //frc::SmartDashboard::PutNumber("Shooter/btmSpeed",btmShooterMotor->GetSelectedSensorVelocity());
     // This function will run periodically to set the servo angle
     // Use SetShooterAngle to set the angle that is used periodically
     SetPeriodicServoAngle();
