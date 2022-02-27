@@ -14,6 +14,9 @@ SubShooter::SubShooter() = default;
 void SubShooter::Periodic() {
     frc::SmartDashboard::PutNumber("Shooter/topSpeed",topShooterMotor->GetSelectedSensorVelocity());
     frc::SmartDashboard::PutNumber("Shooter/btmSpeed",btmShooterMotor->GetSelectedSensorVelocity());
+    // This function will run periodically to set the servo angle
+    // Use SetShooterAngle to set the angle that is used periodically
+    SetPeriodicServoAngle();
 
 }
 
@@ -71,8 +74,7 @@ void SubShooter::SpinUpWheels(double topSpeed, double btmSpeed) {
 }
 
 void SubShooter::SetShooterAngle(double angle) {
-    rightServo->SetPosition(angle);
-    leftServo->SetPosition(angle);
+    m_servoAngle = angle;
 }
 
 bool SubShooter::WheelsAtSpeed(double deadband) {
@@ -84,4 +86,9 @@ bool SubShooter::WheelsAtSpeed(double deadband) {
     }
     return false;
 
+}
+
+void SubShooter::SetPeriodicServoAngle() {
+    rightServo->SetPosition(m_servoAngle);
+    leftServo->SetPosition(m_servoAngle);
 }

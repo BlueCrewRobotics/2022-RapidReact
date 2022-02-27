@@ -26,12 +26,14 @@ class SubShooter : public frc2::SubsystemBase {
   // Spins up the wheels on the shooter in velocity closed loop.
   // Parameters to pass the function, are in velocity counts/100ms
   void SpinUpWheels(double topSpeed, double btmSpeed);
-  // Set the shooter angle
+  // Set the shooter angle between 0-1.0
   void SetShooterAngle(double angle);
   // Checks to see if the wheels on the shooter are up to speed.
   // Returns true if wheels are up to speed or false if not at speed.
   // Parameter deadband is used to see if the speed is within the deadband
   bool WheelsAtSpeed(double deadband);
+  // Update the servo angle to be used
+  void SetPeriodicServoAngle();
 
  private:
   // Components (e.g. motor controllers and sensors) should generally be
@@ -42,4 +44,6 @@ class SubShooter : public frc2::SubsystemBase {
 
   frc::Servo* rightServo = new frc::Servo(SHOOTER_RIGHT_PWM_ADDR);
   frc::Servo* leftServo = new frc::Servo(SHOOTER_LEFT_PWN_ADDR);
+
+  double m_servoAngle = 0.5;
 };

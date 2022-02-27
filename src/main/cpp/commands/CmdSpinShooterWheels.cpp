@@ -19,8 +19,8 @@ void CmdSpinShooterWheels::Initialize() {}
 // Called repeatedly when this Command is scheduled to run
 void CmdSpinShooterWheels::Execute() {
   // Velocity of shooter wheels in counts/100ms
-  double topShooterSpeed = 10731;  //20731
-  double btmShooterSpeed = 10731; 
+  double topShooterSpeed = 5182.75;  //20731
+  double btmShooterSpeed = 5182.75; 
   // Offset for slowing wheels when shooting
   double topShooterOffset = 100;
   double btmShooterOffset = 100;
@@ -29,8 +29,8 @@ void CmdSpinShooterWheels::Execute() {
     // Get the distance to the target in ft
     double hDistanceToTarget = m_subLimelightShooter->GetDistanceToTarget();
     // Apply correlation equation of target distance to wheel speed
-    topShooterSpeed = 14.53*hDistanceToTarget*hDistanceToTarget-60.60*hDistanceToTarget+20780.38;
-    btmShooterSpeed = 14.53*hDistanceToTarget*hDistanceToTarget-60.60*hDistanceToTarget+20780.38;
+    topShooterSpeed = 6.29*hDistanceToTarget*hDistanceToTarget-46.12*hDistanceToTarget+5261.01;
+    btmShooterSpeed = 6.29*hDistanceToTarget*hDistanceToTarget-46.12*hDistanceToTarget+5261.01;
     // Just shoot the ball to bottom hub target
     topShooterSpeed = topShooterSpeed + topShooterOffset;
     btmShooterSpeed = btmShooterSpeed + btmShooterOffset;
