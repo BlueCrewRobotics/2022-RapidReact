@@ -26,7 +26,7 @@ void CmdSetShooterAngle::Execute() {
 
 
   hDistanceToTarget = m_subLimelightShooter->GetDistanceToTarget();
-
+  hDistanceToTarget = hDistanceToTarget + 2;
   
   // Change the shooter servos to point at the target
   angle = -1.74 * hDistanceToTarget + 89.73;

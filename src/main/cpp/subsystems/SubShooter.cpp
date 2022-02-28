@@ -27,8 +27,8 @@ void SubShooter::ConfigureShooter() {
     topShooterMotor->ConfigSelectedFeedbackSensor(FeedbackDevice::IntegratedSensor);
     topShooterMotor->ConfigClosedloopRamp(0.0,0);
 
-    topShooterMotor->Config_kF(0,0.02325, 0);
-    topShooterMotor->Config_kP(0,0.01, 0);
+    topShooterMotor->Config_kF(0,0.0465, 0);
+    topShooterMotor->Config_kP(0,0.1, 0);
     topShooterMotor->Config_kI(0,0.00, 0);
     topShooterMotor->Config_kD(0,0.00, 0);
 
@@ -48,8 +48,8 @@ void SubShooter::ConfigureShooter() {
     btmShooterMotor->ConfigSelectedFeedbackSensor(FeedbackDevice::IntegratedSensor);
     btmShooterMotor->ConfigClosedloopRamp(0.0,0);
 
-    btmShooterMotor->Config_kF(0,0.325, 0);
-    btmShooterMotor->Config_kP(0,0.01, 0);
+    btmShooterMotor->Config_kF(0,0.0465, 0);
+    btmShooterMotor->Config_kP(0,0.1, 0);
     btmShooterMotor->Config_kI(0,0.00, 0);
     btmShooterMotor->Config_kD(0,0.00, 0); 
 
