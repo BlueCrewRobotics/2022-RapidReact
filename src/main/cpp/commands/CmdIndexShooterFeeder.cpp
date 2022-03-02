@@ -18,15 +18,20 @@ void CmdIndexShooterFeeder::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
 void CmdIndexShooterFeeder::Execute() {
+  double position = m_subIntake->GetIndexerPosition();
   if(m_subIntake->GetBallSensor()==false){
-    double position = m_subIntake->GetIndexerPosition();
+    
       if(m_subIntake->GetBallCount() == 0) {
-        position = position + 13000;
+        position = position + 16000;
         m_subIntake->IndexShooterFeeder(position);
         m_subIntake->SetBallCount(1);  
       }
   }
-
+      if(m_subIntake->GetBallCount() == 1) {
+        position = position + 1000;
+        m_subIntake->IndexShooterFeeder(position);
+        m_subIntake->SetBallCount(2);  
+      }
 }
 
 // Called once the command ends or is interrupted.

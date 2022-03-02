@@ -7,6 +7,7 @@
 // the WPILib BSD license file in the root directory of this project.
 
 #include "commands/CmdSetShooterAngle.h"
+#include <iostream>
 
 CmdSetShooterAngle::CmdSetShooterAngle(SubShooter* subShooter, SubLimelightShooter* subLimelightShooter) : m_subShooter(subShooter), m_subLimelightShooter(subLimelightShooter) {
   // Use addRequirements() here to declare subsystem dependencies.
@@ -32,6 +33,8 @@ void CmdSetShooterAngle::Execute() {
   angle = -1.74 * hDistanceToTarget + 89.73;
   angleNormalized = angle / 20 - 3.5;
   m_subShooter->SetShooterAngle(angleNormalized);
+  std::cout << "Servo Angle= " << angleNormalized << std::endl;
+  std::cout << "SA-Distance= " << hDistanceToTarget << std::endl;
 
 }
 

@@ -42,12 +42,16 @@ void RobotContainer::ConfigureButtonBindings() {
 
   // Autonomous commands may want to make one command class to clean up RobotContainer
   autoRunAutonomous->WhileHeld(frc2::SequentialCommandGroup{
+    // Turn on the shooter limelight
+    CmdTurnOnShooterLimelight(&m_subLimelightShooter),
     // Set the shooter angle this will be upclose shooting to the upper hub
-    //CmdSetShooterAngle(&m_subShooter),
+    CmdSetShooterAngle(&m_subShooter,&m_subLimelightShooter),
     // Spin up Shooter wheels
-    //CmdSpinShooterWheels(&m_subShooter),
+    CmdSpinShooterWheels(&m_subShooter,&m_subLimelightShooter),
     // Shoot the ball
-
+    CmdIndexToShooter(&m_subIntake),
+    // Turn off shooter limelight
+    CmdTurnOffShooterLimelight(&m_subLimelightShooter),
     // Stop the shoooter wheels
     //CmdStopShooterWheels(&m_subShooter),
     
