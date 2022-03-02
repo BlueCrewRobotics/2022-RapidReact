@@ -8,7 +8,7 @@
 
 #include "RobotContainer.h"
 
-RobotContainer::RobotContainer() : m_autonomousCommand(&m_subsystem) {
+RobotContainer::RobotContainer() : m_autoAutonomous(&m_subLimelightShooter, &m_subShooter, &m_subIntake) {
   // Initialize all of your commands and subsystems here
 
   // Configure the button bindings
@@ -40,49 +40,6 @@ void RobotContainer::ConfigureButtonBindings() {
   // Way to add debouce on the buttons
   //driverController_button_b->Debounce(60_ms,frc::Debouncer::kBoth).WhileActiveContinous(new CmdSetShooterAngle(&m_subShooter));
 
-  // Autonomous commands may want to make one command class to clean up RobotContainer
-  autoRunAutonomous->WhileHeld(frc2::SequentialCommandGroup{
-    // Turn on the shooter limelight
-    CmdTurnOnShooterLimelight(&m_subLimelightShooter),
-    // Set the shooter angle this will be upclose shooting to the upper hub
-    CmdSetShooterAngle(&m_subShooter,&m_subLimelightShooter),
-    // Spin up Shooter wheels
-    CmdSpinShooterWheels(&m_subShooter,&m_subLimelightShooter),
-    // Shoot the ball
-    CmdIndexToShooter(&m_subIntake),
-    // Turn off shooter limelight
-    CmdTurnOffShooterLimelight(&m_subLimelightShooter),
-    // Stop the shoooter wheels
-    //CmdStopShooterWheels(&m_subShooter),
-    
-    // Backup up the robot
-
-    // Turn to face another alliance ball
-
-    // Extend intake
-    // CmdMoveIntake(&m_subIntake, 200.0);
-    // Spin the intake
-    // CmdSpinIntake(&m_subIntake);
-    // Turn on intake limelight. Proably don't need to turn on the limelight for the ball color
-
-    // Drive toward ball until ball is picked up
-
-    // Retract intake
-    //CmdMoveIntake(&m_subIntake, 0.0);
-    // Stop the intake
-    // CmdStopIntake(&m_subIntake);
-    // Turn the shooter to face the hub
-
-    // Turn on shooter limelight
-
-    // Acquire the target
-
-    // Shoot the ball
-
-    // Stop the shoooter wheels
-    CmdStopShooterWheels(&m_subShooter),
-    
-  });
 
   //********************************************************************************
   // Combine the CmdSpinIntake and CmdStopIntake into one command passing the speed!
@@ -96,7 +53,8 @@ void RobotContainer::ConfigureButtonBindings() {
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {
   // An example command will be run in autonomous
-  return &m_autonomousCommand;
+  //return &m_autonomousCommand;
+  return &m_autoAutonomous;
 }
 
 void RobotContainer::ConfigureDrive() {
@@ -111,16 +69,6 @@ void RobotContainer::ConfigureShooter() {
 
 void RobotContainer::ConfigureCompressor() {
   m_subPneumatics.ConfigureCompressor();
-}
-
-void RobotContainer::RunBlueCrewAutonomous() {
-  autoRunAutonomous->Set(true);
-
-}
-
-void RobotContainer::StopBlueCrewAutonomous() {
-  autoRunAutonomous->Set(false);
-
 }
 
 void RobotContainer::ConfigureIntake() {

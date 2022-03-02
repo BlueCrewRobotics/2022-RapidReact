@@ -36,6 +36,9 @@
 #include "commands/CmdIndexShooterFeeder.h"
 #include "commands/CmdIndexToShooter.h"
 
+// Auto command includes
+#include "autocommands/AutoCmdAutonomous.h"
+
 
 // Subsystem includes
 #include "subsystems/ExampleSubsystem.h"
@@ -71,20 +74,18 @@ class RobotContainer {
   void ConfigureShooter();
   // Configure intake
   void ConfigureIntake();
-
-  // Run the autonomous code
-  void RunBlueCrewAutonomous();
-  // Stop the autonomous code
-  void StopBlueCrewAutonomous();
   // Configure limelights
   void ConfigureLimelights();
 
 
 
  private:
-  // The robot's subsystems and commands are defined here...
-  ExampleSubsystem m_subsystem;
-  ExampleCommand m_autonomousCommand;
+  // The robot's commands
+  AutoCmdAutonomous m_autoAutonomous;
+
+  //ExampleSubsystem m_subsystem;
+  //ExampleCommand m_autonomousCommand;
+
 
   
   // The robot's subsystems
@@ -131,8 +132,6 @@ class RobotContainer {
   
   // Timers for automomous
   frc::Timer* autoTimer = new frc::Timer();
-  // Autonomous buttons testing if this will work
-  BC_InternalButton* autoRunAutonomous = new BC_InternalButton();
 
 
 
