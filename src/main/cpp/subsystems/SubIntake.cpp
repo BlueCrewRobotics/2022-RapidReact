@@ -44,7 +44,7 @@ void SubIntake::ConfigureIntake(){
 
     // Shooter feeder configuration
     shooterFeeder->Config_kF(0,0.0,0);
-    shooterFeeder->Config_kP(0,0.16,0); // (96%)*1023/8192
+    shooterFeeder->Config_kP(0,0.05,0); // (96%)*1023/8192
     shooterFeeder->Config_kI(0,0,0);
     shooterFeeder->Config_kD(0,0,0);
 

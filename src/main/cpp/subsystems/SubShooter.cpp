@@ -82,10 +82,10 @@ void SubShooter::SetShooterAngle(double angle) {
 }
 
 bool SubShooter::WheelsAtSpeed(double deadband) {
-    int top = topShooterMotor->GetClosedLoopError();
-    int bot = btmShooterMotor->GetClosedLoopError();
+    int top = topShooterMotor->GetClosedLoopTarget() - topShooterMotor->GetSelectedSensorVelocity();
+    int bot = btmShooterMotor->GetClosedLoopTarget() - btmShooterMotor->GetSelectedSensorVelocity();
 
-    if((top < deadband ) && (bot < deadband)){
+    if((abs(top) < deadband ) && (abs(bot) < deadband)){
         return true;
     }
     return false;

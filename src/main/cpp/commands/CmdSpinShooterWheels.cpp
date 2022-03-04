@@ -55,11 +55,11 @@ void CmdSpinShooterWheels::End(bool interrupted) {}
 
 // Returns true when the command should end.
 bool CmdSpinShooterWheels::IsFinished() {
-  if(m_subShooter->WheelsAtSpeed(1000) != true ){
-    return false;
+  if(m_subShooter->WheelsAtSpeed(1000) == true ){
+    return true;
   }
   else{
   
-    return true;
+    return false;
   }
 }
