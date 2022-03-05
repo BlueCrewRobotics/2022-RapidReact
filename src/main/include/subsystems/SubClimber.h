@@ -22,6 +22,8 @@ class SubClimber : public frc2::SubsystemBase {
   void Periodic() override;
   // Configure the falcon motors for the climber
   void ConfigureClimber();
+  //Moves climber to position
+  void MoveClimberToPosition(double position);
  
 
 

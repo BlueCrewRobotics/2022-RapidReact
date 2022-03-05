@@ -36,6 +36,9 @@
 #include "commands/CmdIndexShooterFeeder.h"
 #include "commands/CmdIndexToShooter.h"
 
+#include "commands/CmdClimberUp.h"
+#include "commands/CmdClimberDown.h"
+
 // Auto command includes
 #include "autocommands/AutoCmdAutonomous.h"
 
@@ -48,6 +51,7 @@
 #include "subsystems/SubLimelightShooter.h"
 #include "subsystems/SubLimelightIntake.h"
 #include "subsystems/SubIntake.h"
+#include "subsystems/SubClimber.h"
 
 #include "Constants.h"
 
@@ -95,6 +99,7 @@ class RobotContainer {
   SubLimelightShooter m_subLimelightShooter;
   SubLimelightIntake m_subLimelightIntake;
   SubIntake m_subIntake;
+  SubClimber m_subClimber;
   
   // Setup driver controller
   frc::Joystick *driverController = new frc::Joystick(DRIVER_CONTROLLER);
