@@ -44,7 +44,7 @@ void SubIntake::ConfigureIntake(){
 
     // Shooter feeder configuration
     shooterFeeder->Config_kF(0,0.0,0);
-    shooterFeeder->Config_kP(0,0.05,0); // (96%)*1023/8192
+    shooterFeeder->Config_kP(0,0.08,0); // (96%)*1023/8192
     shooterFeeder->Config_kI(0,0,0);
     shooterFeeder->Config_kD(0,0,0);
 
@@ -112,5 +112,14 @@ void SubIntake::SetBallCount(int ballCount) {
     }
     else{
         m_ballCount = 0;
+    }
+}
+
+bool SubIntake::IsIndexerAtPosition(double deadband) {
+    if(abs(shooterFeeder->GetClosedLoopError(0)) < deadband) {
+        return true;
+    }
+    else {
+        return false;
     }
 }

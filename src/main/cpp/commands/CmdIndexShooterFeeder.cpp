@@ -7,6 +7,7 @@
 // the WPILib BSD license file in the root directory of this project.
 
 #include "commands/CmdIndexShooterFeeder.h"
+#include <iostream>
 
 CmdIndexShooterFeeder::CmdIndexShooterFeeder(SubIntake* subIntake) : m_subIntake(subIntake){
   // Use addRequirements() here to declare subsystem dependencies.
@@ -19,19 +20,20 @@ void CmdIndexShooterFeeder::Initialize() {}
 // Called repeatedly when this Command is scheduled to run
 void CmdIndexShooterFeeder::Execute() {
   double position = m_subIntake->GetIndexerPosition();
-  if(m_subIntake->GetBallSensor()==false){
+  if(m_subIntake->GetBallSensor()==false && m_subIntake->IsIndexerAtPosition(1000)==true) {
     
       if(m_subIntake->GetBallCount() == 0) {
         position = position + 16000;
         m_subIntake->IndexShooterFeeder(position);
-        m_subIntake->SetBallCount(1);  
+        m_subIntake->SetBallCount(m_subIntake->GetBallCount()+1);  
       }
   }
-      if(m_subIntake->GetBallCount() == 1) {
+      if(m_subIntake->GetBallCount() == 1 && m_subIntake->IsIndexerAtPosition(1000)==true) {
         position = position + 1000;
         m_subIntake->IndexShooterFeeder(position);
-        m_subIntake->SetBallCount(2);  
+        m_subIntake->SetBallCount(m_subIntake->GetBallCount()+1);  
       }
+  std::cout << "BallCount Intake=  " << m_subIntake->GetBallCount() << std::endl;
 }
 
 // Called once the command ends or is interrupted.

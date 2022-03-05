@@ -110,3 +110,7 @@ void BC_FalconFX::DriveWithMotionMagic(double position) {
 	ptr_falconFX->Set(ControlMode::MotionMagic, position);
 }
 
+void BC_FalconFX::SetRamp(double ramp) {
+	ptr_falconFX->ConfigClosedloopRamp(ramp,0);
+}
+

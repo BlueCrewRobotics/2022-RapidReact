@@ -7,6 +7,7 @@
 // the WPILib BSD license file in the root directory of this project.
 
 #include "commands/CmdIndexToShooter.h"
+#include <iostream>
 
 CmdIndexToShooter::CmdIndexToShooter(SubIntake* subIntake) : m_subIntake(subIntake){
   // Use addRequirements() here to declare subsystem dependencies.
@@ -22,6 +23,8 @@ void CmdIndexToShooter::Execute() {
   position = position + 13000;
   m_subIntake->IndexShooterFeeder(position);
   m_subIntake->SetBallCount(m_subIntake->GetBallCount()-1);  
+  
+  std::cout << "BC After Shot=  " << m_subIntake->GetBallCount() << std::endl;
   
 }
 

@@ -46,6 +46,10 @@ void SubDriveTrain::DriveTrainConfigure() {
   leftDriveMotor->SetNominalPeakOutput(1);
   rightDriveMotor->SetNominalPeakOutput(1);
 
+  // Set the ramp
+  leftDriveMotor->SetRamp(0.15);
+  rightDriveMotor->SetRamp(0.15);
+
   // PID constants for Profile 0 low gear Profile 1 high gear of Talon left
   frc::SmartDashboard::PutNumber("LEFT_KF_0",LEFT_KF_0);
   frc::SmartDashboard::PutNumber("LEFT_KP_0",LEFT_KP_0);

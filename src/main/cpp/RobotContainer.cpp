@@ -26,13 +26,13 @@ void RobotContainer::ConfigureButtonBindings() {
   
   driverController_button_a->WhileHeld(frc2::ParallelCommandGroup{
     CmdTurnOnShooterLimelight(&m_subLimelightShooter), 
-    CmdAcquireShooterTarget(&m_subLimelightShooter,&m_subDriveTrain),
     CmdSetShooterAngle(&m_subShooter,&m_subLimelightShooter), 
+    CmdAcquireShooterTarget(&m_subLimelightShooter,&m_subDriveTrain),
     CmdSpinShooterWheels(&m_subShooter,&m_subLimelightShooter)});
 
   driverController_button_a->WhenReleased(frc2::SequentialCommandGroup{
     CmdTurnOffShooterLimelight(&m_subLimelightShooter),
-    CmdResetShooterAngle(&m_subShooter), // Use this to set the angle for the shot up against the fender upper hub
+    //CmdResetShooterAngle(&m_subShooter), // Use this to set the angle for the shot up against the fender upper hub
     CmdStopShooterWheels(&m_subShooter)});
 
   //driverController_button_x->WhenPressed(new CmdFeedBallToShooter(&m_subIntake)); This new command needs to be created with the Shooter Feeder

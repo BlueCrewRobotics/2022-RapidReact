@@ -45,5 +45,5 @@ class SubShooter : public frc2::SubsystemBase {
   frc::Servo* rightServo = new frc::Servo(SHOOTER_RIGHT_PWM_ADDR);
   frc::Servo* leftServo = new frc::Servo(SHOOTER_LEFT_PWN_ADDR);
 
-  double m_servoAngle = 0.5;
+  double m_servoAngle = 0.8;
 };

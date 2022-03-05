@@ -51,6 +51,8 @@ class BC_FalconFX : public virtual frc::SpeedController {
   void SetMaxSpeed(double maxSpeed);
   // Drive with motion magic
   void DriveWithMotionMagic(double position);
+  // Set ramp time
+  void SetRamp(double ramp);
   
 
 
