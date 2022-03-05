@@ -25,13 +25,13 @@ void RobotContainer::ConfigureButtonBindings() {
   driverController_button_lbump->WhenPressed(CmdShiftGear(&m_subDriveTrain));
   
   driverController_button_a->WhileHeld(frc2::ParallelCommandGroup{
-    CmdTurnOnShooterLimelight(&m_subLimelightShooter), // Once limelight is functional use this to turn on LEDS
-    CmdAcquireShooterTarget(&m_subLimelightShooter,&m_subDriveTrain), // Once limelight is functional work on the targeting command
-    CmdSetShooterAngle(&m_subShooter,&m_subLimelightShooter), // Angle is set in CmdAcquireShooterTarget
+    CmdTurnOnShooterLimelight(&m_subLimelightShooter), 
+    CmdAcquireShooterTarget(&m_subLimelightShooter,&m_subDriveTrain),
+    CmdSetShooterAngle(&m_subShooter,&m_subLimelightShooter), 
     CmdSpinShooterWheels(&m_subShooter,&m_subLimelightShooter)});
 
   driverController_button_a->WhenReleased(frc2::SequentialCommandGroup{
-    CmdTurnOffShooterLimelight(&m_subLimelightShooter), // Once limelight is functional use this to turn off LEDS
+    CmdTurnOffShooterLimelight(&m_subLimelightShooter),
     CmdResetShooterAngle(&m_subShooter), // Use this to set the angle for the shot up against the fender upper hub
     CmdStopShooterWheels(&m_subShooter)});
 
