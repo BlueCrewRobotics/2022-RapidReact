@@ -107,3 +107,7 @@ constexpr int SHOOTER_LEFT_PWN_ADDR = 1;
 constexpr int INTAKE_SPINNER_ADDR = 15;
 constexpr int INTAKE_SHOOTER_FEEDER_ADDR = 16;
 constexpr int INTAKE_POSITIONER_ADDR = 17;
+
+// Climber Configuration
+constexpr int CLIMBER_MAIN_ADDR = 18;
+constexpr int CLIMBER_SECONDARY_ADDR = 19;
