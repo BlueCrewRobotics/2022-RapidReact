@@ -125,3 +125,11 @@ bool SubIntake::IsIndexerAtPosition(double deadband) {
         return false;
     }
 }
+
+void SubIntake::SetBeamStatus(bool broken){
+    m_beamHasBroken = broken;
+}
+
+bool SubIntake::GetBeamStatus(){
+    return m_beamHasBroken;
+}

@@ -38,8 +38,12 @@ class SubIntake : public frc2::SubsystemBase {
   bool GetBallSensor();
   // Get the ball count
   int GetBallCount();
+  //Gets the staus of the beam; true=broken
+  bool GetBeamStatus();
   // Set the ball count
   void SetBallCount(int ballCount);
+  //Sets the status of the beam; true=broken
+  void SetBeamStatus(bool broken);
   // Is indexer at position
   bool IsIndexerAtPosition(double deadband);
   
@@ -53,6 +57,7 @@ class SubIntake : public frc2::SubsystemBase {
 
   double m_indexPosition;
   int m_ballCount = 1;
+  bool m_beamHasBroken = false;
   
   // Sets up break sensors
   frc::DigitalInput* m_ballDetector = new frc::DigitalInput(0);
