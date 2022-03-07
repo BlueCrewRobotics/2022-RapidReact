@@ -8,7 +8,7 @@
 
 #include "RobotContainer.h"
 
-RobotContainer::RobotContainer() : m_autoAutonomous(&m_subLimelightShooter, &m_subShooter, &m_subIntake) {
+RobotContainer::RobotContainer() : m_autoAutonomous(&m_subLimelightShooter, &m_subShooter, &m_subIntake, &m_subDriveTrain) {
   // Initialize all of your commands and subsystems here
 
   // Configure the button bindings

@@ -114,3 +114,8 @@ void BC_FalconFX::SetRamp(double ramp) {
 	ptr_falconFX->ConfigClosedloopRamp(ramp,0);
 }
 
+void BC_FalconFX::ConfigureMotionMagic() {
+	ptr_falconFX->ConfigMotionAcceleration(2048,0);
+	ptr_falconFX->ConfigMotionCruiseVelocity(2048,0);
+}
+

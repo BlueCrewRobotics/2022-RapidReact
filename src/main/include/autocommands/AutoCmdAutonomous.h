@@ -25,6 +25,9 @@
 #include "commands/CmdIndexShooterFeeder.h"
 #include "commands/CmdIndexToShooter.h"
 
+// Autonomous commands
+#include "autocommands/AutoCmdDrive.h"
+
 
 // Subsystem includes
 #include "subsystems/ExampleSubsystem.h"
@@ -38,5 +41,5 @@
 class AutoCmdAutonomous
     : public frc2::CommandHelper<frc2::SequentialCommandGroup, AutoCmdAutonomous> {
  public:
-  AutoCmdAutonomous(SubLimelightShooter* subLimelightShooter, SubShooter* subShooter, SubIntake* subIntake);
+  AutoCmdAutonomous(SubLimelightShooter* subLimelightShooter, SubShooter* subShooter, SubIntake* subIntake, SubDriveTrain* subDriveTrain);
 };

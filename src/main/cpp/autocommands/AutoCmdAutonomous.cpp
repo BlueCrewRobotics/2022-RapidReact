@@ -7,7 +7,7 @@
 // NOTE:  Consider using this command inline, rather than writing a subclass.
 // For more information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-AutoCmdAutonomous::AutoCmdAutonomous(SubLimelightShooter* subLimelightShooter,  SubShooter* subShooter, SubIntake* subIntake) {
+AutoCmdAutonomous::AutoCmdAutonomous(SubLimelightShooter* subLimelightShooter,  SubShooter* subShooter, SubIntake* subIntake, SubDriveTrain* subDriveTrain) {
   // Add your commands here, e.g.
   // AddCommands(FooCommand(), BarCommand());
   AddCommands(
@@ -22,10 +22,9 @@ AutoCmdAutonomous::AutoCmdAutonomous(SubLimelightShooter* subLimelightShooter,  
     // Turn off shooter limelight
     CmdTurnOffShooterLimelight(subLimelightShooter),
     // Stop the shoooter wheels
-    //CmdStopShooterWheels(&m_subShooter),
-    
+    CmdStopShooterWheels(subShooter),
     // Backup up the robot
-
+    AutoCmdDrive(subDriveTrain,1,1),
     // Turn to face another alliance ball
 
     // Extend intake

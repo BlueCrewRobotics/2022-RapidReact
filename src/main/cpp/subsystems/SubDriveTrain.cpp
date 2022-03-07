@@ -50,6 +50,10 @@ void SubDriveTrain::DriveTrainConfigure() {
   leftDriveMotor->SetRamp(0.15);
   rightDriveMotor->SetRamp(0.15);
 
+  // Setup Motion acceleration and velocity
+  leftDriveMotor->ConfigureMotionMagic();
+  rightDriveMotor->ConfigureMotionMagic();
+
   // PID constants for Profile 0 low gear Profile 1 high gear of Talon left
   frc::SmartDashboard::PutNumber("LEFT_KF_0",LEFT_KF_0);
   frc::SmartDashboard::PutNumber("LEFT_KP_0",LEFT_KP_0);
@@ -151,6 +155,9 @@ void SubDriveTrain::SetMotorCooling(bool cool) {
 }
 
 void SubDriveTrain::AutonomousDriving(double leftrotations, double rightrotations) {
+  leftrotations = leftrotations * 2048;
+  rightrotations = rightrotations * 2048;
+
   leftDriveMotor->DriveWithMotionMagic(leftrotations);
   rightDriveMotor->DriveWithMotionMagic(rightrotations);
 }

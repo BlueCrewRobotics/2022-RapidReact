@@ -78,6 +78,12 @@ void SubShooter::SpinUpWheels(double topSpeed, double btmSpeed) {
 }
 
 void SubShooter::SetShooterAngle(double angle) {
+    if( angle > 1) {
+        angle = 1;
+    }
+    if( angle < 0) {
+        angle = 0;
+    }
     m_servoAngle = angle;
 }
 
