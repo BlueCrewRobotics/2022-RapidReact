@@ -42,10 +42,6 @@ void CmdIndexShooterFeeder::End(bool interrupted) {}
 // Returns true when the command should end.
 bool CmdIndexShooterFeeder::IsFinished() {
   
-  if(m_subIntake->GetBallSensor()==true) {
-    return true;
-  }
-  if(m_subIntake->GetBallSensor()==false) {
-    return false;
-  }
+  return m_subIntake->GetBallSensor();
+
 }
