@@ -37,7 +37,7 @@ constexpr double DRIVE_RAMP_TIME = 0.05;
 constexpr int VELOCITY_MAX = 21000;
 constexpr int VELOCITY_SP_MAX_HG = 21000;  // Maximum velocity in actual high gear
 constexpr int VELOCITY_SP_MAX_LG = 21000;  // Maximum velocity in actual low gear
-constexpr int VELOCITY_SP_MAX_LL = 5000;   // Maximum velocity in low low virtual gear
+constexpr int VELOCITY_SP_MAX_LL = 10000;   // Maximum velocity in low low virtual gear
 
 
 // PID constants PID[0] Used for low speed right side

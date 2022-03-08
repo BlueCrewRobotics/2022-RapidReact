@@ -22,6 +22,15 @@ void CmdDriveWithController::Initialize() {}
 void CmdDriveWithController::Execute() {
 
   double speed;
+
+  if(m_driverController->GetRawButton(BUTTON_B)==1) {
+    m_driveTrain->SetMaxSpeed(VELOCITY_SP_MAX_LL);
+  }
+  else {
+    m_driveTrain->SetMaxSpeed(VELOCITY_SP_MAX_LG);
+
+  }
+
   if(m_driverController->GetRawAxis(AXIS_L_TRIG) > 0)
   {
     speed = -1*m_driverController->GetRawAxis(AXIS_L_TRIG);
