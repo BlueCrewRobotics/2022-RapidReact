@@ -11,6 +11,7 @@
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
 #include "subsystems/SubIntake.h"
+#include "subsystems/SubShooter.h"
 
 /**
  * An example command.
@@ -22,7 +23,7 @@
 class CmdIndexToShooter
     : public frc2::CommandHelper<frc2::CommandBase, CmdIndexToShooter> {
  public:
-  explicit CmdIndexToShooter(SubIntake* subIntake);
+  explicit CmdIndexToShooter(SubIntake* subIntake,SubShooter* subShooter);
 
   void Initialize() override;
 
@@ -34,5 +35,6 @@ class CmdIndexToShooter
 
  private:
   SubIntake* m_subIntake;
+  SubShooter* m_subShooter;
   
 };

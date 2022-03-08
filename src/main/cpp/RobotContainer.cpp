@@ -47,7 +47,7 @@ void RobotContainer::ConfigureButtonBindings() {
   driverController_button_y->WhileHeld(frc2::SequentialCommandGroup( CmdSpinIntake(&m_subIntake), CmdMoveIntake(&m_subIntake, 5600.0), CmdIndexShooterFeeder(&m_subIntake)));
   driverController_button_y->WhenInactive(frc2::SequentialCommandGroup( CmdStopIntake(&m_subIntake),CmdMoveIntake(&m_subIntake, 0.0)));
   
-  driverController_button_x->WhenPressed(CmdIndexToShooter(&m_subIntake));
+  driverController_button_x->WhenPressed(CmdIndexToShooter(&m_subIntake,&m_subShooter));
 
 }
 

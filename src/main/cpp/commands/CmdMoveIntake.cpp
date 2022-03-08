@@ -7,6 +7,7 @@
 // the WPILib BSD license file in the root directory of this project.
 
 #include "commands/CmdMoveIntake.h"
+#include "subsystems/SubIntake.h"
 
 CmdMoveIntake::CmdMoveIntake(SubIntake *subIntake, double position) : m_subIntake(subIntake)
 {
@@ -21,8 +22,9 @@ void CmdMoveIntake::Initialize() {}
 // Called repeatedly when this Command is scheduled to run
 void CmdMoveIntake::Execute()
 {
-  // Move the intake to the home position
-  m_subIntake->MoveIntakeToPosition(m_position);
+  // Move the intake to the position
+  
+      m_subIntake->MoveIntakeToPosition(m_position);
 }
 
 // Called once the command ends or is interrupted.

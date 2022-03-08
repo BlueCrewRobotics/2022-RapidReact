@@ -11,6 +11,20 @@ AutoCmdAutonomous::AutoCmdAutonomous(SubLimelightShooter* subLimelightShooter,  
   // Add your commands here, e.g.
   // AddCommands(FooCommand(), BarCommand());
   AddCommands(
+    // Extend intake
+    CmdMoveIntake(subIntake, 5600.0),
+    // Spin the intake
+    CmdSpinIntake(subIntake),
+    // Turn on intake limelight. Proably don't need to turn on the limelight for the ball color
+
+    // Drive toward ball until ball is picked up
+    AutoCmdDrive(subDriveTrain,1,1),
+    // Retract intake
+    CmdMoveIntake(subIntake, 0.0),
+    // Stop the intake
+    CmdStopIntake(subIntake),
+    // Backup up the robot
+    AutoCmdDrive(subDriveTrain,-1,-1),
     // Turn on the shooter limelight
     CmdTurnOnShooterLimelight(subLimelightShooter),
     // Set the shooter angle this will be upclose shooting to the upper hub
@@ -18,27 +32,14 @@ AutoCmdAutonomous::AutoCmdAutonomous(SubLimelightShooter* subLimelightShooter,  
     // Spin up Shooter wheels
     CmdSpinShooterWheels(subShooter, subLimelightShooter),
     // Shoot the ball
-    CmdIndexToShooter(subIntake),
+    CmdIndexToShooter(subIntake,subShooter),
     // Turn off shooter limelight
     CmdTurnOffShooterLimelight(subLimelightShooter),
     // Stop the shoooter wheels
     CmdStopShooterWheels(subShooter),
-    // Backup up the robot
-    AutoCmdDrive(subDriveTrain,1,1),
     // Turn to face another alliance ball
 
-    // Extend intake
-    // CmdMoveIntake(&m_subIntake, 200.0);
-    // Spin the intake
-    // CmdSpinIntake(&m_subIntake);
-    // Turn on intake limelight. Proably don't need to turn on the limelight for the ball color
-
-    // Drive toward ball until ball is picked up
-
-    // Retract intake
-    //CmdMoveIntake(&m_subIntake, 0.0);
-    // Stop the intake
-    // CmdStopIntake(&m_subIntake);
+    
     // Turn the shooter to face the hub
 
     // Turn on shooter limelight

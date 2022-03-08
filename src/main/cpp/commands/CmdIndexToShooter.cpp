@@ -9,7 +9,7 @@
 #include "commands/CmdIndexToShooter.h"
 #include <iostream>
 
-CmdIndexToShooter::CmdIndexToShooter(SubIntake* subIntake) : m_subIntake(subIntake){
+CmdIndexToShooter::CmdIndexToShooter(SubIntake* subIntake,SubShooter* subShooter) : m_subIntake(subIntake),m_subShooter(subShooter){
   // Use addRequirements() here to declare subsystem dependencies.
   //AddRequirements(subIntake);
 }
@@ -20,11 +20,13 @@ void CmdIndexToShooter::Initialize() {}
 // Called repeatedly when this Command is scheduled to run
 void CmdIndexToShooter::Execute() {
   double position = m_subIntake->GetIndexerPosition();
-  position = position + 13000;
-  m_subIntake->IndexShooterFeeder(position);
-  m_subIntake->SetBallCount(m_subIntake->GetBallCount()-1);  
-  
+  if(m_subShooter->WheelsAtSpeed(1000)==true){
+    position = position + 13000;
+    m_subIntake->IndexShooterFeeder(position);
+    m_subIntake->SetBallCount(m_subIntake->GetBallCount()-1);  
+  }
   std::cout << "BC After Shot=  " << m_subIntake->GetBallCount() << std::endl;
+
   
 }
 
