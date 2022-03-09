@@ -32,10 +32,10 @@ void SubClimber::ConfigureClimber() {
     mainClimber->Config_kI(0,0.00, 0);
     mainClimber->Config_kD(0,0.00, 0);
 
-    mainClimber->ConfigForwardSoftLimitThreshold(100,0);
-    mainClimber->ConfigReverseSoftLimitThreshold(0,0);
-    mainClimber->ConfigForwardSoftLimitEnable(true,0);
-    mainClimber->ConfigReverseSoftLimitEnable(true,0);
+    mainClimber->ConfigForwardSoftLimitThreshold(100,0); //Limit how hight the climber can go
+    mainClimber->ConfigReverseSoftLimitThreshold(0,0); // Limit how low the climber can go
+    mainClimber->ConfigForwardSoftLimitEnable(true,0); //Enables the high limit
+    mainClimber->ConfigReverseSoftLimitEnable(true,0); // Enables low limit
 
     mainClimber->SelectProfileSlot(0, 0);
     mainClimber->ConfigNominalOutputForward(0, 0);

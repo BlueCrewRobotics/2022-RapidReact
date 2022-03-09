@@ -18,7 +18,7 @@ void CmdTurnOnShooterLimelight::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
 void CmdTurnOnShooterLimelight::Execute() {
-  m_subLimelightShooter->SetLEDState(3);
+  m_subLimelightShooter->SetLEDState(3); // Turns on limelights
 }
 
 // Called once the command ends or is interrupted.
