@@ -8,8 +8,8 @@
 
 #include "commands/CmdDriveWithController.h"
 
-CmdDriveWithController::CmdDriveWithController(SubDriveTrain* driveTrain, frc::Joystick *driverController ) 
-  : m_driveTrain{driveTrain}, m_driverController{driverController} {
+CmdDriveWithController::CmdDriveWithController(SubDriveTrain* driveTrain, frc::Joystick *driverController, SubLimelightIntake* subLimelightIntake) 
+  : m_driveTrain{driveTrain}, m_driverController{driverController}, m_subLimelightIntake(subLimelightIntake) {
   // Use addRequirements() here to declare subsystem dependencies.
   AddRequirements(driveTrain);
 
@@ -23,6 +23,7 @@ void CmdDriveWithController::Execute() {
 
   double speed;
 
+  // This sets up the virtual low gear
   if(m_driverController->GetRawButton(BUTTON_B)==1) {
     m_driveTrain->SetMaxSpeed(VELOCITY_SP_MAX_LL);
   }
@@ -31,6 +32,7 @@ void CmdDriveWithController::Execute() {
 
   }
 
+  // This is controlling the speed of the drive train
   if(m_driverController->GetRawAxis(AXIS_L_TRIG) > 0)
   {
     speed = -1*m_driverController->GetRawAxis(AXIS_L_TRIG);
@@ -40,15 +42,44 @@ void CmdDriveWithController::Execute() {
     speed = m_driverController->GetRawAxis(AXIS_R_TRIG);
   }
 
+  // This is the steering section of the drive train
   double rotation;
-  if(m_driveTrain->GetDriveTrainGear()==false) {
-    rotation = m_driverController->GetRawAxis(AXIS_LX)*0.8;
-  }
-  else {
-    rotation = m_driverController->GetRawAxis(AXIS_LX)*0.4;
+
+  if(m_driverController->GetRawButton(BUTTON_R_BUMP)==1){
+    double hTargetPosition;
+    double hTargetAngle;
+
+    double gain = 0.5;
+    double offset = 0;
+
+    if(m_subLimelightIntake->GetTarget()==true)
+    {
+      // Get the robots horizontal offset from the ball center
+      hTargetAngle = m_subLimelightIntake->GetHorizontalOffset();
+
+      // Normalize the horizontal position to the ball
+      hTargetPosition = (-1*(hTargetAngle/29.8))*gain;
+
+      // Rotate the drive train to point at the ball
+      rotation = -hTargetPosition;
+      
+    }
+    else {
+        if(m_driveTrain->GetDriveTrainGear()==false) {
+          rotation = m_driverController->GetRawAxis(AXIS_LX)*0.8;
+        }
+        else {
+          rotation = m_driverController->GetRawAxis(AXIS_LX)*0.4;
+        }
+    }
+  
   }
 
+
+
+  // This acrually drives the drive train
   m_driveTrain->Drive(speed, rotation);
+  // This turns on motor cooling if set to true
   m_driveTrain->SetMotorCooling(false);
 
 }

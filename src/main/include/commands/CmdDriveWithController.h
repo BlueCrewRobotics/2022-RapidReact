@@ -10,6 +10,7 @@
 
 #include "subsystems/SubDriveTrain.h"
 #include <frc/Joystick.h>
+#include "subsystems/SubLimelightIntake.h"
 
 /**
  * An example command.
@@ -21,7 +22,7 @@
 class CmdDriveWithController
     : public frc2::CommandHelper<frc2::CommandBase, CmdDriveWithController> {
  public:
-  CmdDriveWithController(SubDriveTrain* driveTrain, frc::Joystick *driverController );
+  CmdDriveWithController(SubDriveTrain* driveTrain, frc::Joystick *driverController, SubLimelightIntake* subLimelightIntake);
 
   void Initialize() override;
 
@@ -34,5 +35,6 @@ class CmdDriveWithController
  private:
   SubDriveTrain* m_driveTrain;
   frc::Joystick* m_driverController;
+  SubLimelightIntake* m_subLimelightIntake;
 
 };

@@ -15,7 +15,7 @@ RobotContainer::RobotContainer() : m_autoAutonomous(&m_subLimelightShooter, &m_s
   ConfigureButtonBindings();
 
   // Set the default command for the Drive Train
-  m_subDriveTrain.SetDefaultCommand(CmdDriveWithController(&m_subDriveTrain, driverController));
+  m_subDriveTrain.SetDefaultCommand(CmdDriveWithController(&m_subDriveTrain, driverController, &m_subLimelightIntake));
 }
 
 void RobotContainer::ConfigureButtonBindings() {
