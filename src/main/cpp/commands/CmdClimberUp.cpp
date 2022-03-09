@@ -20,7 +20,7 @@ void CmdClimberUp::Initialize() {}
 // Called repeatedly when this Command is scheduled to run
 void CmdClimberUp::Execute()
 {
-  // Move the intake to the home position
+  // Move Climber to set position
   m_subClimber->MoveClimberToPosition(200);
 }
 

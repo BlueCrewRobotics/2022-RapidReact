@@ -25,10 +25,10 @@ void CmdSetShooterAngle::Execute() {
   double angle;
   double angleNormalized;  // Normalized for servo control
 
-
-  hDistanceToTarget = m_subLimelightShooter->GetDistanceToTarget();
-  hDistanceToTarget = hDistanceToTarget + 2;
-  
+ 
+    hDistanceToTarget = m_subLimelightShooter->GetDistanceToTarget();
+    hDistanceToTarget = hDistanceToTarget + 2;
+    
   // Change the shooter servos to point at the target
   angle = -1.74 * hDistanceToTarget + 89.73;
   angleNormalized = angle / 20 - 3.5;

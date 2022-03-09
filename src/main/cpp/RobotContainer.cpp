@@ -49,6 +49,13 @@ void RobotContainer::ConfigureButtonBindings() {
   
   driverController_button_x->WhenPressed(CmdIndexToShooter(&m_subIntake,&m_subShooter));
 
+
+
+  //auxController_button_a->WhenPressed
+  auxController_button_select->WhenPressed(CmdClimberUp(&m_subClimber));
+  auxController_button_start->WhenPressed(CmdClimberDown(&m_subClimber));
+
+
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {
