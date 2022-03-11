@@ -39,6 +39,7 @@
 
 #include "commands/CmdClimberUp.h"
 #include "commands/CmdClimberDown.h"
+#include "commands/CmdClimberStop.h"
 
 // Auto command includes
 #include "autocommands/AutoCmdAutonomous.h"
@@ -81,6 +82,8 @@ class RobotContainer {
   void ConfigureIntake();
   // Configure limelights
   void ConfigureLimelights();
+  // Configure climber
+  void ConfigureClimber();
 
 
 
@@ -137,9 +140,7 @@ class RobotContainer {
 
   
   // Timers for automomous
-  frc::Timer* autoTimer = new frc::Timer();
-
-
+  frc::Timer autoTimer;
 
   void ConfigureButtonBindings();
 };

@@ -27,13 +27,13 @@ void CmdSetShooterAngle::Execute() {
 
  
     hDistanceToTarget = m_subLimelightShooter->GetDistanceToTarget();
-    hDistanceToTarget = hDistanceToTarget + 2;
+    hDistanceToTarget = hDistanceToTarget + 1.5;
     
   // Change the shooter servos to point at the target
-  angle = -1.74 * hDistanceToTarget + 89.73;
-  angleNormalized = angle / 20 - 3.5;
-  m_subShooter->SetShooterAngle(angleNormalized);
-  std::cout << "Servo Angle= " << angleNormalized << std::endl;
+  angle = -0.09 * hDistanceToTarget + 1.09;
+  //angleNormalized = angle / 89.73;
+  m_subShooter->SetShooterAngle(angle);
+  std::cout << "Servo Angle= " << angle << std::endl;
   std::cout << "SA-Distance= " << hDistanceToTarget << std::endl;
 
 }

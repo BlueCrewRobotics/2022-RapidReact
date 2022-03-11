@@ -27,6 +27,7 @@
 
 // Autonomous commands
 #include "autocommands/AutoCmdDrive.h"
+#include "autocommands/AutoCmdTimer.h"
 
 
 // Subsystem includes
@@ -41,5 +42,5 @@
 class AutoCmdAutonomous
     : public frc2::CommandHelper<frc2::SequentialCommandGroup, AutoCmdAutonomous> {
  public:
-  AutoCmdAutonomous(SubLimelightShooter* subLimelightShooter, SubShooter* subShooter, SubIntake* subIntake, SubDriveTrain* subDriveTrain);
+  AutoCmdAutonomous(SubLimelightShooter* subLimelightShooter, SubShooter* subShooter, SubIntake* subIntake, SubDriveTrain* subDriveTrain, frc::Timer* timer);
 };

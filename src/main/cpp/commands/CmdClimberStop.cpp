@@ -6,27 +6,29 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-#include "commands/CmdClimberDown.h"
+#include "commands/CmdClimberStop.h"
 
-CmdClimberDown::CmdClimberDown(SubClimber* subClimber) : m_subClimber(subClimber) {
+CmdClimberStop::CmdClimberStop(SubClimber *SubClimber) : m_subClimber(SubClimber)
+{
   // Use addRequirements() here to declare subsystem dependencies.
-  AddRequirements(subClimber);
+  AddRequirements(SubClimber);
 }
 
 // Called when the command is initially scheduled.
-void CmdClimberDown::Initialize() {}
+void CmdClimberStop::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
-void CmdClimberDown::Execute() {
-  // Move the Climber to the home position
-  m_subClimber->MoveClimber(-0.9);
-
+void CmdClimberStop::Execute()
+{
+  // Move Climber to set position
+  m_subClimber->MoveClimber(0);
 }
 
 // Called once the command ends or is interrupted.
-void CmdClimberDown::End(bool interrupted) {}
+void CmdClimberStop::End(bool interrupted) {}
 
 // Returns true when the command should end.
-bool CmdClimberDown::IsFinished() {
+bool CmdClimberStop::IsFinished()
+{
   return true;
 }

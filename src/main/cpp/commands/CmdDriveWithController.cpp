@@ -45,7 +45,7 @@ void CmdDriveWithController::Execute() {
   // This is the steering section of the drive train
   double rotation;
 
-  if(m_driverController->GetRawButton(BUTTON_R_BUMP)==1){
+/*  if(m_driverController->GetRawButton(BUTTON_R_BUMP)==1){
     double hTargetPosition;
     double hTargetAngle;
 
@@ -73,7 +73,14 @@ void CmdDriveWithController::Execute() {
         }
     }
   
-  }
+  }*/
+
+  if(m_driveTrain->GetDriveTrainGear()==false) {
+      rotation = m_driverController->GetRawAxis(AXIS_LX)*0.8;
+   }
+   else {
+      rotation = m_driverController->GetRawAxis(AXIS_LX)*0.4;
+   }
 
 
 

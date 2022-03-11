@@ -23,8 +23,8 @@ void CmdSpinShooterWheels::Execute() {
   double topShooterSpeed = 13152.52;  //20731
   double btmShooterSpeed = 13152.52; 
   // Offset for slowing wheels when shooting
-  double topShooterOffset = 5000;
-  double btmShooterOffset = 5000;
+  double topShooterOffset = 2500;
+  double btmShooterOffset = 2500;
 
   if(m_subLimelightShooter->GetTarget()==true){
     // Get the distance to the target in ft

@@ -23,7 +23,7 @@ void SubClimber::Periodic() {
 void SubClimber::ConfigureClimber() {
 
     // Configure the top shooter Falcon motor
-    mainClimber->SetInverted(ctre::phoenix::motorcontrol::TalonFXInvertType::CounterClockwise);
+    mainClimber->SetInverted(ctre::phoenix::motorcontrol::TalonFXInvertType::Clockwise);
     mainClimber->ConfigSelectedFeedbackSensor(FeedbackDevice::IntegratedSensor);
     mainClimber->ConfigClosedloopRamp(0.0,0);
 
@@ -32,8 +32,8 @@ void SubClimber::ConfigureClimber() {
     mainClimber->Config_kI(0,0.00, 0);
     mainClimber->Config_kD(0,0.00, 0);
 
-    mainClimber->ConfigForwardSoftLimitThreshold(100,0); //Limit how hight the climber can go
-    mainClimber->ConfigReverseSoftLimitThreshold(0,0); // Limit how low the climber can go
+    mainClimber->ConfigForwardSoftLimitThreshold(730000,0); //Limit how hieght the climber can go
+    mainClimber->ConfigReverseSoftLimitThreshold(2000,0); // Limit how low the climber can go
     mainClimber->ConfigForwardSoftLimitEnable(true,0); //Enables the high limit
     mainClimber->ConfigReverseSoftLimitEnable(true,0); // Enables low limit
 
@@ -43,10 +43,10 @@ void SubClimber::ConfigureClimber() {
     mainClimber->ConfigPeakOutputForward(1, 0);
     mainClimber->ConfigPeakOutputReverse(-1, 0);
 
-    mainClimber->ConfigStatorCurrentLimit(StatorCurrentLimitConfiguration(true,10,15,100));
+    mainClimber->ConfigStatorCurrentLimit(StatorCurrentLimitConfiguration(false,10,15,100));
     mainClimber->ConfigSupplyCurrentLimit(SupplyCurrentLimitConfiguration(true,10,15,100));
 
-    mainClimber->SetNeutralMode(NeutralMode::Coast);
+    mainClimber->SetNeutralMode(NeutralMode::Brake);
 
 
 
@@ -54,9 +54,9 @@ void SubClimber::ConfigureClimber() {
 }
 
 
-void SubClimber::MoveClimberToPosition(double position) {
+void SubClimber::MoveClimber(double output) {
 
-    mainClimber->Set(ControlMode::Position,position);
+    mainClimber->Set(ControlMode::PercentOutput, output);
 }
 
 

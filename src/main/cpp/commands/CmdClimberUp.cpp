@@ -21,7 +21,7 @@ void CmdClimberUp::Initialize() {}
 void CmdClimberUp::Execute()
 {
   // Move Climber to set position
-  m_subClimber->MoveClimberToPosition(200);
+  m_subClimber->MoveClimber(0.9);
 }
 
 // Called once the command ends or is interrupted.

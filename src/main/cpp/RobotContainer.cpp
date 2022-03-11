@@ -8,7 +8,7 @@
 
 #include "RobotContainer.h"
 
-RobotContainer::RobotContainer() : m_autoAutonomous(&m_subLimelightShooter, &m_subShooter, &m_subIntake, &m_subDriveTrain) {
+RobotContainer::RobotContainer() : m_autoAutonomous(&m_subLimelightShooter, &m_subShooter, &m_subIntake, &m_subDriveTrain,&autoTimer) {
   // Initialize all of your commands and subsystems here
 
   // Configure the button bindings
@@ -52,9 +52,10 @@ void RobotContainer::ConfigureButtonBindings() {
 
 
   //auxController_button_a->WhenPressed
-  auxController_button_select->WhenPressed(CmdClimberUp(&m_subClimber));
-  auxController_button_start->WhenPressed(CmdClimberDown(&m_subClimber));
-
+  auxController_button_rbump->WhileHeld(CmdClimberUp(&m_subClimber));
+  auxController_button_rbump->WhenReleased(CmdClimberStop(&m_subClimber));
+  auxController_button_lbump->WhileHeld(CmdClimberDown(&m_subClimber));
+  auxController_button_lbump->WhenReleased(CmdClimberStop(&m_subClimber));
 
 }
 
@@ -86,4 +87,8 @@ void RobotContainer::ConfigureLimelights() {
   m_subLimelightShooter.SetLEDState(1.0);
   m_subLimelightIntake.SetLEDState(1.0);
   
+}
+
+void RobotContainer::ConfigureClimber() {
+  m_subClimber.ConfigureClimber();
 }

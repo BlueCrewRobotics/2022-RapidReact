@@ -37,18 +37,18 @@ constexpr double DRIVE_RAMP_TIME = 0.05;
 constexpr int VELOCITY_MAX = 21000;
 constexpr int VELOCITY_SP_MAX_HG = 21000;  // Maximum velocity in actual high gear
 constexpr int VELOCITY_SP_MAX_LG = 21000;  // Maximum velocity in actual low gear
-constexpr int VELOCITY_SP_MAX_LL = 10000;   // Maximum velocity in low low virtual gear
+constexpr int VELOCITY_SP_MAX_LL = 5000;   // Maximum velocity in low low virtual gear
 
 
 // PID constants PID[0] Used for low speed right side
-constexpr double RIGHT_KF_0 = 0.13;  // Kf = ((percent of output used for control)*1023) / (max encoder units)/100ms
-constexpr double RIGHT_KP_0 = 0.0;  // Kp = ((percent of output used for control)*1023) / Error
+constexpr double RIGHT_KF_0 = 0.07; // 0.13;  // Kf = ((percent of output used for control)*1023) / (max encoder units)/100ms
+constexpr double RIGHT_KP_0 = 0.286;  // Kp = ((percent of output used for control)*1023) / Error
 constexpr double RIGHT_KI_0 = 0.0;
 constexpr double RIGHT_KD_0 = 0.0;
 
 // PID constants PID[0] Used for low speed right side
-constexpr double LEFT_KF_0 = 0.13; // Kf = ((percent of output used for control)*1023) / (max encoder units)/100ms
-constexpr double LEFT_KP_0 = 0.0; // Kp = ((percent of output used for control)*1023) / Error
+constexpr double LEFT_KF_0 = 0.0465; //0.13; // Kf = ((percent of output used for control)*1023) / (max encoder units)/100ms
+constexpr double LEFT_KP_0 = 0.123; // Kp = ((percent of output used for control)*1023) / Error
 constexpr double LEFT_KI_0 = 0.0;
 constexpr double LEFT_KD_0 = 0;
 

@@ -25,25 +25,32 @@ void CmdIndexShooterFeeder::Execute() {
   //beamHasBroken returns to false, ready for ball 2. The main purpose of beamHasBroken is to help
   //further prevent double counting
   
+  /*m_subIntake->GetBeamStatus() == false && */
 
-  if(m_subIntake->GetBeamStatus() == false && m_subIntake->GetBallSensor()==false && m_subIntake->GetBallCount() == 0 && m_subIntake->IsIndexerAtPosition(600) == true ) {
+  std::cout << "Ball Sensor=" << m_subIntake->GetBallSensor() << " Ball Count=" << m_subIntake->GetBallCount() << " Error=" << m_subIntake->IsIndexerAtPosition(600)<< std::endl;
+
+  if(m_subIntake->GetBallSensor()==false && m_subIntake->GetBallCount() == 0 /*&& m_subIntake->IsIndexerAtPosition(1000) == true*/ ) {
       position = position + 13000;
       m_subIntake->IndexShooterFeeder(position);
-      m_subIntake->SetBeamStatus(true);
-      //m_subIntake->SetBallCount(m_subIntake->GetBallCount()+1);
+      //m_subIntake->SetBeamStatus(true);
+      m_subIntake->SetBallCount(m_subIntake->GetBallCount()+1);
       //std::cout << "BC 1 Intake=  " << m_subIntake->GetBallCount() << std::endl;
   }
-  if(m_subIntake->GetBeamStatus() == false && m_subIntake->GetBallSensor()==false && m_subIntake->GetBallCount() == 1 && m_subIntake->IsIndexerAtPosition(600) == true ) {
+  
+  if(m_subIntake->GetBallSensor()==false && m_subIntake->GetBallCount() == 1 /*&& m_subIntake->IsIndexerAtPosition(1000) == true*/ ) {
       position = position + 1000;
       m_subIntake->IndexShooterFeeder(position);
-      m_subIntake->SetBeamStatus(true);
-      //m_subIntake->SetBallCount(m_subIntake->GetBallCount()+1);  
+      //m_subIntake->SetBeamStatus(true);
+      m_subIntake->SetBallCount(m_subIntake->GetBallCount()+1);  
       //std::cout << "BC 2 Intake=  " << m_subIntake->GetBallCount() << std::endl;
-    }
-  if(m_subIntake->GetBeamStatus()==true && m_subIntake->GetBallSensor()==true){
+  }
+
+  /*m_subIntake->GetBeamStatus() == false && */
+
+/*  if(m_subIntake->GetBeamStatus()==true && m_subIntake->GetBallSensor()==true){
       m_subIntake->SetBallCount(m_subIntake->GetBallCount()+1);
       m_subIntake->SetBeamStatus(false);
-  }
+  }*/
 }
 
 // Called once the command ends or is interrupted.
@@ -51,6 +58,7 @@ void CmdIndexShooterFeeder::End(bool interrupted) {}
 
 // Returns true when the command should end.
 bool CmdIndexShooterFeeder::IsFinished() {
+  
   
   return m_subIntake->GetBallSensor();
 

@@ -6,27 +6,30 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-#include "commands/CmdClimberDown.h"
+#include "autocommands/AutoCmdTimer.h"
 
-CmdClimberDown::CmdClimberDown(SubClimber* subClimber) : m_subClimber(subClimber) {
+AutoCmdTimer::AutoCmdTimer(frc::Timer* timer) : m_timer(timer) {
   // Use addRequirements() here to declare subsystem dependencies.
-  AddRequirements(subClimber);
 }
 
 // Called when the command is initially scheduled.
-void CmdClimberDown::Initialize() {}
+void AutoCmdTimer::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
-void CmdClimberDown::Execute() {
-  // Move the Climber to the home position
-  m_subClimber->MoveClimber(-0.9);
-
+void AutoCmdTimer::Execute() {
+  m_timer->Start();
 }
 
 // Called once the command ends or is interrupted.
-void CmdClimberDown::End(bool interrupted) {}
+void AutoCmdTimer::End(bool interrupted) {}
 
 // Returns true when the command should end.
-bool CmdClimberDown::IsFinished() {
-  return true;
+bool AutoCmdTimer::IsFinished() {
+  if(m_timer->HasElapsed((units::time::second_t)2)==true) {
+    return true;
+  }
+  else {
+    return false;
+  }
+  
 }
