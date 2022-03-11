@@ -116,7 +116,7 @@ void SubIntake::SetBallCount(int ballCount) {
 }
 
 bool SubIntake::IsIndexerAtPosition(double deadband) {
-    int difference = shooterFeeder->GetClosedLoopTarget() - shooterFeeder->GetSelectedSensorVelocity();
+    int difference = shooterFeeder->GetClosedLoopTarget() - shooterFeeder->GetSelectedSensorPosition();
     
     if(abs(difference) < deadband) {
         return true;

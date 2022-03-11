@@ -29,20 +29,21 @@ void CmdIndexShooterFeeder::Execute() {
 
   std::cout << "Ball Sensor=" << m_subIntake->GetBallSensor() << " Ball Count=" << m_subIntake->GetBallCount() << " Error=" << m_subIntake->IsIndexerAtPosition(600)<< std::endl;
 
-  if(m_subIntake->GetBallSensor()==false && m_subIntake->GetBallCount() == 0 /*&& m_subIntake->IsIndexerAtPosition(1000) == true*/ ) {
-      position = position + 13000;
+  if(m_subIntake->GetBallSensor()==false && m_subIntake->GetBallCount() == 1 && m_subIntake->IsIndexerAtPosition(500) == true) {
+      position = position + 1000;
       m_subIntake->IndexShooterFeeder(position);
       //m_subIntake->SetBeamStatus(true);
       m_subIntake->SetBallCount(m_subIntake->GetBallCount()+1);
       //std::cout << "BC 1 Intake=  " << m_subIntake->GetBallCount() << std::endl;
   }
-  
-  if(m_subIntake->GetBallSensor()==false && m_subIntake->GetBallCount() == 1 /*&& m_subIntake->IsIndexerAtPosition(1000) == true*/ ) {
-      position = position + 1000;
-      m_subIntake->IndexShooterFeeder(position);
-      //m_subIntake->SetBeamStatus(true);
-      m_subIntake->SetBallCount(m_subIntake->GetBallCount()+1);  
-      //std::cout << "BC 2 Intake=  " << m_subIntake->GetBallCount() << std::endl;
+  else {
+        if(m_subIntake->GetBallSensor()==false && m_subIntake->GetBallCount() == 0 && m_subIntake->IsIndexerAtPosition(500) == true ) {
+            position = position + 13000;
+            m_subIntake->IndexShooterFeeder(position);
+            //m_subIntake->SetBeamStatus(true);
+            m_subIntake->SetBallCount(m_subIntake->GetBallCount()+1);  
+            //std::cout << "BC 2 Intake=  " << m_subIntake->GetBallCount() << std::endl;
+        }
   }
 
   /*m_subIntake->GetBeamStatus() == false && */
@@ -60,6 +61,6 @@ void CmdIndexShooterFeeder::End(bool interrupted) {}
 bool CmdIndexShooterFeeder::IsFinished() {
   
   
-  return m_subIntake->GetBallSensor();
+  return true; //m_subIntake->GetBallSensor();
 
 }
