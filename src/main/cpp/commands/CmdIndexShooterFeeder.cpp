@@ -38,7 +38,7 @@ void CmdIndexShooterFeeder::Execute() {
   }
   else {
         if(m_subIntake->GetBallSensor()==false && m_subIntake->GetBallCount() == 0 && m_subIntake->IsIndexerAtPosition(500) == true ) {
-            position = position + 13000;
+            position = position + 14000;
             m_subIntake->IndexShooterFeeder(position);
             //m_subIntake->SetBeamStatus(true);
             m_subIntake->SetBallCount(m_subIntake->GetBallCount()+1);  

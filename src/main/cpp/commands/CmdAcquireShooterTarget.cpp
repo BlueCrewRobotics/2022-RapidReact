@@ -23,15 +23,16 @@ void CmdAcquireShooterTarget::Execute() {
   double hTargetAngle;
 
   double gain = 0.5;
-  double offset = 0;
+  double offset = 1; // Offset in degrees
 
   if(m_subLimelightShooter->GetTarget()==true)
   {
     // Get the robots horizontal offset from the target center
     hTargetAngle = m_subLimelightShooter->GetHorizontalOffset();
+    
 
     // Normalize the horizontal position to the target
-    hTargetPosition = (-1*(hTargetAngle/29.8))*gain;
+    hTargetPosition = (-1*((hTargetAngle + offset)/29.8))*gain;
 
     // Rotate the drive train to point at the target
     // Might need to add a deadband to overcome the drain train friction when rotating use next line

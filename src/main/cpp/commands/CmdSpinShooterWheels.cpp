@@ -11,7 +11,7 @@
 
 CmdSpinShooterWheels::CmdSpinShooterWheels(SubShooter* subShooter, SubLimelightShooter* subLimelightShooter) : m_subShooter(subShooter), m_subLimelightShooter(subLimelightShooter) {
   // Use addRequirements() here to declare subsystem dependencies.
-  AddRequirements({subShooter});
+  //AddRequirements({subShooter});
 }
 
 // Called when the command is initially scheduled.
@@ -23,8 +23,8 @@ void CmdSpinShooterWheels::Execute() {
   double topShooterSpeed = 13152.52;  //20731
   double btmShooterSpeed = 13152.52; 
   // Offset for slowing wheels when shooting
-  double topShooterOffset = 2500;
-  double btmShooterOffset = 2500;
+  double topShooterOffset = 3500;
+  double btmShooterOffset = 3500;
 
   if(m_subLimelightShooter->GetTarget()==true){
     // Get the distance to the target in ft
@@ -55,11 +55,12 @@ void CmdSpinShooterWheels::End(bool interrupted) {}
 
 // Returns true when the command should end.
 bool CmdSpinShooterWheels::IsFinished() {
-  if(m_subShooter->WheelsAtSpeed(1000) == true ){
+/*  if(m_subShooter->WheelsAtSpeed(1000) == true ){
     return true;
   }
   else{
   
     return false;
-  }
+  }*/
+  return true;
 }

@@ -30,7 +30,7 @@ AutoCmdAutonomous::AutoCmdAutonomous(SubLimelightShooter* subLimelightShooter,  
     // Spin the intake
     //CmdSpinIntake(subIntake),
     // Drive toward ball until ball is picked up
-    AutoCmdDrive(subDriveTrain,40,40),
+    AutoCmdDrive(subDriveTrain,30,30),
     // Index the shooter
     //CmdIndexShooterFeeder(subIntake),
     // Retract intake

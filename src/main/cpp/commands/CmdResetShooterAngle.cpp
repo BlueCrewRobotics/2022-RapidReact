@@ -10,7 +10,7 @@
 
 CmdResetShooterAngle::CmdResetShooterAngle(SubShooter* subShooter) : m_subShooter(subShooter) {
   // Use addRequirements() here to declare subsystem dependencies.
-  AddRequirements(subShooter);
+  //AddRequirements(subShooter);
 }
 
 // Called when the command is initially scheduled.
