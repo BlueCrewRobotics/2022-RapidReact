@@ -28,6 +28,7 @@
 // Autonomous commands
 #include "autocommands/AutoCmdDrive.h"
 #include "autocommands/AutoCmdTimer.h"
+#include "autocommands/AutoCmdSpinShooterWheels.h"
 
 
 // Subsystem includes

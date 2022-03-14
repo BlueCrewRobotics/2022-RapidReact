@@ -16,7 +16,7 @@ AutoCmdAutonomous::AutoCmdAutonomous(SubLimelightShooter* subLimelightShooter,  
     // Set the shooter angle this will be upclose shooting to the upper hub
     CmdSetShooterAngle(subShooter,subLimelightShooter),
     // Spin up Shooter wheels
-    CmdSpinShooterWheels(subShooter, subLimelightShooter),
+    AutoCmdSpinShooterWheels(subShooter, subLimelightShooter),
     // Shoot the ball
     CmdIndexToShooter(subIntake,subShooter),
     // Start timer

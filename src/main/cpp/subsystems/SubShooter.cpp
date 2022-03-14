@@ -102,3 +102,13 @@ void SubShooter::SetPeriodicServoAngle() {
     rightServo->SetPosition(m_servoAngle);
     leftServo->SetPosition(m_servoAngle);
 }
+
+void SubShooter::SelectHub(bool select) {
+    m_hubSelection = select;
+
+}
+
+bool SubShooter::GetHub() {
+    return m_hubSelection;
+
+}

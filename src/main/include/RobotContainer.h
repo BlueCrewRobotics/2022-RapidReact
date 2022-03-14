@@ -40,6 +40,7 @@
 #include "commands/CmdClimberUp.h"
 #include "commands/CmdClimberDown.h"
 #include "commands/CmdClimberStop.h"
+#include "commands/CmdHubSelect.h"
 
 // Auto command includes
 #include "autocommands/AutoCmdAutonomous.h"

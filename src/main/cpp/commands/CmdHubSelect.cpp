@@ -6,29 +6,28 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-#include "commands/CmdSpinIntake.h"
-#include "subsystems/SubIntake.h"
+#include "commands/CmdHubSelect.h"
 
-CmdSpinIntake::CmdSpinIntake(SubIntake* subIntake) : m_subIntake(subIntake) {
+CmdHubSelect::CmdHubSelect(SubShooter *SubShooter, bool select) : m_subShooter(SubShooter), m_select(SubShooter)
+{
   // Use addRequirements() here to declare subsystem dependencies.
-  AddRequirements(subIntake);
+  //AddRequirements(SubShooter);
 }
 
 // Called when the command is initially scheduled.
-void CmdSpinIntake::Initialize() {}
+void CmdHubSelect::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
-void CmdSpinIntake::Execute() {
-  //Spins intake unless we have two cargo
-  if(m_subIntake->GetBallCount()<2){
-      m_subIntake->SpinFrontWheels(0.9);
-  }
+void CmdHubSelect::Execute()
+{
+  m_subShooter->SelectHub(m_select);
 }
 
 // Called once the command ends or is interrupted.
-void CmdSpinIntake::End(bool interrupted) {}
+void CmdHubSelect::End(bool interrupted) {}
 
 // Returns true when the command should end.
-bool CmdSpinIntake::IsFinished() {
+bool CmdHubSelect::IsFinished()
+{
   return true;
 }

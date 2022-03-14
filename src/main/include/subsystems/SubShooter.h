@@ -35,6 +35,10 @@ class SubShooter : public frc2::SubsystemBase {
   // Update the servo angle to be used
   void SetPeriodicServoAngle();
 
+  void SelectHub(bool select);
+
+  bool GetHub();
+
  private:
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
@@ -46,4 +50,6 @@ class SubShooter : public frc2::SubsystemBase {
   frc::Servo* leftServo = new frc::Servo(SHOOTER_LEFT_PWN_ADDR);
 
   double m_servoAngle = 0.8;
+
+  bool m_hubSelection = 1; // Low is 0 High is 1
 };

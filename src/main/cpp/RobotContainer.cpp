@@ -57,6 +57,8 @@ void RobotContainer::ConfigureButtonBindings() {
   auxController_button_lbump->WhileHeld(CmdClimberDown(&m_subClimber));
   auxController_button_lbump->WhenReleased(CmdClimberStop(&m_subClimber));
 
+  //auxController_button_y->WhenPressed(CmdHubSelect(&m_subShooter, 1));
+  //auxController_button_a->WhenPressed(CmdHubSelect(&m_subShooter, 0));
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {
