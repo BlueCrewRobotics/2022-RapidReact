@@ -15,6 +15,9 @@ void Robot::RobotInit() {
   m_robotContainer.ConfigureDrive();
   m_robotContainer.ConfigureCompressor();
   m_robotContainer.ConfigureShooter();
+  m_robotContainer.ConfigureIntake();
+  m_robotContainer.ConfigureLimelights();
+  m_robotContainer.ConfigureClimber();
 
 
 }
@@ -46,13 +49,15 @@ void Robot::DisabledPeriodic() {}
  */
 void Robot::AutonomousInit() {
   m_autonomousCommand = m_robotContainer.GetAutonomousCommand();
-
+  
   if (m_autonomousCommand != nullptr) {
     m_autonomousCommand->Schedule();
   }
 }
 
-void Robot::AutonomousPeriodic() {}
+void Robot::AutonomousPeriodic() {
+   
+}
 
 void Robot::TeleopInit() {
   // This makes sure that the autonomous stops running when
@@ -62,6 +67,7 @@ void Robot::TeleopInit() {
   if (m_autonomousCommand != nullptr) {
     m_autonomousCommand->Cancel();
     m_autonomousCommand = nullptr;
+
   }
 }
 

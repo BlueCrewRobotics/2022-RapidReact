@@ -21,7 +21,7 @@ void BC_FalconFX::Disable() {
 }
 
 void BC_FalconFX::StopMotor() {
-  ptr_falconFX->SetNeutralMode(NeutralMode::Brake);
+  ptr_falconFX->SetNeutralMode(NeutralMode::Coast);
 }
 
 double BC_FalconFX::Get() const {
@@ -80,7 +80,7 @@ TalonFX* BC_FalconFX::GetMotorController() {
 }
 
 void BC_FalconFX::SetSelectedFeedbackSensor(FeedbackDevice device) {
-	ptr_falconFX->ConfigSelectedFeedbackSensor(device);
+	ptr_falconFX->ConfigSelectedFeedbackSensor(device,0,0);
 
 }
 
@@ -104,5 +104,18 @@ void BC_FalconFX::SetNominalPeakOutput(int profileSlot) {
 
 void BC_FalconFX::SetMaxSpeed(double maxSpeed) {
 	m_dMaxSpeed = maxSpeed;
+}
+
+void BC_FalconFX::DriveWithMotionMagic(double position) {
+	ptr_falconFX->Set(ControlMode::MotionMagic, position);
+}
+
+void BC_FalconFX::SetRamp(double ramp) {
+	ptr_falconFX->ConfigClosedloopRamp(ramp,0);
+}
+
+void BC_FalconFX::ConfigureMotionMagic() {
+	ptr_falconFX->ConfigMotionAcceleration(2048,0);
+	ptr_falconFX->ConfigMotionCruiseVelocity(2048,0);
 }
 

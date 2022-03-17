@@ -34,33 +34,33 @@ constexpr int DURATION_CURRENT_LIMIT = 500;
 constexpr double DRIVE_RAMP_TIME = 0.05;
 
 // Maximum velocity in units/100ms
-constexpr int VELOCITY_MAX = 12000;
-constexpr int VELOCITY_SP_MAX_HG = 12000;  // Maximum velocity in actual high gear
-constexpr int VELOCITY_SP_MAX_LG = 12000;  // Maximum velocity in actual low gear
+constexpr int VELOCITY_MAX = 21000;
+constexpr int VELOCITY_SP_MAX_HG = 21000;  // Maximum velocity in actual high gear
+constexpr int VELOCITY_SP_MAX_LG = 21000;  // Maximum velocity in actual low gear
 constexpr int VELOCITY_SP_MAX_LL = 5000;   // Maximum velocity in low low virtual gear
 
 
 // PID constants PID[0] Used for low speed right side
-constexpr double RIGHT_KF_0 = 0.06;  // Kf = ((percent of output used for control)*1023) / (max encoder units)/100ms
-constexpr double RIGHT_KP_0 = 0.13;  // Kp = ((percent of output used for control)*1023) / Error
+constexpr double RIGHT_KF_0 = 0.07; // 0.13;  // Kf = ((percent of output used for control)*1023) / (max encoder units)/100ms
+constexpr double RIGHT_KP_0 = 0.286;  // Kp = ((percent of output used for control)*1023) / Error
 constexpr double RIGHT_KI_0 = 0.0;
 constexpr double RIGHT_KD_0 = 0.0;
 
-// PID constants PID[1] uesd for high speed left side
-constexpr double RIGHT_KF_1 = 0.06; // 0.296
-constexpr double RIGHT_KP_1 = 0.13;
-constexpr double RIGHT_KI_1 = 0;
-constexpr double RIGHT_KD_1 = 0;
-
 // PID constants PID[0] Used for low speed right side
-constexpr double LEFT_KF_0 = 0.06; // Kf = ((percent of output used for control)*1023) / (max encoder units)/100ms
-constexpr double LEFT_KP_0 = 0.13; // Kp = ((percent of output used for control)*1023) / Error
+constexpr double LEFT_KF_0 = 0.0465; //0.13; // Kf = ((percent of output used for control)*1023) / (max encoder units)/100ms
+constexpr double LEFT_KP_0 = 0.123; // Kp = ((percent of output used for control)*1023) / Error
 constexpr double LEFT_KI_0 = 0.0;
 constexpr double LEFT_KD_0 = 0;
 
 // PID constants PID[1] uesd for high speed left side
-constexpr double LEFT_KF_1 = 0.06; // 0.32
-constexpr double LEFT_KP_1 = 0.13;
+constexpr double RIGHT_KF_1 = 0.13; 
+constexpr double RIGHT_KP_1 = 0.0;
+constexpr double RIGHT_KI_1 = 0;
+constexpr double RIGHT_KD_1 = 0;
+
+// PID constants PID[1] uesd for high speed left side
+constexpr double LEFT_KF_1 = 0.13;
+constexpr double LEFT_KP_1 = 0.0;
 constexpr double LEFT_KI_1 = 0;
 constexpr double LEFT_KD_1 = 0;
 
@@ -95,6 +95,7 @@ constexpr int PCM_0 = 9;
 
 // Solenoid Mappings for Shifter PCM
 constexpr int PCM_0_GEARSHIFT = 0;  // Drive train gear shifter
+constexpr int PCM_0_MOTOR_COOLING = 1; // Drive train motor cooling
 
 // Shooter Configuration
 constexpr int SHOOTER_TOP_ADDR = 13;
@@ -104,5 +105,9 @@ constexpr int SHOOTER_LEFT_PWN_ADDR = 1;
 
 // Intake Configuration
 constexpr int INTAKE_SPINNER_ADDR = 15;
-constexpr int INTAKE_INDEXER_ADDR = 16;
+constexpr int INTAKE_SHOOTER_FEEDER_ADDR = 16;
 constexpr int INTAKE_POSITIONER_ADDR = 17;
+
+// Climber Configuration
+constexpr int CLIMBER_MAIN_ADDR = 18;
+constexpr int CLIMBER_SECONDARY_ADDR = 19;

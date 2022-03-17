@@ -22,8 +22,9 @@ void SubDriveTrain::DriveTrainConfigure() {
   leftFollowMotor->ClearStickyFault();
   rightFollowMotor->ClearStickyFault();
 
-  // Set the right Drive motor inverted
+  // Set the Drive motor inverted
   rightDriveMotor->SetInverted(true);
+  leftDriveMotor->SetInverted(false);
 
   // Set the right and left followers
   leftFollowMotor->SetFollower(leftDriveMotor->GetMotorController());
@@ -34,7 +35,9 @@ void SubDriveTrain::DriveTrainConfigure() {
   rightDriveMotor->SetSelectedFeedbackSensor(FeedbackDevice::IntegratedSensor);
 
   // Set the current limts on the motor
-  leftDriveMotor->SetStatorCurrentLimit(true,25,30,0.5);
+  leftDriveMotor->SetStatorCurrentLimit(true,50,50,0.5);
+  rightDriveMotor->SetStatorCurrentLimit(true,50,50,0.5);
+  leftDriveMotor->SetSupplyCurrentLimit(true,CONTINUOUS_CURRENT_LIMIT,PEAK_CURRENT_LIMIT,DURATION_CURRENT_LIMIT);
   rightDriveMotor->SetSupplyCurrentLimit(true,CONTINUOUS_CURRENT_LIMIT,PEAK_CURRENT_LIMIT,DURATION_CURRENT_LIMIT);
 
   // Set nominal and peak outputs for the motor for the different profile slots
@@ -42,6 +45,14 @@ void SubDriveTrain::DriveTrainConfigure() {
   rightDriveMotor->SetNominalPeakOutput(0);
   leftDriveMotor->SetNominalPeakOutput(1);
   rightDriveMotor->SetNominalPeakOutput(1);
+
+  // Set the ramp
+  leftDriveMotor->SetRamp(0.15);
+  rightDriveMotor->SetRamp(0.15);
+
+  // Setup Motion acceleration and velocity
+  leftDriveMotor->ConfigureMotionMagic();
+  rightDriveMotor->ConfigureMotionMagic();
 
   // PID constants for Profile 0 low gear Profile 1 high gear of Talon left
   frc::SmartDashboard::PutNumber("LEFT_KF_0",LEFT_KF_0);
@@ -116,7 +127,7 @@ void SubDriveTrain::GetPidFromDashboard() {
 // Drives the Drive Train with ArcadeDrive
 void SubDriveTrain::Drive(double speed, double rotation) {
     driveTrain->SetDeadband(0.02);
-    driveTrain->ArcadeDrive(speed, rotation, false);
+    driveTrain->ArcadeDrive(speed, rotation, true);
 }
 
 void SubDriveTrain::SetDriveTrainGear() {
@@ -132,4 +143,25 @@ bool SubDriveTrain::GetDriveTrainGear() {
 void SubDriveTrain::SetMaxSpeed(double maxSpeed) {
     leftDriveMotor->SetMaxSpeed(maxSpeed);
     rightDriveMotor->SetMaxSpeed(maxSpeed);
+}
+
+void SubDriveTrain::SetMotorCooling(bool cool) {
+    if(cool == true){
+      m_motorCooling->Set(true);
+    }
+    else{
+      m_motorCooling->Set(false);
+    }
+}
+
+void SubDriveTrain::AutonomousDriving(double leftrotations, double rightrotations) {
+  leftrotations = leftrotations * 2048;
+  rightrotations = rightrotations * 2048;
+
+  leftDriveMotor->DriveWithMotionMagic(leftrotations);
+  rightDriveMotor->DriveWithMotionMagic(rightrotations);
+}
+
+void SubDriveTrain::RotateDriveTrain(double rotation) {
+  driveTrain->ArcadeDrive(0,rotation);
 }

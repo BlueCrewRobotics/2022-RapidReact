@@ -10,7 +10,7 @@
 
 CmdTurnOnShooterLimelight::CmdTurnOnShooterLimelight(SubLimelightShooter* subsystem) : m_subLimelightShooter(subsystem) {
   // Use addRequirements() here to declare subsystem dependencies.
-  AddRequirements(subsystem);
+  //AddRequirements(subsystem);
 }
 
 // Called when the command is initially scheduled.
@@ -18,7 +18,7 @@ void CmdTurnOnShooterLimelight::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
 void CmdTurnOnShooterLimelight::Execute() {
-  m_subLimelightShooter->SetLEDState(3);
+  m_subLimelightShooter->SetLEDState(3); // Turns on limelights
 }
 
 // Called once the command ends or is interrupted.

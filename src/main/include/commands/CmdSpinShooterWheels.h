@@ -1,3 +1,7 @@
+/*-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=*/
+/*                       Blue Crew Robotics #6153                             */
+/*                           Rapid React 2022                                 */
+/*-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=*/
 // Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
@@ -7,6 +11,7 @@
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
 #include "subsystems/SubShooter.h"
+#include "subsystems/SubLimelightShooter.h"
 
 /**
  * An example command.
@@ -18,7 +23,7 @@
 class CmdSpinShooterWheels
     : public frc2::CommandHelper<frc2::CommandBase, CmdSpinShooterWheels> {
  public:
-  explicit CmdSpinShooterWheels(SubShooter* subShooter);
+  explicit CmdSpinShooterWheels(SubShooter* subShooter, SubLimelightShooter* subLimelightShooter);
 
   void Initialize() override;
 
@@ -30,4 +35,5 @@ class CmdSpinShooterWheels
 
  private:
   SubShooter* m_subShooter;
+  SubLimelightShooter* m_subLimelightShooter;
 };

@@ -1,3 +1,7 @@
+/*-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=*/
+/*                       Blue Crew Robotics #6153                             */
+/*                           Rapid React 2022                                 */
+/*-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=-=+=*/
 // Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
@@ -42,9 +46,9 @@ double SubLimelightShooter::GetVerticalOffset(){
   */
 double SubLimelightShooter::GetDistanceToTarget(){
   double d = 0.0; // feet
-  double h1 = (26.5/12); // feet
-  double h2 = (98.25/12); // feet
-  double a1 = 13.46; // degrees
+  double h1 = (33/12); // feet
+  double h2 = (104/12); // feet
+  double a1 = 37.95; // degrees
   double a2 = tblLimelightShooter->GetNumber("ty",0.0);    
   
   d = (h2-h1) / (tan((a1 + a2)*3.1416/180));
@@ -75,8 +79,8 @@ double SubLimelightShooter::GetSkew(){
   */
 double SubLimelightShooter::GetCameraMountAngle(double distance){
   double d = distance;
-  double h1 = (26.5/12); // inches
-  double h2 = (98.25/12); // inches
+  double h1 = (33/12); // inches
+  double h2 = (104/12); // inches
   double a1 = 0.0; // degrees
   double a2 = tblLimelightShooter->GetNumber("ty",0.0);
   

@@ -12,11 +12,39 @@
 #include <frc/smartdashboard/SendableChooser.h>
 #include <frc/Joystick.h>
 #include <frc2/command/button/JoystickButton.h>
+#include <frc2/command/SequentialCommandGroup.h>
+#include <frc2/command/ParallelCommandGroup.h>
+#include <frc/Timer.h>
+#include <frc/DriverStation.h>
+#include "common/BC_InternalButton.h"
 
 // Command includes
 #include "commands/ExampleCommand.h"
 #include "commands/CmdDriveWithController.h"
 #include "commands/CmdShiftGear.h"
+#include "commands/CmdSpinShooterWheels.h"
+#include "commands/CmdStopShooterWheels.h"
+#include "commands/CmdSetShooterAngle.h"
+#include "commands/CmdResetShooterAngle.h"
+#include "commands/CmdIntakeToHomePosition.h"
+#include "commands/CmdExtendIntake.h"
+#include "commands/CmdTurnOnShooterLimelight.h"
+#include "commands/CmdTurnOffShooterLimelight.h"
+#include "commands/CmdAcquireShooterTarget.h" //This might have to be seperated into 2 commands AcquireTarget and AimToTarget
+#include "commands/CmdSpinIntake.h"
+#include "commands/CmdStopIntake.h"
+#include "commands/CmdMoveIntake.h"
+#include "commands/CmdIndexShooterFeeder.h"
+#include "commands/CmdIndexToShooter.h"
+
+#include "commands/CmdClimberUp.h"
+#include "commands/CmdClimberDown.h"
+#include "commands/CmdClimberStop.h"
+#include "commands/CmdHubSelect.h"
+
+// Auto command includes
+#include "autocommands/AutoCmdAutonomous.h"
+
 
 // Subsystem includes
 #include "subsystems/ExampleSubsystem.h"
@@ -25,6 +53,8 @@
 #include "subsystems/SubShooter.h"
 #include "subsystems/SubLimelightShooter.h"
 #include "subsystems/SubLimelightIntake.h"
+#include "subsystems/SubIntake.h"
+#include "subsystems/SubClimber.h"
 
 #include "Constants.h"
 
@@ -45,13 +75,26 @@ class RobotContainer {
 
   // Configure the drive train run this function in RobotInit()
   void ConfigureDrive();
+  // Configure the compressor run this function in RobotInit()
   void ConfigureCompressor();
+  // Configure the shooter run this function in RobotInit()
   void ConfigureShooter();
+  // Configure intake
+  void ConfigureIntake();
+  // Configure limelights
+  void ConfigureLimelights();
+  // Configure climber
+  void ConfigureClimber();
+
+
 
  private:
-  // The robot's subsystems and commands are defined here...
-  ExampleSubsystem m_subsystem;
-  ExampleCommand m_autonomousCommand;
+  // The robot's commands
+  AutoCmdAutonomous m_autoAutonomous;
+
+  //ExampleSubsystem m_subsystem;
+  //ExampleCommand m_autonomousCommand;
+
 
   
   // The robot's subsystems
@@ -60,6 +103,8 @@ class RobotContainer {
   SubShooter m_subShooter;
   SubLimelightShooter m_subLimelightShooter;
   SubLimelightIntake m_subLimelightIntake;
+  SubIntake m_subIntake;
+  SubClimber m_subClimber;
   
   // Setup driver controller
   frc::Joystick *driverController = new frc::Joystick(DRIVER_CONTROLLER);
@@ -69,12 +114,12 @@ class RobotContainer {
   // LEFT STICK LEFT // Turn Left driverController->GetRawAxis(AXIS_LX)
   // LEFT STICK RIGHT // Turn Right driverController->GetRawAxis(AXIS_LX)
   
-  frc2::JoystickButton *driverController_button_a = new frc2::JoystickButton(driverController, BUTTON_A); // Not Used
-  frc2::JoystickButton *driverController_button_b = new frc2::JoystickButton(driverController, BUTTON_B); // Low gear mode
-  frc2::JoystickButton *driverController_button_x = new frc2::JoystickButton(driverController, BUTTON_X); // Not Used
+  frc2::JoystickButton *driverController_button_a = new frc2::JoystickButton(driverController, BUTTON_A); // Acquire target to shoot
+  frc2::JoystickButton *driverController_button_b = new frc2::JoystickButton(driverController, BUTTON_B); // Virtul low gear
+  frc2::JoystickButton *driverController_button_x = new frc2::JoystickButton(driverController, BUTTON_X); // Index to shooter
   frc2::JoystickButton *driverController_button_y = new frc2::JoystickButton(driverController, BUTTON_Y); // Intake ball
-  frc2::JoystickButton *driverController_button_lbump = new frc2::JoystickButton(driverController, BUTTON_L_BUMP); // Not Used
-  frc2::JoystickButton *driverController_button_rbump = new frc2::JoystickButton(driverController, BUTTON_R_BUMP); // Used in gear shifting
+  frc2::JoystickButton *driverController_button_lbump = new frc2::JoystickButton(driverController, BUTTON_L_BUMP); // Shift gears
+  frc2::JoystickButton *driverController_button_rbump = new frc2::JoystickButton(driverController, BUTTON_R_BUMP); // Aim drive train towards ball for intake
   frc2::JoystickButton *driverController_button_select = new frc2::JoystickButton(driverController, BUTTON_SELECT); // Not Used 
   frc2::JoystickButton *driverController_button_start = new frc2::JoystickButton(driverController, BUTTON_START); // Not Used
   frc2::JoystickButton *driverController_button_l3 = new frc2::JoystickButton(driverController, BUTTON_L3); // Not Used
@@ -94,6 +139,9 @@ class RobotContainer {
   frc2::JoystickButton *auxController_button_l3 = new frc2::JoystickButton(auxController, BUTTON_L3); 
   frc2::JoystickButton *auxController_button_r3 = new frc2::JoystickButton(auxController, BUTTON_R3);   
 
+  
+  // Timers for automomous
+  frc::Timer autoTimer;
 
   void ConfigureButtonBindings();
 };

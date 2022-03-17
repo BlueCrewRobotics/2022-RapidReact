@@ -40,6 +40,12 @@ class SubDriveTrain : public frc2::SubsystemBase {
   bool GetDriveTrainGear();
   // Set max speed on drive motors
   void SetMaxSpeed(double maxSpeed);
+  // Set drive motor cooling solenoid
+  void SetMotorCooling(bool cool);
+  // Autonomous driving
+  void AutonomousDriving(double leftrotations, double rightrotations);
+  // Rotate the robot
+  void RotateDriveTrain(double rotation);
 
 
  private:
@@ -55,6 +61,7 @@ class SubDriveTrain : public frc2::SubsystemBase {
   frc::DifferentialDrive* driveTrain = new frc::DifferentialDrive(*leftDriveMotor, *rightDriveMotor);
 
   frc::Solenoid* m_gearSolenoid = new frc::Solenoid(PCM_0,frc::PneumaticsModuleType::CTREPCM,PCM_0_GEARSHIFT);
+  frc::Solenoid* m_motorCooling = new frc::Solenoid(PCM_0,frc::PneumaticsModuleType::CTREPCM,PCM_0_MOTOR_COOLING);
 
   double m_maxSpeed = VELOCITY_SP_MAX_LG;
 
