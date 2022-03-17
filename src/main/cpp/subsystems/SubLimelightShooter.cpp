@@ -48,7 +48,7 @@ double SubLimelightShooter::GetDistanceToTarget(){
   double d = 0.0; // feet
   double h1 = (33/12); // feet
   double h2 = (104/12); // feet
-  double a1 = 37.95; // degrees
+  double a1 =  41.5112;//37.95; // degrees
   double a2 = tblLimelightShooter->GetNumber("ty",0.0);    
   
   d = (h2-h1) / (tan((a1 + a2)*3.1416/180));

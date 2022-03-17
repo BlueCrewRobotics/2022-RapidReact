@@ -8,7 +8,7 @@
 
 #include "commands/CmdHubSelect.h"
 
-CmdHubSelect::CmdHubSelect(SubShooter *SubShooter, bool select) : m_subShooter(SubShooter), m_select(SubShooter)
+CmdHubSelect::CmdHubSelect(SubShooter *SubShooter, bool select) : m_subShooter(SubShooter), m_select(select)
 {
   // Use addRequirements() here to declare subsystem dependencies.
   //AddRequirements(SubShooter);

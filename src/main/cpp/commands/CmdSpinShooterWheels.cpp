@@ -36,6 +36,7 @@ void CmdSpinShooterWheels::Execute() {
     btmShooterOffset = 4000;
 
     if(m_subLimelightShooter->GetTarget()==true){
+      std::cout << "High Hub Selected " << std::endl;
       // Get the distance to the target in ft
       double hDistanceToTarget = m_subLimelightShooter->GetDistanceToTarget();
       std::cout << "Distance= " << hDistanceToTarget << std::endl;
@@ -45,21 +46,24 @@ void CmdSpinShooterWheels::Execute() {
       // Just shoot the ball to bottom hub target
       topShooterSpeed = topShooterSpeed + topShooterOffset;
       btmShooterSpeed = btmShooterSpeed + btmShooterOffset;
-      std::cout << "Shooter Speed top: " << topShooterSpeed << "btm: " << btmShooterSpeed << std::endl;
-      //std::cout << "Camera Angle= " << m_subLimelightShooter->GetCameraMountAngle(10) << std::endl;
+      // Enable
+      //std::cout << "Shooter Speed top: " << topShooterSpeed << " btm: " << btmShooterSpeed << std::endl;
+      std::cout << "Camera Angle= " << m_subLimelightShooter->GetCameraMountAngle(10) << std::endl;
+      
     }
     else {
-        // Just shoot the ball to bottom hub target
-      topShooterSpeed = topShooterSpeed + topShooterOffset;
-      btmShooterSpeed = btmShooterSpeed + btmShooterOffset;
+      // Just shoot the ball to bottom hub target
+      //topShooterSpeed = topShooterSpeed + topShooterOffset;
+      //btmShooterSpeed = btmShooterSpeed + btmShooterOffset;
 
     }
 
   } 
   else {
     if(m_subShooter->GetHub() == false){
-      topShooterSpeed = 4000;
-      btmShooterSpeed = 4000;
+      topShooterSpeed = 10000;
+      btmShooterSpeed = 10000;
+      std::cout << "Low Hub Selected " << std::endl;
     }
 
 }
