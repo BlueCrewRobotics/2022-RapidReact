@@ -64,5 +64,6 @@ class SubDriveTrain : public frc2::SubsystemBase {
   frc::Solenoid* m_motorCooling = new frc::Solenoid(PCM_0,frc::PneumaticsModuleType::CTREPCM,PCM_0_MOTOR_COOLING);
 
   double m_maxSpeed = VELOCITY_SP_MAX_LG;
+  
 
 };

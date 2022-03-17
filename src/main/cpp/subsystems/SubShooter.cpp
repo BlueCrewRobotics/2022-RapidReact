@@ -17,6 +17,7 @@ void SubShooter::Periodic() {
     // This function will run periodically to set the servo angle
     // Use SetShooterAngle to set the angle that is used periodically
     SetPeriodicServoAngle();
+    SetPeriodicWheelSpeed();
 
 }
 
@@ -38,8 +39,8 @@ void SubShooter::ConfigureShooter() {
     topShooterMotor->ConfigPeakOutputForward(1, 0);
     topShooterMotor->ConfigPeakOutputReverse(-1, 0);
 
-    topShooterMotor->ConfigStatorCurrentLimit(StatorCurrentLimitConfiguration(true,10,15,100));
-    topShooterMotor->ConfigSupplyCurrentLimit(SupplyCurrentLimitConfiguration(true,10,15,100));
+    topShooterMotor->ConfigStatorCurrentLimit(StatorCurrentLimitConfiguration(false,10,15,100));
+    topShooterMotor->ConfigSupplyCurrentLimit(SupplyCurrentLimitConfiguration(true,15,20,60));
 
     topShooterMotor->SetNeutralMode(NeutralMode::Coast);
 
@@ -59,8 +60,8 @@ void SubShooter::ConfigureShooter() {
     btmShooterMotor->ConfigPeakOutputForward(1, 0);
     btmShooterMotor->ConfigPeakOutputReverse(-1, 0);
 
-    btmShooterMotor->ConfigStatorCurrentLimit(StatorCurrentLimitConfiguration(true,10,15,100));
-    btmShooterMotor->ConfigSupplyCurrentLimit(SupplyCurrentLimitConfiguration(true,10,15,100));
+    btmShooterMotor->ConfigStatorCurrentLimit(StatorCurrentLimitConfiguration(false,10,15,100));
+    btmShooterMotor->ConfigSupplyCurrentLimit(SupplyCurrentLimitConfiguration(true,15,20,60));
 
     btmShooterMotor->SetNeutralMode(NeutralMode::Coast);
 
@@ -111,4 +112,14 @@ void SubShooter::SelectHub(bool select) {
 bool SubShooter::GetHub() {
     return m_hubSelection;
 
+}
+
+void SubShooter::SetShooterWheelSpeed(double topSpeed, double btmSpeed) {
+    m_topShooterWheelSpeed = topSpeed;
+    m_btmShooterWheelSpeed = btmSpeed;
+}
+
+void SubShooter::SetPeriodicWheelSpeed(){
+    topShooterMotor->Set(ControlMode::Velocity, m_topShooterWheelSpeed);
+    btmShooterMotor->Set(ControlMode::Velocity, m_btmShooterWheelSpeed);
 }
