@@ -34,9 +34,13 @@ class SubShooter : public frc2::SubsystemBase {
   bool WheelsAtSpeed(double deadband);
   // Update the servo angle to be used
   void SetPeriodicServoAngle();
-
+  // Run the wheel speed periodically
+  void SetPeriodicWheelSpeed();
+  // Set the the wheel speed parameter'
+  void SetShooterWheelSpeed(double topSpeed, double botSpeed);
+  // Select the lower hub or upper hub to shoot at
   void SelectHub(bool select);
-
+  // Get the selected hub that we are shooting at
   bool GetHub();
 
  private:
@@ -50,6 +54,7 @@ class SubShooter : public frc2::SubsystemBase {
   frc::Servo* leftServo = new frc::Servo(SHOOTER_LEFT_PWN_ADDR);
 
   double m_servoAngle = 0.8;
-
   bool m_hubSelection = 1; // Low is 0 High is 1
+  double m_topShooterWheelSpeed = 0;
+  double m_btmShooterWheelSpeed = 0;
 };

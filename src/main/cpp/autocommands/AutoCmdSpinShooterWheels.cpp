@@ -61,6 +61,7 @@ void AutoCmdSpinShooterWheels::Execute() {
     btmShooterSpeed = btmShooterSpeed;
 
 }
+  
 
   m_subShooter->SpinUpWheels(topShooterSpeed,btmShooterSpeed);
 

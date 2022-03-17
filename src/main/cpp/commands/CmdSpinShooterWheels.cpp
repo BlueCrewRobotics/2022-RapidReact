@@ -64,7 +64,8 @@ void CmdSpinShooterWheels::Execute() {
 
 }
 
-  m_subShooter->SpinUpWheels(topShooterSpeed,btmShooterSpeed);
+  // m_subShooter->SpinUpWheels(topShooterSpeed,btmShooterSpeed);
+  m_subShooter->SetShooterWheelSpeed(topShooterSpeed,btmShooterSpeed);
 
 }
 
