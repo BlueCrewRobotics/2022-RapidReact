@@ -32,6 +32,8 @@ class SubIntake : public frc2::SubsystemBase {
   void MoveIntakeToPosition(double position);
   // Index the shooter feeder
   void IndexShooterFeeder(double position);
+  // Reverse Shooter Feeder
+  void ReverseShooterFeeder(double position);
   // Get the position of the indexer
   double GetIndexerPosition();
   // Get break sensor

@@ -31,10 +31,12 @@
 #include "commands/CmdTurnOnShooterLimelight.h"
 #include "commands/CmdTurnOffShooterLimelight.h"
 #include "commands/CmdAcquireShooterTarget.h" //This might have to be seperated into 2 commands AcquireTarget and AimToTarget
+#include "commands/CmdReverseIntake.h"
 #include "commands/CmdSpinIntake.h"
 #include "commands/CmdStopIntake.h"
 #include "commands/CmdMoveIntake.h"
 #include "commands/CmdIndexShooterFeeder.h"
+#include "commands/CmdReverseShooterFeeder.h"
 #include "commands/CmdIndexToShooter.h"
 
 #include "commands/CmdClimberUp.h"

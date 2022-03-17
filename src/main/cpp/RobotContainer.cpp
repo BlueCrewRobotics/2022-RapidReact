@@ -60,6 +60,8 @@ void RobotContainer::ConfigureButtonBindings() {
 
   auxController_button_y->WhenPressed(CmdHubSelect(&m_subShooter, true));
   auxController_button_a->WhenPressed(CmdHubSelect(&m_subShooter, false));
+  auxController_button_x->WhenPressed(frc2::SequentialCommandGroup(CmdReverseShooterFeeder(&m_subIntake),CmdReverseIntake(&m_subIntake)));
+  auxController_button_x->WhenReleased(CmdStopIntake(&m_subIntake));
 }
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {
