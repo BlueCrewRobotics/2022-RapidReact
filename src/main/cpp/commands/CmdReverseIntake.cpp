@@ -15,7 +15,10 @@ CmdReverseIntake::CmdReverseIntake(SubIntake* subIntake) : m_subIntake(subIntake
 }
 
 // Called when the command is initially scheduled.
-void CmdReverseIntake::Initialize() {}
+void CmdReverseIntake::Initialize() {
+  m_timer.Reset();
+  m_timer.Start();
+}
 
 // Called repeatedly when this Command is scheduled to run
 void CmdReverseIntake::Execute() {
@@ -30,5 +33,11 @@ void CmdReverseIntake::End(bool interrupted) {}
 
 // Returns true when the command should end.
 bool CmdReverseIntake::IsFinished() {
-  return true;
+
+  if(m_timer.HasPeriodPassed((units::time::second_t)1)==true) {
+    return true;
+  }
+  else {
+    return false;
+  }
 }

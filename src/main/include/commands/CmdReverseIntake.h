@@ -11,6 +11,7 @@
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
 #include "subsystems/SubIntake.h"
+#include "frc/Timer.h"
 
 /**
  * An example command.
@@ -34,4 +35,5 @@ class CmdReverseIntake
 
  private:
   SubIntake* m_subIntake;
+  frc::Timer m_timer;
 };
