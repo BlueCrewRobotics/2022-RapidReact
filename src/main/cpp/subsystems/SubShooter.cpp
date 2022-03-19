@@ -119,6 +119,15 @@ void SubShooter::SetShooterWheelSpeed(double topSpeed, double btmSpeed) {
     m_btmShooterWheelSpeed = btmSpeed;
 }
 
+void SubShooter::SetMotorCooling(bool cool) {
+    if(cool == true){
+      m_motorCooling->Set(true);
+    }
+    else{
+      m_motorCooling->Set(false);
+    }
+}
+
 void SubShooter::SetPeriodicWheelSpeed(){
     topShooterMotor->Set(ControlMode::Velocity, m_topShooterWheelSpeed);
     btmShooterMotor->Set(ControlMode::Velocity, m_btmShooterWheelSpeed);
