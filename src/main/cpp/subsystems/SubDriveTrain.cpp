@@ -147,10 +147,10 @@ void SubDriveTrain::SetMaxSpeed(double maxSpeed) {
 
 void SubDriveTrain::SetMotorCooling(bool cool) {
     if(cool == true){
-      m_motorCooling->Set(true);
+      //m_motorCooling->Set(true);
     }
     else{
-      m_motorCooling->Set(false);
+      //m_motorCooling->Set(false);
     }
 }
 

@@ -11,7 +11,7 @@
 
 CmdReverseIntake::CmdReverseIntake(SubIntake* subIntake) : m_subIntake(subIntake) {
   // Use addRequirements() here to declare subsystem dependencies.
-  //AddRequirements(subIntake);
+  AddRequirements(subIntake);
 }
 
 // Called when the command is initially scheduled.

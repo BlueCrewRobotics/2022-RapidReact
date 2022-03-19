@@ -61,7 +61,7 @@ class SubDriveTrain : public frc2::SubsystemBase {
   frc::DifferentialDrive* driveTrain = new frc::DifferentialDrive(*leftDriveMotor, *rightDriveMotor);
 
   frc::Solenoid* m_gearSolenoid = new frc::Solenoid(PCM_0,frc::PneumaticsModuleType::CTREPCM,PCM_0_GEARSHIFT);
-  frc::Solenoid* m_motorCooling = new frc::Solenoid(PCM_0,frc::PneumaticsModuleType::CTREPCM,PCM_0_MOTOR_COOLING);
+  //frc::Solenoid* m_motorCooling = new frc::Solenoid(PCM_0,frc::PneumaticsModuleType::CTREPCM,PCM_0_MOTOR_COOLING);
 
   double m_maxSpeed = VELOCITY_SP_MAX_LG;
   

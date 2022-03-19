@@ -27,5 +27,8 @@ void AutoCmdDrive::End(bool interrupted) {}
 
 // Returns true when the command should end.
 bool AutoCmdDrive::IsFinished() {
+/*if(m_DriveTrain)
+
+*/
   return false;
 }

@@ -40,7 +40,7 @@ class SubShooter : public frc2::SubsystemBase {
   // Set the the wheel speed parameter'
   void SetShooterWheelSpeed(double topSpeed, double botSpeed);
   // Select the lower hub or upper hub to shoot at
-   void SetMotorCooling(bool cool);
+  void SetMotorCooling(bool cool);
 
   void SelectHub(bool select);
   // Get the selected hub that we are shooting at
