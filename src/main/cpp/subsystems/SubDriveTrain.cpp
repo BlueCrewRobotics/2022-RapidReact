@@ -54,6 +54,10 @@ void SubDriveTrain::DriveTrainConfigure() {
   leftDriveMotor->ConfigureMotionMagic();
   rightDriveMotor->ConfigureMotionMagic();
 
+  // Set max speed
+  leftDriveMotor->SetMaxSpeed(VELOCITY_SP_MAX_LG);
+  rightDriveMotor->SetMaxSpeed(VELOCITY_SP_MAX_LG);
+
   // PID constants for Profile 0 low gear Profile 1 high gear of Talon left
   frc::SmartDashboard::PutNumber("LEFT_KF_0",LEFT_KF_0);
   frc::SmartDashboard::PutNumber("LEFT_KP_0",LEFT_KP_0);

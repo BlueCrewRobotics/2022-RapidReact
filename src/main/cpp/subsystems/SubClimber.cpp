@@ -32,8 +32,8 @@ void SubClimber::ConfigureClimber() {
     mainClimber->Config_kI(0,0.00, 0);
     mainClimber->Config_kD(0,0.00, 0);
 
-    mainClimber->ConfigForwardSoftLimitThreshold(730000,0); //Limit how hieght the climber can go
-    mainClimber->ConfigReverseSoftLimitThreshold(2000,0); // Limit how low the climber can go
+    mainClimber->ConfigForwardSoftLimitThreshold(177000,0); //Limit how hieght the climber can go
+    mainClimber->ConfigReverseSoftLimitThreshold(4000,0); // Limit how low the climber can go
     mainClimber->ConfigForwardSoftLimitEnable(true,0); //Enables the high limit
     mainClimber->ConfigReverseSoftLimitEnable(true,0); // Enables low limit
 

@@ -18,7 +18,13 @@ void SubShooter::Periodic() {
     // Use SetShooterAngle to set the angle that is used periodically
     SetPeriodicServoAngle();
     SetPeriodicWheelSpeed();
-
+ /*   if(m_topShooterWheelSpeed > 0 && m_btmShooterWheelSpeed > 0){
+        SetMotorCooling(true);
+    }
+    else{
+        SetMotorCooling(false);
+    }
+*/
 }
 
 void SubShooter::ConfigureShooter() {

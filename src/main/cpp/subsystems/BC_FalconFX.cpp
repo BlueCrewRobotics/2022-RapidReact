@@ -104,6 +104,7 @@ void BC_FalconFX::SetNominalPeakOutput(int profileSlot) {
 
 void BC_FalconFX::SetMaxSpeed(double maxSpeed) {
 	m_dMaxSpeed = maxSpeed;
+	ptr_falconFX->SelectProfileSlot(0,0);
 }
 
 void BC_FalconFX::DriveWithMotionMagic(double position) {
