@@ -37,4 +37,6 @@ class AutoCmdDrive
   SubDriveTrain* m_subDriveTrain;
   double m_leftRotations;
   double m_rightRotations;
+  double m_leftFinished;
+  double m_rightFinished;
 };

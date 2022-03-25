@@ -19,7 +19,7 @@ void CmdStopShooterWheels::Initialize() {}
 // Called repeatedly when this Command is scheduled to run
 void CmdStopShooterWheels::Execute() {
   // Send 0 speed to the shooter wheels
-  m_subShooter->SpinUpWheels(0,0);
+  m_subShooter->SetShooterWheelSpeed(0,0);
 
 }
 

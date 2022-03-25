@@ -15,7 +15,10 @@ AutoCmdDrive::AutoCmdDrive(SubDriveTrain* subDriveTrain, double leftrotations, d
 }
 
 // Called when the command is initially scheduled.
-void AutoCmdDrive::Initialize() {}
+void AutoCmdDrive::Initialize() {
+  m_leftFinished = m_leftRotations + m_subDriveTrain->GetLeftEncoderValue();
+  m_rightFinished = m_rightRotations + m_subDriveTrain->GetRightEncoderValue();
+}
 
 // Called repeatedly when this Command is scheduled to run
 void AutoCmdDrive::Execute() {
@@ -27,5 +30,8 @@ void AutoCmdDrive::End(bool interrupted) {}
 
 // Returns true when the command should end.
 bool AutoCmdDrive::IsFinished() {
+/*if(m_DriveTrain)
+
+*/
   return false;
 }

@@ -11,6 +11,7 @@
 #include "subsystems/SubDriveTrain.h"
 #include <frc/Joystick.h>
 #include "subsystems/SubLimelightIntake.h"
+#include "common/BC_TriggerCal.h"
 
 /**
  * An example command.
@@ -36,5 +37,7 @@ class CmdDriveWithController
   SubDriveTrain* m_driveTrain;
   frc::Joystick* m_driverController;
   SubLimelightIntake* m_subLimelightIntake;
+  BC_TriggerCal m_lReverseTriggerCal = BC_TriggerCal(true);
+  BC_TriggerCal m_rForwardTiggerCal = BC_TriggerCal(false);
 
 };

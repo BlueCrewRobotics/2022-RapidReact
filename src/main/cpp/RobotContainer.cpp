@@ -50,7 +50,7 @@ void RobotContainer::ConfigureButtonBindings() {
   
   driverController_button_x->WhenPressed(CmdIndexToShooter(&m_subIntake,&m_subShooter));
 
-
+  driverController_button_start->WhenPressed(CmdStopShooterWheels(&m_subShooter));
 
   //auxController_button_a->WhenPressed
   auxController_button_rbump->WhileHeld(CmdClimberUp(&m_subClimber));
