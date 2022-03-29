@@ -11,6 +11,7 @@
 #include <frc2/command/SubsystemBase.h>
 #include "BC_FalconFX.h"
 #include <frc/smartdashboard/SmartDashboard.h>
+#include <frc/Solenoid.h>
 
 class SubClimber : public frc2::SubsystemBase {
  public:
@@ -33,5 +34,8 @@ class SubClimber : public frc2::SubsystemBase {
 
   TalonFX* mainClimber = new TalonFX(CLIMBER_MAIN_ADDR);
   
-  
+  frc::Solenoid* m_climberForward = new  frc::Solenoid(PCM_0,frc::PneumaticsModuleType::CTREPCM,PCM_3_CLIMBER_FORWARD);
+  frc::Solenoid* m_climberBackward = new frc::Solenoid(PCM_0,frc::PneumaticsModuleType::CTREPCM,PCM_4_CLIMBER_BACKWARD);
+  frc::Solenoid* m_climberHook = new  frc::Solenoid(PCM_0,frc::PneumaticsModuleType::CTREPCM,PCM_5_CLIMBER_HOOK);
+
 };

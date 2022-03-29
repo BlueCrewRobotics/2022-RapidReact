@@ -96,7 +96,9 @@ constexpr int PCM_0 = 9;
 // Solenoid Mappings for Shifter PCM
 constexpr int PCM_0_GEARSHIFT = 0;  // Drive train gear shifter
 constexpr int PCM_0_MOTOR_COOLING = 1; // Drive train motor cooling
-
+constexpr int PCM_3_CLIMBER_FORWARD = 3;
+constexpr int PCM_4_CLIMBER_BACKWARD = 4;
+constexpr int PCM_5_CLIMBER_HOOK = 5;
 // Shooter Configuration
 constexpr int SHOOTER_TOP_ADDR = 13;
 constexpr int SHOOTER_BTM_ADDR = 14;
