@@ -46,6 +46,10 @@ class SubDriveTrain : public frc2::SubsystemBase {
   void AutonomousDriving(double leftrotations, double rightrotations);
   // Rotate the robot
   void RotateDriveTrain(double rotation);
+  // Get left encoder value
+  double GetLeftEncoderValue();
+  // Get right encoder value
+  double GetRightEncoderValue();
 
 
  private:

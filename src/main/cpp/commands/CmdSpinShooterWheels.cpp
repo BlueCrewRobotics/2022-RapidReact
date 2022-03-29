@@ -38,7 +38,7 @@ void CmdSpinShooterWheels::Execute() {
     if(m_subLimelightShooter->GetTarget()==true){
       std::cout << "High Hub Selected " << std::endl;
       // Get the distance to the target in ft
-      double hDistanceToTarget = m_subLimelightShooter->GetDistanceToTarget();
+      double hDistanceToTarget = m_subLimelightShooter->GetDistanceToTarget()+2;
       std::cout << "Distance= " << hDistanceToTarget << std::endl;
       // Apply correlation equation of target distance to wheel speed
       topShooterSpeed = 15.73*hDistanceToTarget*hDistanceToTarget-115.29*hDistanceToTarget+13152.52;

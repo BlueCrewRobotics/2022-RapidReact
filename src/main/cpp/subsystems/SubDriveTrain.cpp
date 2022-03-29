@@ -169,3 +169,11 @@ void SubDriveTrain::AutonomousDriving(double leftrotations, double rightrotation
 void SubDriveTrain::RotateDriveTrain(double rotation) {
   driveTrain->ArcadeDrive(0,rotation);
 }
+
+double SubDriveTrain::GetLeftEncoderValue() {
+  return leftDriveMotor->GetEncoderValue();
+}
+
+double SubDriveTrain::GetRightEncoderValue() {
+  return rightDriveMotor->GetEncoderValue();
+}

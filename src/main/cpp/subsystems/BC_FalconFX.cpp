@@ -120,3 +120,7 @@ void BC_FalconFX::ConfigureMotionMagic() {
 	ptr_falconFX->ConfigMotionCruiseVelocity(2048,0);
 }
 
+double BC_FalconFX::GetEncoderValue() {
+	ptr_falconFX->GetSelectedSensorPosition(0);
+}
+
