@@ -19,6 +19,7 @@ void CmdClimberStraight::Initialize() {}
 // Called repeatedly when this Command is scheduled to run
 void CmdClimberStraight::Execute() {
   m_subClimber->SetClimberStraight();
+  m_subClimber->SetClimberMaxPosition(177000);
 }
 
 // Called once the command ends or is interrupted.

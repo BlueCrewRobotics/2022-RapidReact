@@ -31,6 +31,8 @@ class SubClimber : public frc2::SubsystemBase {
   void SetClimberAngled();
   // Make the climber straight
   void SetClimberStraight();
+  // Set the upper limit of the climber
+  void SetClimberMaxPosition(double limit);
  
 
 
