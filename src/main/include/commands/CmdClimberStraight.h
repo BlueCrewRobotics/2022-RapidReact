@@ -10,7 +10,7 @@
 
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
-#include "subsystems/SubDriveTrain.h"
+#include "subsystems/SubClimber.h"
 
 /**
  * An example command.
@@ -19,10 +19,10 @@
  * directly; this is crucially important, or else the decorator functions in
  * Command will *not* work!
  */
-class CmdShiftGear
-    : public frc2::CommandHelper<frc2::CommandBase, CmdShiftGear> {
+class CmdClimberStraight
+    : public frc2::CommandHelper<frc2::CommandBase, CmdClimberStraight> {
  public:
-  explicit CmdShiftGear(SubDriveTrain* subsystem);
+  explicit CmdClimberStraight(SubClimber* subsystem);
 
   void Initialize() override;
 
@@ -33,5 +33,5 @@ class CmdShiftGear
   bool IsFinished() override;
 
  private:
-  SubDriveTrain* m_subDriveTrain;
+  SubClimber* m_subClimber;
 };
