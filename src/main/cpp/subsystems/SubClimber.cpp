@@ -59,4 +59,14 @@ void SubClimber::MoveClimber(double output) {
     mainClimber->Set(ControlMode::PercentOutput, output);
 }
 
+void SubClimber::SetHookPosition(bool engageHooks) {
+    m_climberHook->Set(engageHooks);
+}
 
+void SubClimber::SetClimberAngled() {
+    m_climberAngled->Set(true);
+}
+
+void SubClimber::SetClimberStraight() {
+    m_climberStraight->Set(true);
+}

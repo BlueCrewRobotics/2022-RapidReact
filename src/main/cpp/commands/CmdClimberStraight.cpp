@@ -6,25 +6,25 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-#include "commands/CmdShiftGear.h"
+#include "commands/CmdClimberStraight.h"
 
-CmdShiftGear::CmdShiftGear(SubDriveTrain* subsystem)  : m_subDriveTrain(subsystem) {
+CmdClimberStraight::CmdClimberStraight(SubClimber* subsystem)  : m_subClimber(subsystem) {
   // Use addRequirements() here to declare subsystem dependencies.
-  AddRequirements(subsystem);
+  //AddRequirements(subsystem);
 }
 
 // Called when the command is initially scheduled.
-void CmdShiftGear::Initialize() {}
+void CmdClimberStraight::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
-void CmdShiftGear::Execute() {
-  m_subDriveTrain->SetDriveTrainGear();
+void CmdClimberStraight::Execute() {
+  m_subClimber->SetClimberStraight();
 }
 
 // Called once the command ends or is interrupted.
-void CmdShiftGear::End(bool interrupted) {}
+void CmdClimberStraight::End(bool interrupted) {}
 
 // Returns true when the command should end.
-bool CmdShiftGear::IsFinished() {
+bool CmdClimberStraight::IsFinished() {
   return true;
 }

@@ -19,10 +19,10 @@
  * directly; this is crucially important, or else the decorator functions in
  * Command will *not* work!
  */
-class CmdClimberAngled
-    : public frc2::CommandHelper<frc2::CommandBase, CmdClimberAngled> {
+class CmdClimberReleaseHooks
+    : public frc2::CommandHelper<frc2::CommandBase, CmdClimberReleaseHooks> {
  public:
-  explicit CmdClimberAngled(SubClimber* subsystem);
+  explicit CmdClimberReleaseHooks(SubClimber* subsystem);
 
   void Initialize() override;
 
