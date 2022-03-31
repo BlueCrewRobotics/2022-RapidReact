@@ -34,4 +34,5 @@ class CmdClimberGrabBar
 
  private:
   SubClimber* m_subClimber;
+
 };

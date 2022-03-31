@@ -42,6 +42,10 @@
 #include "commands/CmdClimberUp.h"
 #include "commands/CmdClimberDown.h"
 #include "commands/CmdClimberStop.h"
+#include "commands/CmdClimberGrabBar.h"
+#include "commands/CmdClimberReleaseHooks.h"
+#include "commands/CmdClimberStraight.h"
+#include "commands/CmdClimberAngled.h"
 #include "commands/CmdHubSelect.h"
 
 // Auto command includes
@@ -87,6 +91,8 @@ class RobotContainer {
   void ConfigureLimelights();
   // Configure climber
   void ConfigureClimber();
+  // Get aux D tad value
+  double GetAuxDPadValue();
 
 
 

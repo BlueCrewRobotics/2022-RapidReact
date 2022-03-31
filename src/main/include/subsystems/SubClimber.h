@@ -26,7 +26,7 @@ class SubClimber : public frc2::SubsystemBase {
   // Moves climber to position
   void MoveClimber(double output);
   // engage/release hooks
-  void SetHookPosition(bool enageHooks);
+  void SetHookPosition();
   // Angle the climber
   void SetClimberAngled();
   // Make the climber straight
@@ -42,8 +42,8 @@ class SubClimber : public frc2::SubsystemBase {
 
   TalonFX* mainClimber = new TalonFX(CLIMBER_MAIN_ADDR);
   
-  frc::Solenoid* m_climberStraight = new  frc::Solenoid(PCM_0,frc::PneumaticsModuleType::CTREPCM,PCM_3_CLIMBER_STRAIGHT);
-  frc::Solenoid* m_climberAngled = new frc::Solenoid(PCM_0,frc::PneumaticsModuleType::CTREPCM,PCM_4_CLIMBER_ANGLED);
-  frc::Solenoid* m_climberHook = new  frc::Solenoid(PCM_0,frc::PneumaticsModuleType::CTREPCM,PCM_5_CLIMBER_HOOK);
+  frc::Solenoid* m_climberStraight = new  frc::Solenoid(PCM_0,frc::PneumaticsModuleType::CTREPCM,PCM_2_CLIMBER_STRAIGHT);
+  frc::Solenoid* m_climberAngled = new frc::Solenoid(PCM_0,frc::PneumaticsModuleType::CTREPCM,PCM_3_CLIMBER_ANGLED);
+  frc::Solenoid* m_climberHook = new  frc::Solenoid(PCM_0,frc::PneumaticsModuleType::CTREPCM,PCM_4_CLIMBER_HOOK);
 
 };

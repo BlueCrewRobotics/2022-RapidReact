@@ -121,6 +121,6 @@ void BC_FalconFX::ConfigureMotionMagic() {
 }
 
 double BC_FalconFX::GetEncoderValue() {
-	ptr_falconFX->GetSelectedSensorPosition(0);
+	return ptr_falconFX->GetSelectedSensorPosition(0);
 }
 

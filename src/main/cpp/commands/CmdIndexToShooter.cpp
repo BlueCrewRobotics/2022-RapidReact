@@ -20,11 +20,11 @@ void CmdIndexToShooter::Initialize() {}
 // Called repeatedly when this Command is scheduled to run
 void CmdIndexToShooter::Execute() {
   double position = m_subIntake->GetIndexerPosition();
-  if(m_subShooter->WheelsAtSpeed(1000)==true){ // Wait for whooter wheels to be at speed
+  //if(m_subShooter->WheelsAtSpeed(500)==true){ // Wait for shooter wheels to be at speed
     position = position + 13000;
     m_subIntake->IndexShooterFeeder(position); // Feed ball into shooter
     m_subIntake->SetBallCount(m_subIntake->GetBallCount()-1); // Lower the number of balls being counted in the system by one
-  }
+ // }
   std::cout << "BC After Shot=  " << m_subIntake->GetBallCount() << std::endl;
 
   
@@ -35,5 +35,8 @@ void CmdIndexToShooter::End(bool interrupted) {}
 
 // Returns true when the command should end.
 bool CmdIndexToShooter::IsFinished() {
+  //if(m_subShooter->WheelsAtSpeed(500)==true) {
+  //  return true;
+  //}
   return true;
 }

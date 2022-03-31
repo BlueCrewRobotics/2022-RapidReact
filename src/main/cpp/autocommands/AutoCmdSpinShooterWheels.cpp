@@ -23,8 +23,8 @@ void AutoCmdSpinShooterWheels::Execute() {
     double topShooterSpeed = 13152.52; ;  //20731
     double btmShooterSpeed = 13152.52; ; 
     // Offset for slowing wheels when shooting
-    double topShooterOffset = 4500;
-    double btmShooterOffset = 4500;
+    double topShooterOffset = 4000;
+    double btmShooterOffset = 4000;
 
   if(m_subShooter->GetHub() == 1) {
 
@@ -32,8 +32,8 @@ void AutoCmdSpinShooterWheels::Execute() {
     topShooterSpeed = 13152.52;  //20731
     btmShooterSpeed = 13152.52; 
     // Offset for slowing wheels when shooting
-    topShooterOffset = 4500;
-    btmShooterOffset = 4500;
+    topShooterOffset = 4000;
+    btmShooterOffset = 4000;
 
     if(m_subLimelightShooter->GetTarget()==true){
       // Get the distance to the target in ft
@@ -62,8 +62,8 @@ void AutoCmdSpinShooterWheels::Execute() {
 
 }
   
-
-  m_subShooter->SpinUpWheels(topShooterSpeed,btmShooterSpeed);
+  m_subShooter->SetShooterWheelSpeed(topShooterSpeed,btmShooterSpeed);
+  //m_subShooter->SpinUpWheels(topShooterSpeed,btmShooterSpeed);
 
 }
 
@@ -72,7 +72,7 @@ void AutoCmdSpinShooterWheels::End(bool interrupted) {}
 
 // Returns true when the command should end.
 bool AutoCmdSpinShooterWheels::IsFinished() {
-if(m_subShooter->WheelsAtSpeed(1000) == true ){
+if(m_subShooter->WheelsAtSpeed(500) == true ){
     return true;
   }
   else{

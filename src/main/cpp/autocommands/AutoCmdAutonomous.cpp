@@ -17,20 +17,22 @@ AutoCmdAutonomous::AutoCmdAutonomous(SubLimelightShooter* subLimelightShooter,  
     CmdSetShooterAngle(subShooter,subLimelightShooter),
     // Spin up Shooter wheels
     AutoCmdSpinShooterWheels(subShooter, subLimelightShooter),
-    // Shoot the ball
+    // Start timer
+    AutoCmdTimer(timer,1),
+        // Shoot the ball
     CmdIndexToShooter(subIntake,subShooter),
     // Start timer
-    AutoCmdTimer(timer),
+    AutoCmdTimer(timer,2),
     // Turn off shooter limelight
     CmdTurnOffShooterLimelight(subLimelightShooter),
     // Stop the shoooter wheels
-    CmdStopShooterWheels(subShooter),
+    //CmdStopShooterWheels(subShooter),
     // Turn on intake limelight. Proably don't need to turn on the limelight for the ball color
     //CmdMoveIntake(subIntake, 5600.0),
     // Spin the intake
     //CmdSpinIntake(subIntake),
     // Drive toward ball until ball is picked up
-    AutoCmdDrive(subDriveTrain,30,30),
+    AutoCmdDrive(subDriveTrain,60,60),
     // Index the shooter
     //CmdIndexShooterFeeder(subIntake),
     // Retract intake

@@ -18,7 +18,7 @@ void CmdClimberGrabBar::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
 void CmdClimberGrabBar::Execute() {
-  m_subClimber->SetHookPosition(true);
+  m_subClimber->SetHookPosition();
 }
 
 // Called once the command ends or is interrupted.
