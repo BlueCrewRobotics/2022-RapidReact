@@ -23,8 +23,8 @@ void CmdSpinShooterWheels::Execute() {
     double topShooterSpeed;  //20731
     double btmShooterSpeed; 
     // Offset for slowing wheels when shooting
-    double topShooterOffset = 4000;
-    double btmShooterOffset = 4000;
+    double topShooterOffset;
+    double btmShooterOffset;
 
   if(m_subShooter->GetHub() == true) {
 
@@ -61,8 +61,8 @@ void CmdSpinShooterWheels::Execute() {
   } 
   else {
     if(m_subShooter->GetHub() == false){
-      topShooterSpeed = 10000;
-      btmShooterSpeed = 10000;
+      topShooterSpeed = 8000;
+      btmShooterSpeed = 8000;
       std::cout << "Low Hub Selected " << std::endl;
     }
 

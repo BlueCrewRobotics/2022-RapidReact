@@ -18,7 +18,7 @@ void CmdClimberReleaseHooks::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
 void CmdClimberReleaseHooks::Execute() {
-  m_subClimber->SetHookPosition(false);
+  m_subClimber->SetHookPosition();
 }
 
 // Called once the command ends or is interrupted.

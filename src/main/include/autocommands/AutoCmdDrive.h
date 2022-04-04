@@ -11,6 +11,7 @@
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
 #include "subsystems/SubDriveTrain.h"
+#include <frc/Timer.h>
 
 /**
  * An example command.
@@ -22,7 +23,7 @@
 class AutoCmdDrive
     : public frc2::CommandHelper<frc2::CommandBase, AutoCmdDrive> {
  public:
-  explicit AutoCmdDrive(SubDriveTrain* subDriveTrain, double leftrotations, double rightrotations);
+  explicit AutoCmdDrive(SubDriveTrain* subDriveTrain, double leftrotations, double rightrotations, frc::Timer* timer);
 
   void Initialize() override;
 
@@ -39,4 +40,5 @@ class AutoCmdDrive
   double m_rightRotations;
   double m_leftFinished;
   double m_rightFinished;
+  frc::Timer* m_timer;
 };

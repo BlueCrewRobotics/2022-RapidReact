@@ -177,3 +177,11 @@ double SubDriveTrain::GetLeftEncoderValue() {
 double SubDriveTrain::GetRightEncoderValue() {
   return rightDriveMotor->GetEncoderValue();
 }
+
+double SubDriveTrain::GetLeftErrorValue() {
+  return leftDriveMotor->GetError();
+}
+
+double SubDriveTrain::GetRightErrorValue() {
+  return rightDriveMotor->GetError();
+}

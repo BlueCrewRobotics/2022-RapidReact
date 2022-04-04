@@ -19,7 +19,7 @@ void CmdClimberAngled::Initialize() {}
 // Called repeatedly when this Command is scheduled to run
 void CmdClimberAngled::Execute() {
   m_subClimber->SetClimberAngled();
-  m_subClimber->SetClimberMaxPosition(177000); // This should be extended to add the extra reach when the climber is angled
+
 }
 
 // Called once the command ends or is interrupted.

@@ -8,12 +8,14 @@
 
 #include "autocommands/AutoCmdTimer.h"
 
-AutoCmdTimer::AutoCmdTimer(frc::Timer* timer) : m_timer(timer) {
+AutoCmdTimer::AutoCmdTimer(frc::Timer* timer, double time) : m_timer(timer), m_time(time) {
   // Use addRequirements() here to declare subsystem dependencies.
 }
 
 // Called when the command is initially scheduled.
-void AutoCmdTimer::Initialize() {}
+void AutoCmdTimer::Initialize() {
+  m_timer->Reset();
+}
 
 // Called repeatedly when this Command is scheduled to run
 void AutoCmdTimer::Execute() {
@@ -25,7 +27,7 @@ void AutoCmdTimer::End(bool interrupted) {}
 
 // Returns true when the command should end.
 bool AutoCmdTimer::IsFinished() {
-  if(m_timer->HasElapsed((units::time::second_t)2)==true) {
+  if(m_timer->HasElapsed((units::time::second_t)m_time)==true) {
     return true;
   }
   else {

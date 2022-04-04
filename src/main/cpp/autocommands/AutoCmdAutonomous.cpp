@@ -11,62 +11,61 @@ AutoCmdAutonomous::AutoCmdAutonomous(SubLimelightShooter* subLimelightShooter,  
   // Add your commands here, e.g.
   // AddCommands(FooCommand(), BarCommand());
   AddCommands(
-   /* // Turn on the shooter limelight
+    // Turn on the shooter limelight
     CmdTurnOnShooterLimelight(subLimelightShooter),
     // Set the shooter angle this will be upclose shooting to the upper hub
     CmdSetShooterAngle(subShooter,subLimelightShooter),
     // Spin up Shooter wheels
     AutoCmdSpinShooterWheels(subShooter, subLimelightShooter),
-    // Shoot the ball
+    // Start timer
+    AutoCmdTimer(timer,1),
+        // Shoot the ball
     CmdIndexToShooter(subIntake,subShooter),
     // Start timer
-    AutoCmdTimer(timer),
+    AutoCmdTimer(timer,2),
     // Turn off shooter limelight
     CmdTurnOffShooterLimelight(subLimelightShooter),
     // Stop the shoooter wheels
-    CmdStopShooterWheels(subShooter)*/
+    //CmdStopShooterWheels(subShooter),
     // Turn on intake limelight. Proably don't need to turn on the limelight for the ball color
-    //\CmdMoveIntake(subIntake, 5600.0),
+    //CmdMoveIntake(subIntake, 5800.0),
     // Spin the intake
     //CmdSpinIntake(subIntake),
     // Drive toward ball until ball is picked up
-    AutoCmdDrive(subDriveTrain,30,30),
+    AutoCmdDrive(subDriveTrain,50,50,timer),
     // Index the shooter
     //CmdIndexShooterFeeder(subIntake),
+    // Set the shooter angle this will be upclose shooting to the upper hub
+    //CmdSetShooterAngle(subShooter,subLimelightShooter),
+    // Spin up Shooter wheels
+    //AutoCmdSpinShooterWheels(subShooter, subLimelightShooter),
     // Retract intake
     //CmdMoveIntake(subIntake, 0.0),
     // Stop the intake
     //CmdStopIntake(subIntake),
-    
-    // Extend intake
-    CmdMoveIntake(subIntake, 5600.0),
-    // Spin the intake
-    CmdSpinIntake(subIntake),
-    // Retract intake
-    CmdMoveIntake(subIntake, 0.0),
-    // Stop the intake
-    CmdStopIntake(subIntake),
-    // Backup up the robot
-    AutoCmdDrive(subDriveTrain,-10,-10),
-
-
-    // Turn on the shooter limelight
-    CmdTurnOnShooterLimelight(subLimelightShooter),
-    // Set the shooter angle this will be upclose shooting to the upper hub
-    CmdSetShooterAngle(subShooter,subLimelightShooter),
-    // Spin up Shooter wheels
-    AutoCmdSpinShooterWheels(subShooter, subLimelightShooter),
-    // Shoot the ball
-    CmdIndexToShooter(subIntake,subShooter),
+    // Acquire target
+    //CmdAcquireShooterTarget(subLimelightShooter,subDriveTrain),
+    // Turn on shooter limelight
+    //CmdTurnOnShooterLimelight(subLimelightShooter),
     // Start timer
-    AutoCmdTimer(timer),
+    //AutoCmdTimer(timer,1),
+    // Shoot the ball
+    //CmdIndexToShooter(subIntake,subShooter),
+    // Start timer
+    //AutoCmdTimer(timer,2),
     // Turn off shooter limelight
-    CmdTurnOffShooterLimelight(subLimelightShooter),
-    // Stop the shoooter wheels
-    CmdStopShooterWheels(subShooter),
-
-
-    // Turn on the shooter limelight
+    //CmdTurnOffShooterLimelight(subLimelightShooter),
+    // Extend intake
+    //CmdMoveIntake(subIntake, 5600.0),
+    // Spin the intake
+    //CmdSpinIntake(subIntake),
+    // Retract intake
+    //CmdMoveIntake(subIntake, 0.0),
+    // Stop the intake
+    //CmdStopIntake(subIntake),
+    // Backup up the robot
+    //AutoCmdDrive(subDriveTrain,-10,-10),
+     // Turn on the shooter limelight
     //CmdTurnOnShooterLimelight(subLimelightShooter),
     // Set the shooter angle this will be upclose shooting to the upper hub
     //CmdSetShooterAngle(subShooter,subLimelightShooter),
@@ -79,6 +78,7 @@ AutoCmdAutonomous::AutoCmdAutonomous(SubLimelightShooter* subLimelightShooter,  
     // Stop the shoooter wheels
     //CmdStopShooterWheels(subShooter),
     // Turn to face another alliance ball
+
 
     
     // Turn the shooter to face the hub
