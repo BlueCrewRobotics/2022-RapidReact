@@ -16,6 +16,10 @@ RobotContainer::RobotContainer() : m_autoAutonomous(&m_subLimelightShooter, &m_s
 
   // Set the default command for the Drive Train
   m_subDriveTrain.SetDefaultCommand(CmdDriveWithController(&m_subDriveTrain, driverController, &m_subLimelightIntake));
+  m_subClimber.SetDefaultCommand(CmdClimberUp(&m_subClimber, auxController));
+  m_subClimber.SetDefaultCommand(CmdClimberDown(&m_subClimber, auxController));
+
+
 }
 
 void RobotContainer::ConfigureButtonBindings() {
@@ -37,7 +41,6 @@ void RobotContainer::ConfigureButtonBindings() {
     });
 
   //driverController_button_x->WhenPressed(new CmdFeedBallToShooter(&m_subIntake)); This new command needs to be created with the Shooter Feeder
-  
   // Way to add debouce on the buttons
   //driverController_button_b->Debounce(60_ms,frc::Debouncer::kBoth).WhileActiveContinous(new CmdSetShooterAngle(&m_subShooter));
 
@@ -53,10 +56,10 @@ void RobotContainer::ConfigureButtonBindings() {
   driverController_button_start->WhenPressed(CmdStopShooterWheels(&m_subShooter));
 
   //auxController_button_a->WhenPressed
-  auxController_button_rbump->WhileHeld(CmdClimberUp(&m_subClimber));
-  auxController_button_rbump->WhenReleased(CmdClimberStop(&m_subClimber));
-  auxController_button_lbump->WhileHeld(CmdClimberDown(&m_subClimber));
-  auxController_button_lbump->WhenReleased(CmdClimberStop(&m_subClimber));
+ // auxController_button_rbump->WhileHeld(CmdClimberUp(&m_subClimber));
+  //auxController_button_rbump->WhenReleased(CmdClimberStop(&m_subClimber));
+ // auxController_button_lbump->WhileHeld(CmdClimberDown(&m_subClimber));
+  //auxController_button_lbump->WhenReleased(CmdClimberStop(&m_subClimber));
 
   auxController_button_y->WhenPressed(CmdHubSelect(&m_subShooter, true));
   auxController_button_a->WhenPressed(CmdHubSelect(&m_subShooter, false));
@@ -67,7 +70,8 @@ void RobotContainer::ConfigureButtonBindings() {
 frc2::Command* RobotContainer::GetAutonomousCommand() {
   // An example command will be run in autonomous
   //return &m_autonomousCommand;
-  return &m_autoAutonomous;
+  //return &m_autoAutonomous;
+
 }
 
 void RobotContainer::ConfigureDrive() {
