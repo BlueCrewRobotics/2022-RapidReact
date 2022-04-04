@@ -24,37 +24,37 @@ AutoCmdAutonomous::AutoCmdAutonomous(SubLimelightShooter* subLimelightShooter,  
     // Start timer
     AutoCmdTimer(timer,2),
     // Turn off shooter limelight
-    //CmdTurnOffShooterLimelight(subLimelightShooter),
+    CmdTurnOffShooterLimelight(subLimelightShooter),
     // Stop the shoooter wheels
     //CmdStopShooterWheels(subShooter),
     // Turn on intake limelight. Proably don't need to turn on the limelight for the ball color
-    CmdMoveIntake(subIntake, 5800.0),
+    //CmdMoveIntake(subIntake, 5800.0),
     // Spin the intake
-    CmdSpinIntake(subIntake),
+    //CmdSpinIntake(subIntake),
     // Drive toward ball until ball is picked up
-    AutoCmdDrive(subDriveTrain,80,80,timer),
+    AutoCmdDrive(subDriveTrain,50,50,timer),
     // Index the shooter
     //CmdIndexShooterFeeder(subIntake),
     // Set the shooter angle this will be upclose shooting to the upper hub
-    CmdSetShooterAngle(subShooter,subLimelightShooter),
+    //CmdSetShooterAngle(subShooter,subLimelightShooter),
     // Spin up Shooter wheels
-    AutoCmdSpinShooterWheels(subShooter, subLimelightShooter),
+    //AutoCmdSpinShooterWheels(subShooter, subLimelightShooter),
     // Retract intake
-    CmdMoveIntake(subIntake, 0.0),
+    //CmdMoveIntake(subIntake, 0.0),
     // Stop the intake
-    CmdStopIntake(subIntake),
+    //CmdStopIntake(subIntake),
     // Acquire target
     //CmdAcquireShooterTarget(subLimelightShooter,subDriveTrain),
     // Turn on shooter limelight
     //CmdTurnOnShooterLimelight(subLimelightShooter),
     // Start timer
-    AutoCmdTimer(timer,1),
+    //AutoCmdTimer(timer,1),
     // Shoot the ball
-    CmdIndexToShooter(subIntake,subShooter),
+    //CmdIndexToShooter(subIntake,subShooter),
     // Start timer
-    AutoCmdTimer(timer,2),
+    //AutoCmdTimer(timer,2),
     // Turn off shooter limelight
-    CmdTurnOffShooterLimelight(subLimelightShooter),
+    //CmdTurnOffShooterLimelight(subLimelightShooter),
     // Extend intake
     //CmdMoveIntake(subIntake, 5600.0),
     // Spin the intake

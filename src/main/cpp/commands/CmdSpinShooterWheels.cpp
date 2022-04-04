@@ -23,8 +23,8 @@ void CmdSpinShooterWheels::Execute() {
     double topShooterSpeed;  //20731
     double btmShooterSpeed; 
     // Offset for slowing wheels when shooting
-    double topShooterOffset = 4000;
-    double btmShooterOffset = 4000;
+    double topShooterOffset;
+    double btmShooterOffset;
 
   if(m_subShooter->GetHub() == true) {
 

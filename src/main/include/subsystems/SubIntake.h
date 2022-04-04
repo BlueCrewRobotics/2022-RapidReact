@@ -54,6 +54,9 @@ class SubIntake : public frc2::SubsystemBase {
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
   VictorSPX* frontSpinner = new VictorSPX(INTAKE_SPINNER_ADDR);
+  // If using Falcon uncomment below line and comment out above line
+  //TalonFX* frontSpinner = new TalonFX(INTAKE_SPINNER_ADDR);
+
   TalonSRX* positionIntake = new TalonSRX(INTAKE_POSITIONER_ADDR);
   TalonSRX* shooterFeeder = new TalonSRX(INTAKE_SHOOTER_FEEDER_ADDR);
 
