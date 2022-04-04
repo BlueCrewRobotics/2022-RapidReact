@@ -8,7 +8,7 @@
 
 #include "commands/CmdClimberDown.h"
 
-CmdClimberDown::CmdClimberDown(SubClimber* subClimber) : m_subClimber(subClimber) {
+CmdClimberDown::CmdClimberDown(SubClimber* subClimber, frc::Joystick* auxController) : m_subClimber(subClimber), m_auxController(auxController) {
   // Use addRequirements() here to declare subsystem dependencies.
   AddRequirements(subClimber);
 }
@@ -18,8 +18,13 @@ void CmdClimberDown::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
 void CmdClimberDown::Execute() {
+  double speed = m_auxController->GetRawAxis(AXIS_L_TRIG);
+  if (speed < 0.1) {
+    speed = 0;
+  }
+  speed = -1*speed;
   // Move the Climber to the home position
-  m_subClimber->MoveClimber(-0.9);
+  m_subClimber->MoveClimber(speed);
 
 }
 

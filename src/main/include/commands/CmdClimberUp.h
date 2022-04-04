@@ -11,6 +11,8 @@
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
 #include "subsystems/SubClimber.h"
+#include <frc/Joystick.h>
+
 
 /**
  * An example command.
@@ -22,7 +24,7 @@
 class CmdClimberUp
     : public frc2::CommandHelper<frc2::CommandBase, CmdClimberUp> {
  public:
-  explicit CmdClimberUp(SubClimber* SubClimber);
+  explicit CmdClimberUp(SubClimber* SubClimber, frc::Joystick* auxController);
 
   void Initialize() override;
 
@@ -34,4 +36,5 @@ class CmdClimberUp
 
  private:
   SubClimber* m_subClimber;
+  frc::Joystick* m_auxController;
 };

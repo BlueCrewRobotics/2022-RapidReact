@@ -8,10 +8,11 @@
 
 #include "commands/CmdClimberUp.h"
 
-CmdClimberUp::CmdClimberUp(SubClimber *SubClimber) : m_subClimber(SubClimber)
+CmdClimberUp::CmdClimberUp(SubClimber *SubClimber, frc::Joystick* auxController) : m_subClimber(SubClimber), m_auxController(auxController)
 {
   // Use addRequirements() here to declare subsystem dependencies.
-  AddRequirements(SubClimber);
+  //AddRequirements(SubClimber);
+
 }
 
 // Called when the command is initially scheduled.
@@ -20,8 +21,13 @@ void CmdClimberUp::Initialize() {}
 // Called repeatedly when this Command is scheduled to run
 void CmdClimberUp::Execute()
 {
+  double speed = m_auxController->GetRawAxis(AXIS_R_TRIG);
+  if (speed < 0.1) {
+    speed = 0;
+  }
+  
   // Move Climber to set position
-  m_subClimber->MoveClimber(0.9);
+  m_subClimber->MoveClimber(speed);
 }
 
 // Called once the command ends or is interrupted.
