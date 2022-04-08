@@ -34,7 +34,7 @@ void CmdClimberControl::Execute()
   }
  
   // Move Climber to set position
-  std::cout << "Climber Speed " << speed << std::endl;
+  //std::cout << "Climber Speed " << speed << std::endl;
 
   m_subClimber->MoveClimber(speed);
 }

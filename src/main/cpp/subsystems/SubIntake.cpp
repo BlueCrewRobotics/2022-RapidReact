@@ -17,7 +17,7 @@ void SubIntake::ConfigureIntake(){
     // Write code here to configure the the motors of the Intake
     // Intake positioner configuration
     positionIntake->Config_kF(0,0.0,0);
-    positionIntake->Config_kP(0,0.0937,0); // (75%)*1023/8192
+    positionIntake->Config_kP(0,0.15,0); // (75%)*1023/8192 .0937
     positionIntake->Config_kI(0,0,0);
     positionIntake->Config_kD(0,0,0);
 

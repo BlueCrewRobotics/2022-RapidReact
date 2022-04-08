@@ -40,8 +40,7 @@
 #include "commands/CmdIndexToShooter.h"
 #include "commands/CmdClimberControl.h"
 
-#include "commands/CmdClimberUp.h"
-#include "commands/CmdClimberDown.h"
+
 #include "commands/CmdClimberStop.h"
 #include "commands/CmdClimberGrabBar.h"
 #include "commands/CmdClimberReleaseHooks.h"

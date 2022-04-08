@@ -32,8 +32,8 @@ void CmdSpinShooterWheels::Execute() {
     topShooterSpeed = 13152.52;  //20731
     btmShooterSpeed = 13152.52; 
     // Offset for slowing wheels when shooting
-    topShooterOffset = 4000;
-    btmShooterOffset = 4000;
+    topShooterOffset = 2500;
+    btmShooterOffset = 2500;
 
     if(m_subLimelightShooter->GetTarget()==true){
       std::cout << "High Hub Selected " << std::endl;
@@ -41,8 +41,11 @@ void CmdSpinShooterWheels::Execute() {
       double hDistanceToTarget = m_subLimelightShooter->GetDistanceToTarget()+2;
       std::cout << "Distance= " << hDistanceToTarget << std::endl;
       // Apply correlation equation of target distance to wheel speed
-      topShooterSpeed = 15.73*hDistanceToTarget*hDistanceToTarget-115.29*hDistanceToTarget+13152.52;
-      btmShooterSpeed = 15.73*hDistanceToTarget*hDistanceToTarget-115.29*hDistanceToTarget+13152.52;
+      //topShooterSpeed = 15.73*hDistanceToTarget*hDistanceToTarget-115.29*hDistanceToTarget+13152.52;
+      //btmShooterSpeed = 15.73*hDistanceToTarget*hDistanceToTarget-115.29*hDistanceToTarget+13152.52;
+      topShooterSpeed = 9.16*hDistanceToTarget*hDistanceToTarget-16.86*hDistanceToTarget+12450.88;
+      btmShooterSpeed = 9.16*hDistanceToTarget*hDistanceToTarget-16.86*hDistanceToTarget+12450.88;
+
       // Just shoot the ball to bottom hub target
       topShooterSpeed = topShooterSpeed + topShooterOffset;
       btmShooterSpeed = btmShooterSpeed + btmShooterOffset;
@@ -63,6 +66,7 @@ void CmdSpinShooterWheels::Execute() {
     if(m_subShooter->GetHub() == false){
       topShooterSpeed = 8000;
       btmShooterSpeed = 8000;
+      m_subShooter->SetShooterAngle(0.8);
       std::cout << "Low Hub Selected " << std::endl;
     }
 

@@ -25,6 +25,8 @@ void SubShooter::Periodic() {
         SetMotorCooling(false);
     }
 */
+   //SetShooterAngle(frc::SmartDashboard::GetNumber("SA",0.8));
+
 }
 
 void SubShooter::ConfigureShooter() {
@@ -75,6 +77,9 @@ void SubShooter::ConfigureShooter() {
     rightServo->SetBounds(2.0,0.01,1.5,0.01,1.0);
     leftServo->SetBounds(2.0,0.01,1.5,0.01,1.0);
 
+    //frc::SmartDashboard::PutNumber("SA",0.8);
+
+
 
 }
 
@@ -85,11 +90,11 @@ void SubShooter::SpinUpWheels(double topSpeed, double btmSpeed) {
 }
 
 void SubShooter::SetShooterAngle(double angle) {
-    if( angle > 1) {
-        angle = 1;
+    if( angle > 0.8) {
+        angle = 0.8;
     }
-    if( angle < 0) {
-        angle = 0;
+    if( angle < 0.15) {
+        angle = 0.15;
     }
     m_servoAngle = angle;
 }
