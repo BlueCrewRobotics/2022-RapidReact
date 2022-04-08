@@ -12,7 +12,7 @@ SubLimelightIntake::SubLimelightIntake() = default;
 
 // This method will be called once per scheduler run
 void SubLimelightIntake::Periodic() {
-
+  SetCameraMode(1);
 }
 
 /**

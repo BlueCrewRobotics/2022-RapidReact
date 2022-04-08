@@ -66,9 +66,9 @@ void SubIntake::ConfigureIntake(){
     shooterFeeder->SetInverted(true);
 
     // Intake wheels spinner configuration used with Victor
-    frontSpinner->SetInverted(true);
+   // frontSpinner->SetInverted(true);
     // If using TalonFX Falcon motor uncomment below line and comment out above line
-    //frontSpinner->SetInverted(ctre::phoenix::motorcontrol::TalonFXInvertType::Clockwise);
+    frontSpinner->SetInverted(ctre::phoenix::motorcontrol::TalonFXInvertType::Clockwise);
 
 
 }

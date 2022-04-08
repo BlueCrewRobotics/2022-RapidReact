@@ -7,6 +7,7 @@
 // the WPILib BSD license file in the root directory of this project.
 
 #include "commands/CmdClimberDown.h"
+#include <iostream>
 
 CmdClimberDown::CmdClimberDown(SubClimber* subClimber, frc::Joystick* auxController) : m_subClimber(subClimber), m_auxController(auxController) {
   // Use addRequirements() here to declare subsystem dependencies.
@@ -21,8 +22,10 @@ void CmdClimberDown::Execute() {
   double speed = m_auxController->GetRawAxis(AXIS_L_TRIG);
   if (speed < 0.1) {
     speed = 0;
+
   }
   speed = -1*speed;
+  std::cout << "Climber Speed " << speed << std::endl;
   // Move the Climber to the home position
   m_subClimber->MoveClimber(speed);
 
@@ -33,5 +36,5 @@ void CmdClimberDown::End(bool interrupted) {}
 
 // Returns true when the command should end.
 bool CmdClimberDown::IsFinished() {
-  return true;
+  return false;
 }

@@ -6,26 +6,33 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-#include "commands/CmdClimberUp.h"
+#include "commands/CmdClimberControl.h"
 #include <iostream>
 
-CmdClimberUp::CmdClimberUp(SubClimber *SubClimber, frc::Joystick* auxController) : m_subClimber(SubClimber), m_auxController(auxController){
+CmdClimberControl::CmdClimberControl(SubClimber *SubClimber, frc::Joystick* auxController) : m_subClimber(SubClimber), m_auxController(auxController){
   // Use addRequirements() here to declare subsystem dependencies.
   AddRequirements(SubClimber);
 
 }
 
 // Called when the command is initially scheduled.
-void CmdClimberUp::Initialize() {}
+void CmdClimberControl::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
-void CmdClimberUp::Execute()
+void CmdClimberControl::Execute()
 {
-  double speed = m_auxController->GetRawAxis(AXIS_R_TRIG);
-  if (speed < 0.1) {
+  double speedUp = m_auxController->GetRawAxis(AXIS_R_TRIG);
+  double speedDown = -m_auxController->GetRawAxis(AXIS_L_TRIG);
+
+  double speed;
+
+  if (speedDown > -0.1 || speedUp < 0.1) {
     speed = 0;
   }
-  speed = speed;
+  if (speedDown < -0.1 || speedUp > 0.1) {
+    speed = speedUp + speedDown;
+  }
+ 
   // Move Climber to set position
   std::cout << "Climber Speed " << speed << std::endl;
 
@@ -33,10 +40,10 @@ void CmdClimberUp::Execute()
 }
 
 // Called once the command ends or is interrupted.
-void CmdClimberUp::End(bool interrupted) {}
+void CmdClimberControl::End(bool interrupted) {}
 
 // Returns true when the command should end.
-bool CmdClimberUp::IsFinished()
+bool CmdClimberControl::IsFinished()
 {
   return false;
 }

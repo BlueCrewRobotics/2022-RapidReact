@@ -38,6 +38,7 @@
 #include "commands/CmdIndexShooterFeeder.h"
 #include "commands/CmdReverseShooterFeeder.h"
 #include "commands/CmdIndexToShooter.h"
+#include "commands/CmdClimberControl.h"
 
 #include "commands/CmdClimberUp.h"
 #include "commands/CmdClimberDown.h"

@@ -16,8 +16,10 @@ RobotContainer::RobotContainer() : m_autoAutonomous(&m_subLimelightShooter, &m_s
 
   // Set the default command for the Drive Train
   m_subDriveTrain.SetDefaultCommand(CmdDriveWithController(&m_subDriveTrain, driverController, &m_subLimelightIntake));
-  m_subClimber.SetDefaultCommand(CmdClimberUp(&m_subClimber, auxController));
-  m_subClimber.SetDefaultCommand(CmdClimberDown(&m_subClimber, auxController));
+  //m_subClimber.SetDefaultCommand(CmdClimberUp(&m_subClimber, auxController));
+  //m_subClimber.SetDefaultCommand(CmdClimberDown(&m_subClimber, auxController));
+  m_subClimber.SetDefaultCommand(CmdClimberControl(&m_subClimber, auxController));
+
 
 }
 
@@ -58,8 +60,8 @@ void RobotContainer::ConfigureButtonBindings() {
 
   //auxController_button_a->WhenPressed
 
-  auxController_button_r3->WhenPressed(CmdClimberGrabBar(&m_subClimber));
-  auxController_button_l3->WhenPressed(CmdClimberAngled(&m_subClimber));
+  auxController_button_lbump->WhenPressed(CmdClimberGrabBar(&m_subClimber));
+  auxController_button_rbump->WhenPressed(CmdClimberAngled(&m_subClimber));
   //auxController_button_rbump->WhileHeld(CmdClimberUp(&m_subClimber));
   //auxController_button_rbump->WhenReleased(CmdClimberStop(&m_subClimber));
   //auxController_button_lbump->WhileHeld(CmdClimberDown(&m_subClimber));
