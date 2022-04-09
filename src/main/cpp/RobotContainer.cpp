@@ -42,7 +42,6 @@ void RobotContainer::ConfigureButtonBindings() {
     });
 
   //driverController_button_x->WhenPressed(new CmdFeedBallToShooter(&m_subIntake)); This new command needs to be created with the Shooter Feeder
-  
   // Way to add debouce on the buttons
   //driverController_button_b->Debounce(60_ms,frc::Debouncer::kBoth).WhileActiveContinous(new CmdSetShooterAngle(&m_subShooter));
 
@@ -76,7 +75,8 @@ void RobotContainer::ConfigureButtonBindings() {
 frc2::Command* RobotContainer::GetAutonomousCommand() {
   // An example command will be run in autonomous
   //return &m_autonomousCommand;
-  return &m_autoAutonomous;
+  //return &m_autoAutonomous;
+
 }
 
 void RobotContainer::ConfigureDrive() {
