@@ -79,7 +79,6 @@ AutoCmdAutonomous::AutoCmdAutonomous(SubLimelightShooter* subLimelightShooter,  
     //CmdStopShooterWheels(subShooter),
     // Turn to face another alliance ball
 
-
     
     // Turn the shooter to face the hub
 
