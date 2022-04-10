@@ -54,6 +54,8 @@ class SubDriveTrain : public frc2::SubsystemBase {
   double GetLeftErrorValue();
   // Get right encoder value
   double GetRightErrorValue();
+  //Reset Enocders Positons
+  void ResetEncoderPositions();
 
  private:
   // Components (e.g. motor controllers and sensors) should generally be

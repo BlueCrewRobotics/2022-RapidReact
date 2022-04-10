@@ -59,6 +59,8 @@ class BC_FalconFX : public virtual frc::SpeedController {
   double GetEncoderValue();
   // Get closed loop error value
   double GetError();
+  //Reset Encoder
+  void ResetEncoder();
 
 
  private:

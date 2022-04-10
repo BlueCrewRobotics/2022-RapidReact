@@ -68,7 +68,7 @@ void SubClimber::SetHookPosition() {
 void SubClimber::SetClimberAngled() {
     bool climberAngled = m_climberAngled->Get();
     if(climberAngled == 0){
-        SetClimberMaxPosition(239000);
+        SetClimberMaxPosition(241000);
     }
     else {
         SetClimberMaxPosition(177000);

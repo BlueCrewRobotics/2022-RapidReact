@@ -127,3 +127,6 @@ double BC_FalconFX::GetEncoderValue() {
 double BC_FalconFX::GetError() {
 	return ptr_falconFX->GetClosedLoopError(0);
 }
+void BC_FalconFX::ResetEncoder() {
+	ptr_falconFX->SetSelectedSensorPosition(0,0,0);
+}

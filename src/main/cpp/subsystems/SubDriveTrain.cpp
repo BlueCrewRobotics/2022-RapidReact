@@ -185,3 +185,8 @@ double SubDriveTrain::GetLeftErrorValue() {
 double SubDriveTrain::GetRightErrorValue() {
   return rightDriveMotor->GetError();
 }
+
+void SubDriveTrain::ResetEncoderPositions() {
+  rightDriveMotor->ResetEncoder();
+  leftDriveMotor->ResetEncoder();
+}

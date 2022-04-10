@@ -93,6 +93,8 @@ class RobotContainer {
   void ConfigureClimber();
   // Get aux D tad value
   double GetAuxDPadValue();
+  //Reset Driver Encoders
+  void ResetDriveEncoders();
 
 
 

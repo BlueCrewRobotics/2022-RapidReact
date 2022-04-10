@@ -18,11 +18,11 @@ AutoCmdAutonomous::AutoCmdAutonomous(SubLimelightShooter* subLimelightShooter,  
     // Spin up Shooter wheels
     AutoCmdSpinShooterWheels(subShooter, subLimelightShooter),
     // Start timer
-    AutoCmdTimer(timer,1),
+    AutoCmdTimer(timer,2),
         // Shoot the ball
     CmdIndexToShooter(subIntake,subShooter),
     // Start timer
-    AutoCmdTimer(timer,2),
+    AutoCmdTimer(timer,3),
     // Turn off shooter limelight
     CmdTurnOffShooterLimelight(subLimelightShooter),
     // Stop the shoooter wheels

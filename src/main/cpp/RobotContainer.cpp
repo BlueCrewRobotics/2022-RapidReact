@@ -110,3 +110,7 @@ void RobotContainer::ConfigureClimber() {
 double RobotContainer::GetAuxDPadValue() {
   auxController->GetPOV();
 }
+
+void RobotContainer::ResetDriveEncoders(){
+    m_subDriveTrain.ResetEncoderPositions();
+}

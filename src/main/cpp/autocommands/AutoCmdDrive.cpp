@@ -28,8 +28,8 @@ void AutoCmdDrive::Initialize() {
 void AutoCmdDrive::Execute() {
   m_timer->Start();
   m_subDriveTrain->AutonomousDriving(m_leftRotations,m_rightRotations);
-  std::cout << "L= " << m_leftFinished << " Err= " << m_subDriveTrain->GetLeftErrorValue() << std::endl;
-  std::cout << "R= " << m_rightFinished << " Err= " << m_subDriveTrain->GetRightErrorValue() << std::endl;
+ // std::cout << "L= " << m_leftFinished << " Err= " << m_subDriveTrain->GetLeftErrorValue() << std::endl;
+ // std::cout << "R= " << m_rightFinished << " Err= " << m_subDriveTrain->GetRightErrorValue() << std::endl;
 
 }
 

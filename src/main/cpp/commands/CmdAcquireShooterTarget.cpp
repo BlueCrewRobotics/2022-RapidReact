@@ -22,7 +22,7 @@ void CmdAcquireShooterTarget::Execute() {
   double hTargetPosition;
   double hTargetAngle;
 
-  double gain = 0.7;
+  double gain = 0.75;
   double offset = 0; // Offset in degrees
 
   if(m_subLimelightShooter->GetTarget()==true)
@@ -53,7 +53,7 @@ void CmdAcquireShooterTarget::End(bool interrupted) {}
 
 // Returns true when the command should end.
 bool CmdAcquireShooterTarget::IsFinished() {
-  if( m_subLimelightShooter->GetHorizontalOffset() < 0.1 && m_subLimelightShooter->GetHorizontalOffset() > -0.1)
+  if( m_subLimelightShooter->GetHorizontalOffset() < 0.05 && m_subLimelightShooter->GetHorizontalOffset() > -0.05)
   {
     return true;
   }
