@@ -14,15 +14,15 @@ SubIntake::SubIntake() = default;
 void SubIntake::Periodic() {
     if (m_ballCount == 0)
     {
-        SetBlinkinColor(BREATH_BLUE);
+        SetBlinkinColor(SOLID_RED);
     }
     if (m_ballCount == 1)
     {
-        SetBlinkinColor(SOLID_BLUE);
+        SetBlinkinColor(SOLID_GREEN);
     }
     if (m_ballCount == 2)
     {
-        SetBlinkinColor(STROBE_BLUE);
+        SetBlinkinColor(SOLID_BLUE);
     }
     
 }

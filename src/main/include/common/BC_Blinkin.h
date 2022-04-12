@@ -56,6 +56,16 @@ constexpr double SOLID_YELLOW = 0.69;
 constexpr double STROBE_RED = -0.11;
 constexpr double STROBE_BLUE = -0.09;
 constexpr double CONFETTI = -0.87;
+constexpr double BLUE_CHASE =  -0.29;
+constexpr double RAINBOW = -0.99;
+constexpr double FIRE_LARGE = -0.57;
+constexpr double COLOR_WAVE_FOREST = -0.37;
+constexpr double SOLID_BLACK = 0.99;
+constexpr double SOLID_PINK = 0.57;
+constexpr double SOLID_GREEN = 0.77;
+constexpr double SOLID_GOLD = 0.67;
+
+
 
 
 class BC_Blinkin {
