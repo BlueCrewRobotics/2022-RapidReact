@@ -11,7 +11,21 @@
 SubIntake::SubIntake() = default;
 
 // This method will be called once per scheduler run
-void SubIntake::Periodic() {}
+void SubIntake::Periodic() {
+    if (m_ballCount == 0)
+    {
+        SetBlinkinColor(BREATH_BLUE);
+    }
+    if (m_ballCount == 1)
+    {
+        SetBlinkinColor(SOLID_BLUE);
+    }
+    if (m_ballCount == 2)
+    {
+        SetBlinkinColor(STROBE_BLUE);
+    }
+    
+}
 
 void SubIntake::ConfigureIntake(){
     // Write code here to configure the the motors of the Intake
@@ -134,4 +148,8 @@ void SubIntake::SetBeamStatus(bool broken){
 
 bool SubIntake::GetBeamStatus(){
     return m_beamHasBroken;
+}
+
+void SubIntake::SetBlinkinColor(double color){
+    m_ledBlinkin->Set(color);
 }

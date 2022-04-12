@@ -13,6 +13,7 @@
 #include "BC_TalonSRX.h"
 #include "Constants.h"
 #include <frc/DigitalInput.h>
+#include "common/BC_Blinkin.h"
 
 class SubIntake : public frc2::SubsystemBase {
  public:
@@ -49,6 +50,8 @@ class SubIntake : public frc2::SubsystemBase {
   void SetBeamStatus(bool broken);
   // Is indexer at position
   bool IsIndexerAtPosition(double deadband);
+  //Set blinkin light colors
+  void SetBlinkinColor(double color);
   
 
  private:
@@ -67,6 +70,7 @@ class SubIntake : public frc2::SubsystemBase {
   
   // Sets up break sensors
   frc::DigitalInput* m_ballDetector = new frc::DigitalInput(0);
+  BC_Blinkin* m_ledBlinkin = new BC_Blinkin(2);
 
 
 };
