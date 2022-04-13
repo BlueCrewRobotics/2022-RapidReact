@@ -21,7 +21,7 @@ void CmdSpinIntake::Initialize() {}
 void CmdSpinIntake::Execute() {
   //Spins intake unless we have two cargo
   if(m_subIntake->GetBallCount()<2){
-      m_subIntake->SpinFrontWheels(0.9);
+      m_subIntake->SpinFrontWheels(0.6);
   }
 }
 

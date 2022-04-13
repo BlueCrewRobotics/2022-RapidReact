@@ -11,13 +11,27 @@
 SubIntake::SubIntake() = default;
 
 // This method will be called once per scheduler run
-void SubIntake::Periodic() {}
+void SubIntake::Periodic() {
+    if (m_ballCount == 0)
+    {
+        SetBlinkinColor(SOLID_RED);
+    }
+    if (m_ballCount == 1)
+    {
+        SetBlinkinColor(SOLID_GREEN);
+    }
+    if (m_ballCount == 2)
+    {
+        SetBlinkinColor(SOLID_BLUE);
+    }
+    
+}
 
 void SubIntake::ConfigureIntake(){
     // Write code here to configure the the motors of the Intake
     // Intake positioner configuration
     positionIntake->Config_kF(0,0.0,0);
-    positionIntake->Config_kP(0,0.0937,0); // (75%)*1023/8192
+    positionIntake->Config_kP(0,0.15,0); // (75%)*1023/8192 .0937
     positionIntake->Config_kI(0,0,0);
     positionIntake->Config_kD(0,0,0);
 
@@ -65,8 +79,10 @@ void SubIntake::ConfigureIntake(){
     shooterFeeder->SetSensorPhase(false);
     shooterFeeder->SetInverted(true);
 
-    // Intake wheels spinner configuration
-    frontSpinner->SetInverted(true);
+    // Intake wheels spinner configuration used with Victor
+   // frontSpinner->SetInverted(true);
+    // If using TalonFX Falcon motor uncomment below line and comment out above line
+    frontSpinner->SetInverted(ctre::phoenix::motorcontrol::TalonFXInvertType::Clockwise);
 
 
 }
@@ -132,4 +148,8 @@ void SubIntake::SetBeamStatus(bool broken){
 
 bool SubIntake::GetBeamStatus(){
     return m_beamHasBroken;
+}
+
+void SubIntake::SetBlinkinColor(double color){
+    m_ledBlinkin->Set(color);
 }

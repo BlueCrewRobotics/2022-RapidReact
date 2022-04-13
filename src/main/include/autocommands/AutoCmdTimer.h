@@ -22,7 +22,7 @@
 class AutoCmdTimer
     : public frc2::CommandHelper<frc2::CommandBase, AutoCmdTimer> {
  public:
-  explicit AutoCmdTimer(frc::Timer* timer);
+  explicit AutoCmdTimer(frc::Timer* timer, double time);
 
   void Initialize() override;
 
@@ -35,4 +35,5 @@ class AutoCmdTimer
  private:
 
   frc::Timer* m_timer;
+  double m_time;
 };

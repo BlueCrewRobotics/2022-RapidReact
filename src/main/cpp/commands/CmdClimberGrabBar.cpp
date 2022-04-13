@@ -6,28 +6,25 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-#include "commands/CmdHubSelect.h"
+#include "commands/CmdClimberGrabBar.h"
 
-CmdHubSelect::CmdHubSelect(SubShooter *SubShooter, bool select) : m_subShooter(SubShooter), m_select(select)
-{
+CmdClimberGrabBar::CmdClimberGrabBar(SubClimber* subsystem)  : m_subClimber(subsystem) {
   // Use addRequirements() here to declare subsystem dependencies.
-  //AddRequirements(SubShooter);
+  //AddRequirements(subsystem);
 }
 
 // Called when the command is initially scheduled.
-void CmdHubSelect::Initialize() {}
+void CmdClimberGrabBar::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
-void CmdHubSelect::Execute()
-{
-  m_subShooter->SelectHub(m_select);
+void CmdClimberGrabBar::Execute() {
+  m_subClimber->SetHookPosition();
 }
 
 // Called once the command ends or is interrupted.
-void CmdHubSelect::End(bool interrupted) {}
+void CmdClimberGrabBar::End(bool interrupted) {}
 
 // Returns true when the command should end.
-bool CmdHubSelect::IsFinished()
-{
+bool CmdClimberGrabBar::IsFinished() {
   return true;
 }

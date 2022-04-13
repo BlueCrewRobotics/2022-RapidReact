@@ -54,6 +54,10 @@ void SubDriveTrain::DriveTrainConfigure() {
   leftDriveMotor->ConfigureMotionMagic();
   rightDriveMotor->ConfigureMotionMagic();
 
+  // Set max speed
+  leftDriveMotor->SetMaxSpeed(VELOCITY_SP_MAX_LG);
+  rightDriveMotor->SetMaxSpeed(VELOCITY_SP_MAX_LG);
+
   // PID constants for Profile 0 low gear Profile 1 high gear of Talon left
   frc::SmartDashboard::PutNumber("LEFT_KF_0",LEFT_KF_0);
   frc::SmartDashboard::PutNumber("LEFT_KP_0",LEFT_KP_0);
@@ -147,10 +151,10 @@ void SubDriveTrain::SetMaxSpeed(double maxSpeed) {
 
 void SubDriveTrain::SetMotorCooling(bool cool) {
     if(cool == true){
-      m_motorCooling->Set(true);
+      //m_motorCooling->Set(true);
     }
     else{
-      m_motorCooling->Set(false);
+      //m_motorCooling->Set(false);
     }
 }
 
@@ -164,4 +168,25 @@ void SubDriveTrain::AutonomousDriving(double leftrotations, double rightrotation
 
 void SubDriveTrain::RotateDriveTrain(double rotation) {
   driveTrain->ArcadeDrive(0,rotation);
+}
+
+double SubDriveTrain::GetLeftEncoderValue() {
+  return leftDriveMotor->GetEncoderValue();
+}
+
+double SubDriveTrain::GetRightEncoderValue() {
+  return rightDriveMotor->GetEncoderValue();
+}
+
+double SubDriveTrain::GetLeftErrorValue() {
+  return leftDriveMotor->GetError();
+}
+
+double SubDriveTrain::GetRightErrorValue() {
+  return rightDriveMotor->GetError();
+}
+
+void SubDriveTrain::ResetEncoderPositions() {
+  rightDriveMotor->ResetEncoder();
+  leftDriveMotor->ResetEncoder();
 }

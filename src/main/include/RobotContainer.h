@@ -31,15 +31,21 @@
 #include "commands/CmdTurnOnShooterLimelight.h"
 #include "commands/CmdTurnOffShooterLimelight.h"
 #include "commands/CmdAcquireShooterTarget.h" //This might have to be seperated into 2 commands AcquireTarget and AimToTarget
+#include "commands/CmdReverseIntake.h"
 #include "commands/CmdSpinIntake.h"
 #include "commands/CmdStopIntake.h"
 #include "commands/CmdMoveIntake.h"
 #include "commands/CmdIndexShooterFeeder.h"
+#include "commands/CmdReverseShooterFeeder.h"
 #include "commands/CmdIndexToShooter.h"
+#include "commands/CmdClimberControl.h"
 
-#include "commands/CmdClimberUp.h"
-#include "commands/CmdClimberDown.h"
+
 #include "commands/CmdClimberStop.h"
+#include "commands/CmdClimberGrabBar.h"
+#include "commands/CmdClimberReleaseHooks.h"
+#include "commands/CmdClimberStraight.h"
+#include "commands/CmdClimberAngled.h"
 #include "commands/CmdHubSelect.h"
 
 // Auto command includes
@@ -85,6 +91,10 @@ class RobotContainer {
   void ConfigureLimelights();
   // Configure climber
   void ConfigureClimber();
+  // Get aux D tad value
+  double GetAuxDPadValue();
+  //Reset Driver Encoders
+  void ResetDriveEncoders();
 
 
 

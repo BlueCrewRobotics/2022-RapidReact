@@ -10,7 +10,7 @@
 
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
-#include "subsystems/SubClimber.h"
+#include "subsystems/SubIntake.h"
 
 /**
  * An example command.
@@ -19,10 +19,10 @@
  * directly; this is crucially important, or else the decorator functions in
  * Command will *not* work!
  */
-class CmdClimberDown
-    : public frc2::CommandHelper<frc2::CommandBase, CmdClimberDown> {
+class CmdReverseShooterFeeder
+    : public frc2::CommandHelper<frc2::CommandBase, CmdReverseShooterFeeder> {
  public:
-  explicit CmdClimberDown(SubClimber* SubClimber);
+  explicit CmdReverseShooterFeeder(SubIntake* subIntake);
 
   void Initialize() override;
 
@@ -33,5 +33,7 @@ class CmdClimberDown
   bool IsFinished() override;
 
  private:
-  SubClimber* m_subClimber;
+  SubIntake* m_subIntake;
+  bool oneShot = 0;
+
 };

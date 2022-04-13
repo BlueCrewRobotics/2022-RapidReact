@@ -11,6 +11,7 @@
 #include <frc2/command/SubsystemBase.h>
 #include "BC_FalconFX.h"
 #include <frc/Servo.h>
+#include <frc/Solenoid.h>
 #include <frc/smartdashboard/SmartDashboard.h>
 
 class SubShooter : public frc2::SubsystemBase {
@@ -39,6 +40,8 @@ class SubShooter : public frc2::SubsystemBase {
   // Set the the wheel speed parameter'
   void SetShooterWheelSpeed(double topSpeed, double botSpeed);
   // Select the lower hub or upper hub to shoot at
+  void SetMotorCooling(bool cool);
+
   void SelectHub(bool select);
   // Get the selected hub that we are shooting at
   bool GetHub();
@@ -52,6 +55,8 @@ class SubShooter : public frc2::SubsystemBase {
 
   frc::Servo* rightServo = new frc::Servo(SHOOTER_RIGHT_PWM_ADDR);
   frc::Servo* leftServo = new frc::Servo(SHOOTER_LEFT_PWN_ADDR);
+
+  frc::Solenoid* m_motorCooling = new frc::Solenoid(PCM_0,frc::PneumaticsModuleType::CTREPCM,PCM_0_MOTOR_COOLING);
 
   double m_servoAngle = 0.8;
   bool m_hubSelection = 1; // Low is 0 High is 1

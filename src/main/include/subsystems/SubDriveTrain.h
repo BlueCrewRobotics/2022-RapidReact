@@ -46,7 +46,16 @@ class SubDriveTrain : public frc2::SubsystemBase {
   void AutonomousDriving(double leftrotations, double rightrotations);
   // Rotate the robot
   void RotateDriveTrain(double rotation);
-
+  // Get left encoder value
+  double GetLeftEncoderValue();
+  // Get right encoder value
+  double GetRightEncoderValue();
+  // Get the error
+  double GetLeftErrorValue();
+  // Get right encoder value
+  double GetRightErrorValue();
+  //Reset Enocders Positons
+  void ResetEncoderPositions();
 
  private:
   // Components (e.g. motor controllers and sensors) should generally be
@@ -61,7 +70,7 @@ class SubDriveTrain : public frc2::SubsystemBase {
   frc::DifferentialDrive* driveTrain = new frc::DifferentialDrive(*leftDriveMotor, *rightDriveMotor);
 
   frc::Solenoid* m_gearSolenoid = new frc::Solenoid(PCM_0,frc::PneumaticsModuleType::CTREPCM,PCM_0_GEARSHIFT);
-  frc::Solenoid* m_motorCooling = new frc::Solenoid(PCM_0,frc::PneumaticsModuleType::CTREPCM,PCM_0_MOTOR_COOLING);
+  //frc::Solenoid* m_motorCooling = new frc::Solenoid(PCM_0,frc::PneumaticsModuleType::CTREPCM,PCM_0_MOTOR_COOLING);
 
   double m_maxSpeed = VELOCITY_SP_MAX_LG;
   

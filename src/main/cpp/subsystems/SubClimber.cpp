@@ -32,8 +32,8 @@ void SubClimber::ConfigureClimber() {
     mainClimber->Config_kI(0,0.00, 0);
     mainClimber->Config_kD(0,0.00, 0);
 
-    mainClimber->ConfigForwardSoftLimitThreshold(730000,0); //Limit how hieght the climber can go
-    mainClimber->ConfigReverseSoftLimitThreshold(2000,0); // Limit how low the climber can go
+    mainClimber->ConfigForwardSoftLimitThreshold(177000,0); //Limit how high the climber can go
+    mainClimber->ConfigReverseSoftLimitThreshold(0.0,0); // Limit how low the climber can go
     mainClimber->ConfigForwardSoftLimitEnable(true,0); //Enables the high limit
     mainClimber->ConfigReverseSoftLimitEnable(true,0); // Enables low limit
 
@@ -59,4 +59,32 @@ void SubClimber::MoveClimber(double output) {
     mainClimber->Set(ControlMode::PercentOutput, output);
 }
 
+void SubClimber::SetHookPosition() {
+    bool hooks = m_climberHook->Get();
+    hooks = !hooks;
+    m_climberHook->Set(hooks);
+}
 
+void SubClimber::SetClimberAngled() {
+    bool climberAngled = m_climberAngled->Get();
+    if(climberAngled == 0){
+        SetClimberMaxPosition(241000);
+    }
+    else {
+        SetClimberMaxPosition(177000);
+    }
+
+    climberAngled = !climberAngled;
+    m_climberAngled->Set(climberAngled);
+    m_climberStraight->Set(!climberAngled);
+    
+    //m_climberAngled->Set(true);
+}
+
+void SubClimber::SetClimberStraight() {
+    m_climberStraight->Set(true);
+}
+
+void SubClimber::SetClimberMaxPosition(double limit) {
+    mainClimber->ConfigForwardSoftLimitThreshold(limit,0);
+}

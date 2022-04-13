@@ -10,8 +10,10 @@
 
 #include <frc2/command/SubsystemBase.h>
 #include "BC_VictorSPX.h"
+#include "BC_TalonSRX.h"
 #include "Constants.h"
 #include <frc/DigitalInput.h>
+#include "common/BC_Blinkin.h"
 
 class SubIntake : public frc2::SubsystemBase {
  public:
@@ -32,6 +34,8 @@ class SubIntake : public frc2::SubsystemBase {
   void MoveIntakeToPosition(double position);
   // Index the shooter feeder
   void IndexShooterFeeder(double position);
+  // Reverse Shooter Feeder
+  void ReverseShooterFeeder(double position);
   // Get the position of the indexer
   double GetIndexerPosition();
   // Get break sensor
@@ -46,12 +50,17 @@ class SubIntake : public frc2::SubsystemBase {
   void SetBeamStatus(bool broken);
   // Is indexer at position
   bool IsIndexerAtPosition(double deadband);
+  //Set blinkin light colors
+  void SetBlinkinColor(double color);
   
 
  private:
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
-  VictorSPX* frontSpinner = new VictorSPX(INTAKE_SPINNER_ADDR);
+  //VictorSPX* frontSpinner = new VictorSPX(INTAKE_SPINNER_ADDR);
+  // If using Falcon uncomment below line and comment out above line
+  TalonFX* frontSpinner = new TalonFX(INTAKE_SPINNER_ADDR);
+
   TalonSRX* positionIntake = new TalonSRX(INTAKE_POSITIONER_ADDR);
   TalonSRX* shooterFeeder = new TalonSRX(INTAKE_SHOOTER_FEEDER_ADDR);
 
@@ -61,6 +70,7 @@ class SubIntake : public frc2::SubsystemBase {
   
   // Sets up break sensors
   frc::DigitalInput* m_ballDetector = new frc::DigitalInput(0);
+  BC_Blinkin* m_ledBlinkin = new BC_Blinkin(2);
 
 
 };

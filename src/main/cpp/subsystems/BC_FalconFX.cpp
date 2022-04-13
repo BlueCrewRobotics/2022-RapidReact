@@ -104,6 +104,7 @@ void BC_FalconFX::SetNominalPeakOutput(int profileSlot) {
 
 void BC_FalconFX::SetMaxSpeed(double maxSpeed) {
 	m_dMaxSpeed = maxSpeed;
+	ptr_falconFX->SelectProfileSlot(0,0);
 }
 
 void BC_FalconFX::DriveWithMotionMagic(double position) {
@@ -115,7 +116,17 @@ void BC_FalconFX::SetRamp(double ramp) {
 }
 
 void BC_FalconFX::ConfigureMotionMagic() {
-	ptr_falconFX->ConfigMotionAcceleration(2048,0);
-	ptr_falconFX->ConfigMotionCruiseVelocity(2048,0);
+	ptr_falconFX->ConfigMotionAcceleration(8192,0);
+	ptr_falconFX->ConfigMotionCruiseVelocity(8192,0);
 }
 
+double BC_FalconFX::GetEncoderValue() {
+	return ptr_falconFX->GetSelectedSensorPosition(0);
+}
+
+double BC_FalconFX::GetError() {
+	return ptr_falconFX->GetClosedLoopError(0);
+}
+void BC_FalconFX::ResetEncoder() {
+	ptr_falconFX->SetSelectedSensorPosition(0,0,0);
+}

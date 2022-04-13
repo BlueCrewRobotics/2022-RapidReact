@@ -6,28 +6,38 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-#include "commands/CmdHubSelect.h"
+#include "commands/CmdReverseIntake.h"
+#include "subsystems/SubIntake.h"
 
-CmdHubSelect::CmdHubSelect(SubShooter *SubShooter, bool select) : m_subShooter(SubShooter), m_select(select)
-{
+CmdReverseIntake::CmdReverseIntake(SubIntake* subIntake) : m_subIntake(subIntake) {
   // Use addRequirements() here to declare subsystem dependencies.
-  //AddRequirements(SubShooter);
+  AddRequirements(subIntake);
 }
 
 // Called when the command is initially scheduled.
-void CmdHubSelect::Initialize() {}
+void CmdReverseIntake::Initialize() {
+  m_timer.Reset();
+  m_timer.Start();
+}
 
 // Called repeatedly when this Command is scheduled to run
-void CmdHubSelect::Execute()
-{
-  m_subShooter->SelectHub(m_select);
+void CmdReverseIntake::Execute() {
+  //Spins intake unless we have two cargo
+  //if(m_subIntake->GetBallCount()<2){
+      m_subIntake->SpinFrontWheels(-0.9);
+  //}
 }
 
 // Called once the command ends or is interrupted.
-void CmdHubSelect::End(bool interrupted) {}
+void CmdReverseIntake::End(bool interrupted) {}
 
 // Returns true when the command should end.
-bool CmdHubSelect::IsFinished()
-{
-  return true;
+bool CmdReverseIntake::IsFinished() {
+
+  if(m_timer.HasPeriodPassed((units::time::second_t)1)==true) {
+    return true;
+  }
+  else {
+    return false;
+  }
 }
