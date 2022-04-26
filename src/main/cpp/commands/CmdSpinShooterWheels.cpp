@@ -60,15 +60,15 @@ void CmdSpinShooterWheels::Execute() {
       //btmShooterSpeed = btmShooterSpeed + btmShooterOffset;
         topShooterSpeed = 14750;
         btmShooterSpeed = 14750;
-        m_subShooter->SetShooterAngle(0.7);
+        m_subShooter->SetShooterAngle(0.72);
     }
 
   } 
   else {
     if(m_subShooter->GetHub() == false){
-      topShooterSpeed = 8000;
-      btmShooterSpeed = 8000;
-      m_subShooter->SetShooterAngle(0.8);
+      topShooterSpeed = 8500;
+      btmShooterSpeed = 8500;
+      m_subShooter->SetShooterAngle(0.75);
       std::cout << "Low Hub Selected " << std::endl;
     }
 
