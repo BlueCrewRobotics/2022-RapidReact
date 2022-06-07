@@ -8,8 +8,16 @@
 
 #include "RobotContainer.h"
 
-RobotContainer::RobotContainer() : m_autoAutonomous(&m_subLimelightShooter, &m_subShooter, &m_subIntake, &m_subDriveTrain,&autoTimer) {
+RobotContainer::RobotContainer() {
   // Initialize all of your commands and subsystems here
+
+  //Add commands to the autonomous drive station chooser
+  m_autoChooser.SetDefaultOption("One Ball Auto", &m_autoAutonomous);
+  m_autoChooser.AddOption("Two Ball Auto", &m_autoAutonomous2Ball);
+
+  // Put the chooser on the dashboard
+  frc::SmartDashboard::PutData("Autonomous", &m_autoChooser);
+
 
   // Configure the button bindings
   ConfigureButtonBindings();
@@ -76,6 +84,7 @@ frc2::Command* RobotContainer::GetAutonomousCommand() {
   // An example command will be run in autonomous
   //return &m_autonomousCommand;
   //return &m_autoAutonomous;
+  return m_autoChooser.GetSelected();
 
 }
 

@@ -2,12 +2,12 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-#include "autocommands/AutoCmdAutonomous.h"
+#include "autocommands/AutoCmdAutonomous2Ball.h"
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.
 // For more information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-AutoCmdAutonomous::AutoCmdAutonomous(SubLimelightShooter* subLimelightShooter,  SubShooter* subShooter, SubIntake* subIntake, SubDriveTrain* subDriveTrain, frc::Timer* timer) {
+AutoCmdAutonomous2Ball::AutoCmdAutonomous2Ball(SubLimelightShooter* subLimelightShooter,  SubShooter* subShooter, SubIntake* subIntake, SubDriveTrain* subDriveTrain, frc::Timer* timer) {
   // Add your commands here, e.g.
   // AddCommands(FooCommand(), BarCommand());
   AddCommands(
@@ -24,29 +24,29 @@ AutoCmdAutonomous::AutoCmdAutonomous(SubLimelightShooter* subLimelightShooter,  
     // Start timer
     AutoCmdTimer(timer,2),
     // Turn off shooter limelight
-    CmdTurnOffShooterLimelight(subLimelightShooter),
+    //CmdTurnOffShooterLimelight(subLimelightShooter),
     // Stop the shoooter wheels
-    CmdStopShooterWheels(subShooter),
+    //CmdStopShooterWheels(subShooter),
     // Turn on intake limelight. Proably don't need to turn on the limelight for the ball color
-    //CmdMoveIntake(subIntake, 5800.0),
+    CmdMoveIntake(subIntake, 5800.0),
     // Spin the intake
-    //CmdSpinIntake(subIntake),
+    CmdSpinIntake(subIntake),
     // Drive toward ball until ball is picked up
-    AutoCmdDrive(subDriveTrain,50,50,timer)
+    AutoCmdDrive(subDriveTrain,50,50,timer),
     // Index the shooter
-    //CmdIndexShooterFeeder(subIntake),
+    AutoCmdIndexShooterFeeder(subIntake),
     // Retract intake
-    //CmdMoveIntake(subIntake, 0.0),
+    CmdMoveIntake(subIntake, 0.0),
     // Stop the intake
-    //CmdStopIntake(subIntake),
+    CmdStopIntake(subIntake),
 // Set the shooter angle this will be upclose shooting to the upper hub
-    //CmdSetShooterAngle(subShooter,subLimelightShooter),
+    CmdSetShooterAngle(subShooter,subLimelightShooter),
     // Spin up Shooter wheels
-    //AutoCmdSpinShooterWheels(subShooter, subLimelightShooter),
+    AutoCmdSpinShooterWheels(subShooter, subLimelightShooter),
     // Start timer
-    //AutoCmdTimer(timer,2)
+    AutoCmdTimer(timer,2),
     // Index the shooter
-    //CmdIndexToShooter(subIntake,subShooter)
+    CmdIndexToShooter(subIntake,subShooter)
 
     // Retract intake
     //CmdMoveIntake(subIntake, 0.0),

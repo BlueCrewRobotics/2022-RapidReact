@@ -6,19 +6,19 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-#include "commands/CmdIndexShooterFeeder.h"
+#include "autocommands/AutoCmdIndexShooterFeeder.h"
 #include <iostream>
 
-CmdIndexShooterFeeder::CmdIndexShooterFeeder(SubIntake* subIntake) : m_subIntake(subIntake){
+AutoCmdIndexShooterFeeder::AutoCmdIndexShooterFeeder(SubIntake* subIntake) : m_subIntake(subIntake){
   // Use addRequirements() here to declare subsystem dependencies.
   AddRequirements(subIntake);
 }
 
 // Called when the command is initially scheduled.
-void CmdIndexShooterFeeder::Initialize() {}
+void AutoCmdIndexShooterFeeder::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
-void CmdIndexShooterFeeder::Execute() {
+void AutoCmdIndexShooterFeeder::Execute() {
   double position = m_subIntake->GetIndexerPosition();
 
   std::cout << "Ball Sensor=" << m_subIntake->GetBallSensor() << " Ball Count=" << m_subIntake->GetBallCount() << " Error=" << m_subIntake->IsIndexerAtPosition(600)<< std::endl;
@@ -41,12 +41,17 @@ void CmdIndexShooterFeeder::Execute() {
 }
 
 // Called once the command ends or is interrupted.
-void CmdIndexShooterFeeder::End(bool interrupted) {}
+void AutoCmdIndexShooterFeeder::End(bool interrupted) {}
 
 // Returns true when the command should end.
-bool CmdIndexShooterFeeder::IsFinished() {
+bool AutoCmdIndexShooterFeeder::IsFinished() {
   
+  if(m_subIntake->GetBallSensor()==true){
+    return false;
+  }
+  else{
+    return true;
+  }
   
-  return true;
 
 }

@@ -50,7 +50,7 @@
 
 // Auto command includes
 #include "autocommands/AutoCmdAutonomous.h"
-
+#include "autocommands/AutoCmdAutonomous2Ball.h"
 
 // Subsystem includes
 #include "subsystems/ExampleSubsystem.h"
@@ -100,7 +100,10 @@ class RobotContainer {
 
  private:
   // The robot's commands
-  AutoCmdAutonomous m_autoAutonomous;
+  AutoCmdAutonomous m_autoAutonomous{&m_subLimelightShooter, &m_subShooter, &m_subIntake, &m_subDriveTrain, &autoTimer};
+  AutoCmdAutonomous2Ball m_autoAutonomous2Ball{&m_subLimelightShooter, &m_subShooter, &m_subIntake, &m_subDriveTrain, &autoTimer};
+
+  frc::SendableChooser<frc2::Command*> m_autoChooser;
 
   //ExampleSubsystem m_subsystem;
   //ExampleCommand m_autonomousCommand;
