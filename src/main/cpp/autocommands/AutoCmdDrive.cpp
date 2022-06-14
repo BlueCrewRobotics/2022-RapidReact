@@ -18,6 +18,7 @@ AutoCmdDrive::AutoCmdDrive(SubDriveTrain* subDriveTrain, double leftrotations, d
 // Called when the command is initially scheduled.
 void AutoCmdDrive::Initialize() {
   m_timer->Reset();
+  m_timer->Start();
   m_leftFinished = m_leftRotations*2048 + m_subDriveTrain->GetLeftEncoderValue();
   m_rightFinished = m_rightRotations*2048 + m_subDriveTrain->GetRightEncoderValue();
 
@@ -26,7 +27,7 @@ void AutoCmdDrive::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void AutoCmdDrive::Execute() {
-  m_timer->Start();
+  
   m_subDriveTrain->AutonomousDriving(m_leftRotations,m_rightRotations);
  // std::cout << "L= " << m_leftFinished << " Err= " << m_subDriveTrain->GetLeftErrorValue() << std::endl;
  // std::cout << "R= " << m_rightFinished << " Err= " << m_subDriveTrain->GetRightErrorValue() << std::endl;
@@ -38,7 +39,7 @@ void AutoCmdDrive::End(bool interrupted) {}
 
 // Returns true when the command should end.
 bool AutoCmdDrive::IsFinished() {
-  if(m_timer->HasElapsed((units::time::second_t)4)==true) {
+  if(m_timer->HasElapsed((units::time::second_t)3)==true) {
     return true;
   }
   else {

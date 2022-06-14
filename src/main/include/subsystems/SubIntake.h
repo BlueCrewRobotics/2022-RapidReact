@@ -70,7 +70,7 @@ class SubIntake : public frc2::SubsystemBase {
   
   // Sets up break sensors
   frc::DigitalInput* m_ballDetector = new frc::DigitalInput(0);
-  BC_Blinkin* m_ledBlinkin = new BC_Blinkin(2);
+  BC_Blinkin* m_ledBlinkin = new BC_Blinkin(3);
 
 
 };
